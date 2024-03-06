@@ -1,0 +1,9 @@
+.book-img {
+    display: block !important;
+}
+
+.book-img-size {
+    margin: 2% 1% 4% 1%;
+    width: 117px;
+    height: 176px;
+}

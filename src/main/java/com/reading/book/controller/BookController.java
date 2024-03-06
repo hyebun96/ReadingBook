@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/book")
 public class BookController {
 
-    @GetMapping("/main")
-    public String main(){
-        return "index";
+    @GetMapping("/search")
+    public String search(){
+        return "/book/search";
     }
-
 }
