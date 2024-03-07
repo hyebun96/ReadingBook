@@ -29,8 +29,11 @@
                         <div class="navbar-nav align-items-center search-100">
                             <div class="nav-item d-flex align-items-center search-100">
                                 <i class="bx bx-search fs-4 lh-0"></i>
+                                <form class="search-100" action="/book/search" method="get">
                                 <input type="text" class="form-control border-0 shadow-none search-100"
-                                       placeholder="쇼펜하우어" aria-label="Search..."/>
+                                       placeholder="도서명을 검색해주세요." aria-label="Search..." th:value='${title}'
+                                        name="title"/>
+                                </form>
                             </div>
                         </div>
                         <!-- /Search -->
@@ -109,12 +112,11 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
                             <div class="mb-4">
-                                <div class="h6 fw-bold">&nbsp🔎&nbsp'쇼펜하우어'에 대한 검색결과는 4개 입니다.</div>
+                                <div class="h6 fw-bold">&nbsp🔎&nbsp
+                                    <span th:text="${title}"/>
+                                    에 대한 검색결과입니다.</div>
                                 <div class="card book-img">
-                                    <img class="book-img-size" src="/common/img/book3.jpeg">
-                                    <img class="book-img-size" src="/common/img/book4.jpeg">
-                                    <img class="book-img-size" src="/common/img/book5.jpeg">
-                                    <img class="book-img-size" src="/common/img/book6.jpeg">
+                                    <img th:each="searchBookList: ${searchBookList}" class="book-img-size" th:src="${searchBookList.image}">
                                 </div>
                             </div>
                         </div>
