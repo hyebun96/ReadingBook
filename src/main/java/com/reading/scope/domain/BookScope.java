@@ -2,8 +2,11 @@ package com.reading.scope.domain;
 
 import com.reading.common.BaseEntity;
 import com.reading.report.domain.BookReport;
+import com.reading.scope.dto.BookScopeRequestDTO;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
@@ -15,28 +18,33 @@ public class BookScope extends BaseEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String member_id;
+    private String memberId;
 
     // 별점
     @Column
     private double scope;
 
     // 책 ISBN
-    @Column
+    @Column(nullable = false)
     private String isbn;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="reportId")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="reportId", referencedColumnName = "id")
     private BookReport bookReport;
 
     @Builder
-    public BookScope(String member_id, double scope, String isbn) {
-        this.member_id = member_id;
+    public BookScope(String memberId, double scope, String isbn, BookReport bookReport) {
+        this.memberId = memberId;
         this.scope = scope;
         this.isbn = isbn;
+        this.bookReport = bookReport;
     }
 
     public void addBookReport(BookReport bookReport) {
         this.bookReport = bookReport;
+    }
+
+    public void updateBookScope(BookScopeRequestDTO bookScopeResponseDTO) {
+        this.scope = bookScopeResponseDTO.getScope();
     }
 }

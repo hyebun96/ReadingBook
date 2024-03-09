@@ -1,6 +1,7 @@
 package com.reading.scope.service;
 
-import com.reading.scope.dto.BookScopeRequesetDTO;
+import com.reading.scope.domain.BookScope;
+import com.reading.scope.dto.BookScopeRequestDTO;
 import com.reading.scope.repository.BookScopeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class BookScopeService {
     private final BookScopeRepository bookScopeRepository;
 
-    public void insertScope(BookScopeRequesetDTO bookScopeRequesetDTO) throws Exception {
-        bookScopeRepository.save(bookScopeRequesetDTO.toEntity());
+    public void insertRegister(BookScopeRequestDTO bookScopeRequestDTO) throws Exception {
+        bookScopeRepository.save(bookScopeRequestDTO.toEntity());
     }
 }

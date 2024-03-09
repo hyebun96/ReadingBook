@@ -14,7 +14,7 @@ public class BookComment {
     private Long id;
 
     @Column
-    private int mybook_id;
+    private int mybookId;
 
     @Column
     private String comment;

@@ -16,7 +16,7 @@
     <div class="layout-page">
         <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-                <form th:action="@{/report/register}" th:object="${regRequestDTO}" method="post">
+                <form th:action="@{/report/modify/{id}(id = ${report.id})}" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card mb-4">
@@ -33,35 +33,45 @@
                                                     평균 별점&nbsp;&nbsp;<span id="averageScope"></span>
                                                 </small>
                                             </p>
-                                            <fieldset class="scope">
-                                                <input type="radio" id="scope10" name="scope" value="5" th:checked="${scope == 5}">
+                                            <fieldset class="scope detail-page">
+                                                <input type="radio" id="scope10" name="scope" value="5"
+                                                       th:checked="${report.scope == 5}">
                                                 <label for="scope10" title="5점"></label>
 
-                                                <input type="radio" id="scope9" name="scope" value="4.5" th:checked="${scope == 4.5}">
+                                                <input type="radio" id="scope9" name="scope" value="4.5"
+                                                       th:checked="${report.scope == 4.5}">
                                                 <label class="half" for="scope9" title="4.5점"></label>
 
-                                                <input type="radio" id="scope8" name="scope" value="4" th:checked="${scope == 4}">
+                                                <input type="radio" id="scope8" name="scope" value="4"
+                                                       th:checked="${report.scope == 4}">
                                                 <label for="scope8" title="4점"></label>
 
-                                                <input type="radio" id="scope7" name="scope" value="3.5" th:checked="${scope == 3.5}">
+                                                <input type="radio" id="scope7" name="scope" value="3.5"
+                                                       th:checked="${report.scope == 3.5}">
                                                 <label class="half" for="scope7" title="3.5점"></label>
 
-                                                <input type="radio" id="scope6" name="scope" value="3" th:checked="${scope == 3}">
+                                                <input type="radio" id="scope6" name="scope" value="3"
+                                                       th:checked="${report.scope == 3}">
                                                 <label for="scope6" title="3점"></label>
 
-                                                <input type="radio" id="scope5" name="scope" value="2.5" th:checked="${scope == 2.5}">
+                                                <input type="radio" id="scope5" name="scope" value="2.5"
+                                                       th:checked="${report.scope == 2.5}">
                                                 <label class="half" for="scope5" title="2.5점"></label>
 
-                                                <input type="radio" id="scope4" name="scope" value="2" th:checked="${scope == 2}">
+                                                <input type="radio" id="scope4" name="scope" value="2"
+                                                       th:checked="${report.scope == 2}">
                                                 <label for="scope4" title="2점"></label>
 
-                                                <input type="radio" id="scope3" name="scope" value="1.5" th:checked="${scope == 1.5}">
+                                                <input type="radio" id="scope3" name="scope" value="1.5"
+                                                       th:checked="${report.scope == 1.5}">
                                                 <label class="half" for="scope3" title="1.5점"></label>
 
-                                                <input type="radio" id="scope2" name="scope" value="1" th:checked="${scope == 1}">
+                                                <input type="radio" id="scope2" name="scope" value="1"
+                                                       th:checked="${report.scope == 1}">
                                                 <label for="scope2" title="1점"></label>
 
-                                                <input type="radio" id="scope1" name="scope" value="0.5" th:checked="${scope == 0.5}">
+                                                <input type="radio" id="scope1" name="scope" value="0.5"
+                                                       th:checked="${report.scope == 0.5}">
                                                 <label class="half" for="scope1" title="0.5점"></label>
                                             </fieldset>
                                         </div>
@@ -75,25 +85,20 @@
                             <div class="card mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h5><i class='bx bx-book-reader'></i>&nbsp;&nbsp;나의 독서 기록</h5>
-                                    <button type="submit" class="btn btn-dark">완료</button>
+                                    <button type="submit" class="btn btn-dark">편집</button>
                                 </div>
                                 <div class="card-body">
                                     <div class="mt-4">
-                                        <textarea class="form-control" rows="5" th:field="*{review}"
-                                                  placeholder="책의 줄거리를 작성해보세요."
-                                        ></textarea>
+                                        <label class="form-label">줄거리 노트</label>
+                                        <p class="card-text" th:text="${report.review}"></p>
                                     </div>
                                     <div class="mt-4">
-                                        <textarea class="form-control" rows="5"
-                                                  th:field="*{impression}"
-                                                  placeholder="책을 통해 느낀 감정을 작성해보세요."
-                                        ></textarea>
+                                        <label class="form-label">느낀점 노트</label>
+                                        <p class="card-text" th:text="${report.impression}"></p>
                                     </div>
                                     <div class="mt-4">
-                                        <textarea class="form-control" rows="5"
-                                                  th:field="*{lifeContent}"
-                                                  placeholder="삶의 적용에 대해 작성해보세요."
-                                        ></textarea>
+                                        <label class="form-label">삶의 적용 노트</label>
+                                        <p class="card-text" th:text="${report.lifeContent}"></p>
                                     </div>
                                 </div>
                             </div>
@@ -105,12 +110,20 @@
     </div>
 </div>
 <script>
-    const scopeInputs = document.querySelectorAll('input[name="scope"]');
-    const averageScopeDisplay = document.getElementById('averageScope');
+    document.addEventListener('DOMContentLoaded', function () {
+        const averageScopeDisplay = document.getElementById('averageScope');
+        const scopeButtons = document.querySelectorAll('input[name="scope"]');
+        const checkedInput = document.querySelector('input[name="scope"]:checked');
 
-    scopeInputs.forEach(input => {
-        input.addEventListener('change', () => {
-            averageScopeDisplay.textContent = `${input.value}점`;
+        if (checkedInput) {
+            averageScopeDisplay.textContent = `${checkedInput.value}점`;
+        }
+
+        scopeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                return false;
+            });
         });
     });
 </script>

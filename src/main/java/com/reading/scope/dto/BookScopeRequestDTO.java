@@ -8,16 +8,16 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BookScopeRequesetDTO {
-    private String member_id;
+public class BookScopeRequestDTO {
+    private String memberId;
     private double scope;
     private String isbn;
 
     public BookScope toEntity() {
         return BookScope.builder()
-                .member_id("hyehwa")
+                .memberId("hyehwa")
                 .scope(scope)
-                .isbn(isbn)
+                .isbn("9791192625553")
                 .build();
     }
 }

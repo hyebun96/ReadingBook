@@ -8,15 +8,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BookReportRequesetDTO {
-    private int mybook_id;
+public class BookReportRequestDTO {
+    private int mybookId;
     private String review;
     private String impression;
     private String lifeContent;
 
     public BookReport toEntity() {
         return BookReport.builder()
-                .mybook_id(mybook_id)
+                .mybookId(mybookId)
                 .review(review)
                 .impression(impression)
                 .lifeContent(lifeContent)
