@@ -9,15 +9,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.net.URI;
-
 
 @Log4j2
 @Component
@@ -28,28 +25,41 @@ public class NaverBookAPI {
     @Value("${spring.security.oauth2.client.registration.naver.client-secret}")
     private String CLIENT_SECRET;
 
-    public NaverResultVO searchBookAll(final String title) throws IOException {
+    public NaverResultVO searchBookAll(@RequestParam("title") final String title) throws IOException {
 
-        NaverResultVO resultVO = connect(title, 10);
+        String path = "/v1/search/book.json";
 
-        return resultVO;
-    }
-
-    public NaverResultVO searchBookOne(final String title) throws IOException {
-
-        NaverResultVO resultVO = connect(title, 1);
+        NaverResultVO resultVO = connect(path, "query", title, 10);
 
         return resultVO;
     }
 
-    public NaverResultVO connect(String title, int display) throws IOException{
+    public NaverResultVO searchBookOne(@RequestParam("title") final String title) throws IOException {
+
+        String path = "/v1/search/book.json";
+
+        NaverResultVO resultVO = connect(path, "query", title, 1);
+
+        return resultVO;
+    }
+
+    public NaverResultVO searchBookDetail(@RequestParam("isbn") final String isbn) throws IOException {
+
+        String path = "/v1/search/book_adv.json";
+
+        NaverResultVO resultVO = connect(path, "d_isbn", isbn, 1);
+
+        return resultVO;
+    }
+
+    public NaverResultVO connect(String path, String key, String value, int display) throws IOException{
 
         // Spring URI를 생성할때 편리하게 구현할 수 있도록 도와주는 클래스. 자동 encode
         URI uri = UriComponentsBuilder
                 .fromUriString("https://openapi.naver.com")
-                .path("/v1/search/book.json")
-                .queryParam("query", title)
-//                .queryParam("display", display)
+                .path(path)
+                .queryParam(key, value)
+                .queryParam("display", display)
                 .encode()
                 .build()
                 .toUri();
@@ -82,5 +92,6 @@ public class NaverBookAPI {
     }
 
 }
+
 
 

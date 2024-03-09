@@ -34,13 +34,18 @@ dependencies {
     // dto와 엔티티 간의 변환 처리를 간단히 처리
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.0.0'
 
+    implementation group: 'org.json', name: 'json', version: '20240205'
+
+
     compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.springframework.boot:spring-boot-devtools'
 
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
 
     runtimeOnly 'com.mysql:mysql-connector-j'
 

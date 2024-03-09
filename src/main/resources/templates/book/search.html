@@ -116,7 +116,11 @@
                                     <span th:text="${title}"/>
                                     에 대한 검색결과입니다.</div>
                                 <div class="card book-img">
-                                    <img th:each="searchBookList: ${searchBookList}" class="book-img-size" th:src="${searchBookList.image}">
+                                    <img class="book-img-size"
+                                         th:each="searchBookList: ${searchBookList}"
+                                         th:src="${searchBookList.getImage()}"
+                                         th:value="${searchBookList.getIsbn()}"
+                                    th:onclick="bookdetail([[${searchBookList.getIsbn()}]])">
                                 </div>
                             </div>
                         </div>
@@ -131,4 +135,10 @@
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+
+<script>
+    function bookdetail(isbn) {
+        location.href='/book/search/' + isbn;
+    }
+</script>
 </html>

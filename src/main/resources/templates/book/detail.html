@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"
+      layout:fragment="contents">
+<head>
+    <title>도서 검색 디테일</title>
+    <link rel="stylesheet" href="/common/css/bookDetail.css">
+</head>
+<body>
+<div class="layout-container bg-body">
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="row">
+                    <div class="mb-4">
+                        <div class="card book">
+                            <img class="book-img" th:src="${book.getImage()}" alt="도서 표지"/>
+                            <div class="book-title" th:text="${book.getTitle()}"></div>
+                            <p class="book-author" th:text="${book.getAuthor()}"></p>
+                            <hr>
+                            <p>&nbsp;📓&nbsp;줄거리</p>
+                            <span class="fs-tiny" th:text="${book.getDescription()}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.book {
+    display: block !important;
+    padding: 4%;
+}
+
+.book-img {
+    width: 117px;
+    height: 176px;
+    display: inline;
+    float: left;
+    margin-right: 20px;
+    clear: both;
+}
+
+.book-title {
+    height: 130px;
+}
+
+.book-author {
+    height: 50px;
+}
