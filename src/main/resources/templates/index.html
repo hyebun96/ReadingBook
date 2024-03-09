@@ -11,7 +11,10 @@
   layout:decorate="~{fragments/layout}"
   layout:fragment="contents"
 >
-<link rel="stylesheet" href="/common/css/index.css"/>
+<head>
+    <title>도서</title>
+    <link rel="stylesheet" href="/common/css/index.css"/>
+</head>
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -28,24 +31,24 @@
 <!--            </div>-->
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
+                <!-- Search -->
+                <div class="navbar-nav align-items-center search-100">
+                    <div class="nav-item d-flex align-items-center search-100">
+                        <i class="bx bx-search fs-4 lh-0"></i>
+                        <form class="search-100" action="/book/search" method="get">
+                        <input type="text" class="form-control border-0 shadow-none search-100"
+                               placeholder="도서를 검색해주세요." aria-label="Search..."
+                                name="title" />
+                        </form>
+                    </div>
                 </div>
-              </div>
-              <!-- /Search -->
+                <!-- /Search -->
 
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <ul class="navbar-nav flex-row align-items-center ms-auto">
+                    <!-- User -->
+                    <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                           data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
                       <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
@@ -113,7 +116,7 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
                 <div class="mb-4">
-                    <div class="h6 fw-bold">☁️오늘의 명언</div>
+                    <div class="h6 fw-bold">&nbsp;☁️&nbsp;오늘의 명언</div>
                   <div class="card">
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-12">
@@ -127,7 +130,7 @@
                 <div class="col-lg-6 col-md-4 order-1">
                   <div class="row">
                     <div class="mb-4">
-                        <div class="h6 fw-bold">📓'감자'님의 책장 리스트</div>
+                        <div class="h6 fw-bold">&nbsp;📓&nbsp;'감자'님의 책장 리스트</div>
                       <div class="card">
                         <div class="card-body  box">
                             <div class="slider " >
@@ -148,7 +151,7 @@
                   <div class="card">
                     <div class="row">
                       <div class="col-md-12">
-                        <h6 class="card-header m-0 me-2 pb-3 fw-bold">📓올해의 독서량</h6>
+                          <h6 class="card-header m-0 me-2 pb-3 fw-bold">&nbsp;📓&nbsp;올해의 독서량</h6>
                         <div id="totalRevenueChart" class="px-2"></div>
                       </div>
                       <div class="col-md-4">
