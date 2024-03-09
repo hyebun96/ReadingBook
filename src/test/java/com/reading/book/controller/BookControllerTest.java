@@ -9,11 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,10 +25,18 @@ class BookControllerTest {
     @Test
     public void searchTest() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/searchBookAll")
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/search")
                         .param("title", "쇼펜하우어"))
                         .andDo(print())
                         .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public  void searchDetail() throws Exception {
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/search/9791192625553"))
+                .andDo(print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 }
