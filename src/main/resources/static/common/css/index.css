@@ -1,12 +1,19 @@
 .book-img-size {
-    margin: 1%;
+    margin: 0 4% 0 0;
     width: 30%;
+}
+
+.search-100 {
+    width: 100%;
 }
 
 .box {
     position:relative;
     overflow:hidden;
-    height: 250px;
+    height: 200px;
+    /* 가로 스크롤 */
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .slider{
@@ -15,40 +22,5 @@
 }
 .slide {
     width:100%;
-    height:220px;
-}
-.slide{background-color:#62e5cc;}
-
-.slide:nth-child(1) {
-    background-image: url(/static/common/img/book1.jpeg);
-    animation-delay: 0s;
-}
-.slide:nth-child(2) {
-    background-image:  url(/static/common/img/book1.jpeg);
-    animation-delay: -2.5s;
-}
-.slide:nth-child(3) {
-    background-image: url(/static/common/img/book1.jpeg);
-    animation-delay: -5s;
-}
-
-@keyframes slider {
-    0% {
-        transform: translateX(0);
-    }
-
-    26% {
-        transform: translateX(0);
-    }
-    33% {
-        transform: translateX(-100%);
-        animation-timing-function: step-end;
-    }
-    93% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+    height:160px;
 }
