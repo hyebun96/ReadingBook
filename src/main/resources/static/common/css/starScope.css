@@ -46,3 +46,16 @@
 .scope label:hover ~ input:checked ~ label {
     color: #f73c32 !important;
 }
+
+.detail-page label {
+    pointer-events: none;
+}
+
+.detail-page label:hover,
+.detail-page label:hover ~ label {
+    cursor: default;
+}
+
+.detail-page label:hover, .detail-page label:hover ~ label {
+    color: #ddd !important;
+}

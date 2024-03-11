@@ -10,6 +10,7 @@ import com.reading.scope.repository.BookScopeRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +22,9 @@ public class BookReportService {
     private final BookReportRepository bookReportRepository;
     private final BookScopeRepository bookScopeRepository;
 
-    public void insertReport(BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) throws Exception {
+    private final ModelMapper modelMapper;
+
+    public void insertReport(BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) {
         BookReport bookReport = bookReportRepository.save(bookReportRequestDTO.toEntity());
         BookScope bookScope = bookScopeRequestDTO.toEntity();
         bookReport.addBookScope(bookScope);
@@ -29,18 +32,16 @@ public class BookReportService {
         bookScopeRepository.save(bookScope);
     }
 
-    public BookReportResponseDTO selectReportById(Long id) throws Exception {
+    public BookReportResponseDTO selectReportById(Long id) {
         BookReport bookReport = bookReportRepository.findById(id).orElseThrow(IllegalArgumentException::new);
-        BookReportResponseDTO reportInfo = new BookReportResponseDTO();
-        reportInfo.setId(bookReport.getId());
-        reportInfo.setScope(bookReport.getBookScope().getScope());
-        reportInfo.setReview(bookReport.getReview());
-        reportInfo.setImpression(bookReport.getImpression());
-        reportInfo.setLifeContent(bookReport.getLifeContent());
-        return reportInfo;
+
+        BookReportResponseDTO bookReportResponseDTO = modelMapper.map(bookReport, BookReportResponseDTO.class);
+        bookReportResponseDTO.setScope(bookReport.getBookScope().getScope());
+
+        return bookReportResponseDTO;
     }
 
-    public BookReportResponseDTO updateReport(Long id, BookReportRequestDTO bookRequestDTO, BookScopeRequestDTO scopeRequestDTO) throws Exception {
+    public BookReportResponseDTO updateReport(Long id, BookReportRequestDTO bookRequestDTO, BookScopeRequestDTO scopeRequestDTO) {
         BookReport bookReport = bookReportRepository.findById(id).orElseThrow(IllegalArgumentException::new);
         bookReport.updateBookReport(bookRequestDTO);
 
@@ -50,7 +51,7 @@ public class BookReportService {
         return new BookReportResponseDTO(bookReport);
     }
 
-    public void deleteReport(Long id) throws Exception {
+    public void deleteReport(Long id) {
         BookReport bookReport = bookReportRepository.findById(id).orElseThrow(IllegalArgumentException::new);
         bookScopeRepository.deleteByReportId(bookReport.getId());
         bookReportRepository.deleteById(id);

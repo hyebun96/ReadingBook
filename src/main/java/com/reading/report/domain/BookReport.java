@@ -36,6 +36,8 @@ public class BookReport extends BaseEntity {
     private BookScope bookScope;
 
     @Builder
+    // 불필요한 생성자 제거
+    // null 체크 가능
     public BookReport(int mybookId, String review, String impression, String lifeContent) {
         this.mybookId = mybookId;
         this.review = review;

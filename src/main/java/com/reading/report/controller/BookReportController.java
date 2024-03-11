@@ -1,6 +1,5 @@
 package com.reading.report.controller;
 
-import com.reading.report.domain.BookReport;
 import com.reading.report.dto.BookReportRequestDTO;
 import com.reading.report.dto.BookReportResponseDTO;
 import com.reading.report.service.BookReportService;
@@ -24,31 +23,35 @@ public class BookReportController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@ModelAttribute("regRequestDTO") BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) throws Exception {
+    // .html에서 th:object를 적용하기 위해 해당 오브젝트 정보를 넘겨 주어야 한다.
+    // 객체를 전달하지 않을 경우 예외가 발생한다.
+    // @ModelAttribute -> Model에 지정한 객체를 자동으로 넣어준다
+    public String postRegister(@ModelAttribute("regRequestDTO") BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) {
         bookReportService.insertReport(bookReportRequestDTO, bookScopeRequestDTO);
         return "report/reportRegister";
     }
 
     @GetMapping("/view/{id}")
-    public String selectReportById(@PathVariable("id") Long id, Model model) throws Exception {
+    // @PathVariable -> 경로 변수를 표시하기 위한 메서드에서 매개변수에 사용
+    public String selectReportById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("report", bookReportService.selectReportById(id));
         return "report/reportView";
     }
 
-    @PostMapping("/modify/{id}")
-    public String modifyReportById(@PathVariable("id") Long id, BookReport bookReport, Model model) throws Exception {
+    @GetMapping("/modify/{id}")
+    public String modifyReportById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("reportInfo", bookReportService.selectReportById(id));
         return "report/reportEdit";
     }
 
     @PostMapping("/update/{id}")
-    public String patchReportById(@ModelAttribute("regRequestDTO") @PathVariable("id") Long id, BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) throws Exception {
+    public String patchReportById(@ModelAttribute("regRequestDTO") @PathVariable("id") Long id, BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) {
         bookReportService.updateReport(id, bookReportRequestDTO, bookScopeRequestDTO);
-        return "report/reportRegister";
+        return "redirect:/report/view/" + id;
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteReport(@PathVariable Long id) throws Exception {
+    public String deleteReport(@PathVariable Long id) {
         bookReportService.deleteReport(id);
         return "book/main";
     }
