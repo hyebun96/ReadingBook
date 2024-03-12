@@ -6,12 +6,12 @@ import lombok.*;
 
 
 @Getter
-@Table(name = "bookshelf")
 @Entity
 @Transactional
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class BookShelf {
 
     @Id
