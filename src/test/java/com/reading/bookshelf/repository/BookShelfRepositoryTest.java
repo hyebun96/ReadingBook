@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.IOException;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
 @Log4j2
 class BookShelfRepositoryTest {
@@ -17,16 +19,16 @@ class BookShelfRepositoryTest {
     private BookShelfRepository bookShelfRepository;
 
     @Test
-    public void findByIsbnAndMember_idTEST() {
+    public void findByIsbnAndMember_idTEST() throws  Exception{
         // Given
 
         Long member_id = 1L;
         String isbn = "9788960777330";
 
         // When & Then
-        Long id = bookShelfRepository.findByIsbnAndMember_id(member_id, isbn);
+        String existCount = bookShelfRepository.countByIdAndIsbn(member_id, isbn);
 
-        log.info("id값은 " + id);
+        assertEquals(existCount, "1");
     }
 
     @Test
