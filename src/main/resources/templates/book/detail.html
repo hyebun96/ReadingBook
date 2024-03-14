@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/layout}"
-      layout:fragment="contents">
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="/"
+        data-template="vertical-menu-template-free"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{fragments/layout}"
+        layout:fragment="contents"
+>
 <head>
+    <meta charset="UTF-8">
     <title>도서 검색 디테일</title>
     <link rel="stylesheet" href="/common/css/bookDetail.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/common/js/detail.js"></script>
 </head>
-<body>
+
 <div class="layout-container bg-body">
     <div class="layout-page">
         <div class="content-wrapper">
@@ -20,8 +30,30 @@
                             <div class="book-title" th:text="${book.getTitle()}"></div>
                             <p class="book-author" th:text="${book.getAuthor()}"></p>
                             <hr>
+                            <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal" >
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content rounded-4 shadow">
+                                        <div class="modal-header border-bottom-0">
+                                        </div>
+                                        <div class="modal-body py-0">
+                                            <p id="message" name="message" th:text="${message}" th:value="${message}"></p>
+                                            <input type="hidden" id="existMessage" name="existMessage" th:value="${existMessage}">
+                                        </div>
+                                        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                                            <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal" onclick="modal_off()">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <p>&nbsp;📓&nbsp;줄거리</p>
                             <span class="fs-tiny" th:text="${book.getDescription()}"></span>
+                        </div>
+                        <div>
+                            <form th:action="@{/book/save/{isbn}(isbn = ${book.getIsbn()})}" method="post">
+                                <button class="book-button">
+                                    내 서재에 등록하기
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -29,5 +61,4 @@
         </div>
     </div>
 </div>
-</body>
 </html>
