@@ -4,13 +4,11 @@ import com.reading.common.BaseEntity;
 import com.reading.report.dto.BookReportRequestDTO;
 import com.reading.scope.domain.BookScope;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @ToString
 public class BookReport extends BaseEntity {

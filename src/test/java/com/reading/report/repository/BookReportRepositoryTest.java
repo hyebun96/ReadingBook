@@ -40,15 +40,17 @@ class BookReportRepositoryTest {
     @Test
     public void updateReport() {
         // Given
-        BookReport updateId = bookReportRepository.findById(14L).orElseThrow();
+        BookReport updateId = bookReportRepository.findById(18L).orElseThrow();
 
         BookReportRequestDTO bookReportRequestDTO = BookReportRequestDTO.builder()
-                .review("update...줄거리")
-                .impression("update...느낀점")
-                .lifeContent("update...삶의적용")
+                .review("re...update...줄거리")
+                .impression("re...update...느낀점")
+                .lifeContent("re...update...삶의적용")
                 .build();
 
-        updateId = bookReportRequestDTO.toEntity();
+        updateId.setReview(bookReportRequestDTO.getReview());
+        updateId.setImpression(bookReportRequestDTO.getImpression());
+        updateId.setLifeContent(bookReportRequestDTO.getLifeContent());
 
         // When
         BookReport result = bookReportRepository.save(updateId);
