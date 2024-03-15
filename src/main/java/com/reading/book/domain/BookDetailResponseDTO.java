@@ -1,8 +1,10 @@
 package com.reading.book.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class BookDetailResponseDTO {
     private String isbn;
     private String title;

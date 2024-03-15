@@ -120,7 +120,7 @@
                                          th:each="searchBookList: ${searchBookList}"
                                          th:src="${searchBookList.getImage()}"
                                          th:value="${searchBookList.getIsbn()}"
-                                    th:onclick="bookdetail([[${searchBookList.getIsbn()}]])">
+                                    th:onclick="bookDetail([[${searchBookList.getIsbn()}]])">
                                 </div>
                             </div>
                         </div>
@@ -137,8 +137,8 @@
     <!-- / Layout wrapper -->
 
 <script>
-    function bookdetail(isbn) {
-        location.href='/book/search/' + isbn;
+    function bookDetail(isbn) {
+        location.href='/book/detail/' + isbn;
     }
 </script>
 </html>

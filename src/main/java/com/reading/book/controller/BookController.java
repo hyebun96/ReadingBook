@@ -1,20 +1,15 @@
 package com.reading.book.controller;
 
-import com.reading.api.NaverBookAPI;
-import com.reading.api.domain.Book;
-import com.reading.api.domain.NaverResultVO;
 import com.reading.book.domain.BookDetailResponseDTO;
 import com.reading.book.domain.BookListResponseDTO;
+import com.reading.book.service.BookService;
+import com.reading.bookshelf.controller.BookShelfController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.codehaus.groovy.tools.shell.IO;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,19 +20,15 @@ import java.util.List;
 @Log4j2
 public class BookController {
 
-    private final NaverBookAPI naverBookAPI;
-
+    private final BookService bookService;
+    private final BookShelfController bookShelfController;
     private final ModelMapper modelMapper;
+
 
     @GetMapping("/search")
     public String search(@RequestParam("title") String title, Model model) throws IOException {
 
-        NaverResultVO naverResultVO = naverBookAPI.searchBookAll(title);
-
-        List<Book> items = naverResultVO.getItems();
-        List<BookListResponseDTO> searchBookList = items.stream()
-                .map(book -> modelMapper.map(book, BookListResponseDTO.class))
-                .toList();
+        List<BookListResponseDTO> searchBookList  = bookService.allSearchByIsbnInNaver(title);
 
         model.addAttribute("searchBookList", searchBookList);
         model.addAttribute("title", title);
@@ -45,16 +36,22 @@ public class BookController {
         return "/book/search";
     }
 
-    @GetMapping("/search/{isbn}")
-    public String searchDeatil(@PathVariable("isbn") String isbn, Model model) throws IOException {
+    @GetMapping("/detail/{isbn}")
+    public String searchDetail(@PathVariable("isbn") String isbn, Model model) throws IOException {
 
-        NaverResultVO naverResultVO = naverBookAPI.searchBookDetail(isbn);
-        Book book = naverResultVO.getItems().get(0);
-        BookDetailResponseDTO bookDetailResponseDTO = modelMapper.map(book, BookDetailResponseDTO.class);
+        BookDetailResponseDTO bookDetailResponseDTO = bookService.searchDetail(isbn);
 
         model.addAttribute("book", bookDetailResponseDTO);
 
         return "/book/detail";
+    }
+
+    @PostMapping("/save/{isbn}")
+    public String save(@PathVariable("isbn") String isbn) throws IOException {
+
+        String redirectIsbn = bookService.save(isbn);
+
+        return "redirect:/bookshelf/save/" + redirectIsbn;
     }
 
 }

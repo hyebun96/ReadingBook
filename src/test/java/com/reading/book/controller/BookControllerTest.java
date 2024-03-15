@@ -32,11 +32,18 @@ class BookControllerTest {
     }
 
     @Test
-    public  void searchDetail() throws Exception {
+    public void searchDetailTest() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/book/search/9791192625553"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/book/detail/9791192625553"))
                 .andDo(print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void saveTest() throws Exception {
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/book/save/9791192625553"))
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection());
     }
 
 }

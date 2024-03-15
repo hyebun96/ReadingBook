@@ -1,15 +1,14 @@
 package com.reading.api;
 
-import com.reading.api.domain.Book;
 import com.reading.api.domain.FromBookToReportDTO;
 import com.reading.api.domain.NaverResultVO;
+import com.reading.book.domain.Book;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.ui.ModelMap;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.reading.api.domain;
 
+import com.reading.book.domain.Book;
 import lombok.*;
 
 import java.util.List;
