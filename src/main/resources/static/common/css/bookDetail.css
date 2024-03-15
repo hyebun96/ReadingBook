@@ -19,3 +19,25 @@
 .book-author {
     height: 50px;
 }
+
+.book-button {
+    float: right;
+    background: #353552;
+    color: white;
+    margin: 2% 0%;
+    width: 50%;
+    height: 35px;
+    border-radius: 10px;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+#modal {
+    position: absolute !important;
+    height: 300px;
+    top: 23%;
+}
+
+.modal-dialog {
+    display: none;
+}
