@@ -3,7 +3,6 @@ package com.reading.book.controller;
 import com.reading.book.domain.BookDetailResponseDTO;
 import com.reading.book.domain.BookListResponseDTO;
 import com.reading.book.service.BookService;
-import com.reading.bookshelf.controller.BookShelfController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -21,7 +20,6 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
-    private final BookShelfController bookShelfController;
     private final ModelMapper modelMapper;
 
 

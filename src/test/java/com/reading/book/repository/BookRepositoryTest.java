@@ -43,13 +43,11 @@ class BookRepositoryTest {
         String isbn = "9788954681155";
 
         // When
-        Book book = bookRepository.findById(isbn).orElseThrow();
+        Book book = bookRepository.findByIsbn(isbn).orElseThrow();
 
         // Then
         log.info(book);
         assertEquals(book.getTitle(), "홍학의 자리 (정해연 장편소설)");
     }
-
-
 
 }

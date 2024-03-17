@@ -49,11 +49,11 @@ public class BookService {
 
         Book book;
 
-        if(!bookRepository.existsById(isbn)){
+        if(!bookRepository.existsByIsbn(isbn)){
             book = searchByIsbnInNaver(isbn);
             book = bookRepository.save(book);
         } else {
-            book = bookRepository.findById(isbn).orElseThrow();
+            book = bookRepository.findByIsbn(isbn).orElseThrow();
         }
 
         return book.getIsbn();
@@ -63,10 +63,10 @@ public class BookService {
 
         Book book;
 
-       if(!bookRepository.existsById(isbn)){
+       if(!bookRepository.existsByIsbn(isbn)){
            book = searchByIsbnInNaver(isbn);
        } else {
-           book = bookRepository.findById(isbn).orElseThrow();
+           book = bookRepository.findByIsbn(isbn).orElseThrow();
        }
         return modelMapper.map(book, BookDetailResponseDTO.class);
     }
