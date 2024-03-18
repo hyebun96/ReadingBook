@@ -1,13 +1,12 @@
 package com.reading.bookshelf.domain;
 
+import com.reading.book.domain.Book;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.*;
 
 
 @Getter
 @Entity
-@Transactional
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,10 +18,11 @@ public class BookShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 500, nullable = false)
-    @Setter
+    @Column(nullable = false)
     private Long member_id;
 
-    @Column(length = 500, nullable = false)
-    private String isbn;
+    @ManyToOne()
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
+
 }
