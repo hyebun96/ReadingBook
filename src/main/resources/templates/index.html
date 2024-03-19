@@ -113,7 +113,7 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-            <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="container-xxl container-p-y-u">
               <div class="row">
                 <div class="mb-4">
                     <div class="h6 fw-bold">&nbsp;☁️&nbsp;오늘의 명언</div>
@@ -130,16 +130,19 @@
                 <div class="col-lg-6 col-md-4 order-1">
                   <div class="row">
                     <div class="mb-4">
-                        <div class="h6 fw-bold">&nbsp;📓&nbsp;'감자'님의 책장 리스트</div>
+                        <div class="h6 fw-bold">
+                            &nbsp;📓&nbsp;'감자'님의 책장 리스트
+                            <span class="list_plus mouse_pointer" th:onclick="bookShelfList()">➕</span>
+                        </div>
                       <div class="card">
                         <div class="card-body  box">
-                            <div class="slider " >
-                                <img class="book-img-size slide" src="/common/img/book1.jpeg">
-                                <img class="book-img-size slide" src="/common/img/book1.jpeg">
-                                <img class="book-img-size slide" src="/common/img/book1.jpeg">
-                                <img class="book-img-size slide" src="/common/img/book1.jpeg">
-                                <img class="book-img-size slide" src="/common/img/book1.jpeg">
-                                <img class="book-img-size slide" src="/common/img/book1.jpeg">
+                            <div class="slider" th:if="${bookShelves != null}">
+                                <img class="slide book-img-size mouse_pointer" th:if="${bookShelves}"
+                                     th:each="bookShelf: ${bookShelves}"
+                                     th:src="${bookShelf.getImage()}"
+                                     th:onclick="bookReport([[${bookShelf.getIsbn()}]])">
+                            </div>
+                            <div th:if="${message != null}" th:text="${message}">
                             </div>
                         </div>
                       </div>
@@ -167,9 +170,8 @@
                                 aria-expanded="false"
                               >2024</button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                                <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                                <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                                <a class="dropdown-item" href="javascript:void(0);">2024</a>
+                                <a class="dropdown-item" href="javascript:void(0);">2023</a>
                               </div>
                             </div>
                           </div>
@@ -181,7 +183,6 @@
               </div>
             </div>
             <!-- / Content -->
-            <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
         </div>
@@ -191,4 +192,13 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+<script>
+    function bookReport(isbn) {
+        location.href='/report/view/' + isbn;
+    }
+
+    function bookShelfList() {
+        location.href='/bookshelf/list';
+    }
+</script>
 </html>
