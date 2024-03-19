@@ -2,6 +2,7 @@ package com.reading.book.service;
 
 import com.reading.book.domain.BookDetailResponseDTO;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +30,7 @@ class BookServiceTest {
     }
 
     @Test
+    @DisplayName("도서 검색 디테일.")
     public void searchDetailTest() throws IOException {
         // Given
         String isbn = "9788954681155";

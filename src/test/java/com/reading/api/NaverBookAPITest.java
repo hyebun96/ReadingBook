@@ -1,10 +1,10 @@
 package com.reading.api;
 
-import com.reading.api.domain.FromBookToReportDTO;
 import com.reading.api.domain.NaverResultVO;
 import com.reading.book.domain.Book;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,7 @@ class NaverBookAPITest {
     private ModelMapper modelMapper;
 
     @Test
+    @DisplayName("'쇼펜하우어'에 대한 naverAPI에서 10권 도서 검색.")
     public void searchBookAll() throws IOException {
         // Given
         String title = "쇼펜하우어";
@@ -40,6 +41,7 @@ class NaverBookAPITest {
     }
 
     @Test
+    @DisplayName("쇼펜하우어에 대한 naverAPI에서 1권 도서 검색.")
     public void searchBookOne() throws IOException {
         // Given
         String title = "홍학의 자리";
@@ -55,21 +57,6 @@ class NaverBookAPITest {
 
         Book book = list.get(0);
         Assertions.assertEquals(book.getTitle(), "홍학의 자리 (정해연 장편소설)");
-    }
-
-    @Test
-    public void fromBookToReportDTOTest() throws IOException {
-        // Given
-        String title = "홍학의 자리";
-
-        // When
-        NaverResultVO naverResultVO = naverBookAPI.searchBookOne(title);
-        List<Book> list = naverResultVO.getItems();
-
-        // Then
-        FromBookToReportDTO fromBookToReportDTO = modelMapper.map(list.get(0), FromBookToReportDTO.class);
-        log.info(fromBookToReportDTO.toString());
-
     }
 
 }

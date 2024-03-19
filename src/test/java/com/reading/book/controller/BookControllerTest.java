@@ -1,6 +1,7 @@
 package com.reading.book.controller;
 
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,6 +24,7 @@ class BookControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @DisplayName("도서 검색 - API에서 가져옴")
     public void searchTest() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/book/search")
@@ -32,6 +34,7 @@ class BookControllerTest {
     }
 
     @Test
+    @DisplayName("도서 디테일 가져오기 - 우리 DB에 저장된 도서면 DB에서 없다면 API에서 가져옴")
     public void searchDetailTest() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/book/detail/9791192625553"))
@@ -40,6 +43,7 @@ class BookControllerTest {
     }
 
     @Test
+    @DisplayName("naverAPI에서 가져온 도서 정보 DB에 저장")
     public void saveTest() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/book/save/9791192625553"))
