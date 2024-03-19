@@ -135,12 +135,13 @@
                             <span class="list_plus mouse_pointer" th:onclick="bookShelfList()">➕</span>
                         </div>
                       <div class="card">
-                        <div class="card-body  box">
+                        <div class="card-body box">
                             <div class="slider" th:if="${bookShelves != null}">
-                                <img class="slide book-img-size mouse_pointer" th:if="${bookShelves}"
+                                <img class="slide book-img-size mouse_pointer"
+                                     th:if="${bookShelves}"
                                      th:each="bookShelf: ${bookShelves}"
                                      th:src="${bookShelf.getImage()}"
-                                     th:onclick="bookReport([[${bookShelf.getIsbn()}]])">
+                                     th:onclick="bookReport([[${bookShelf.id}]])">
                             </div>
                             <div th:if="${message != null}" th:text="${message}">
                             </div>
@@ -192,13 +193,13 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-<script>
-    function bookReport(isbn) {
-        location.href='/report/view/' + isbn;
+<script th:inline="javascript">
+    function bookReport(id) {
+        location.href = '/report/register?id=' + id;
     }
 
     function bookShelfList() {
-        location.href='/bookshelf/list';
+        location.href = '/bookshelf/list';
     }
 </script>
 </html>
