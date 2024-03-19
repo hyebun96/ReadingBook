@@ -1,5 +1,9 @@
 package com.reading.report.service;
 
+import com.reading.book.domain.Book;
+import com.reading.book.domain.BookDetailResponseDTO;
+import com.reading.bookshelf.domain.BookShelf;
+import com.reading.bookshelf.repository.BookShelfRepository;
 import com.reading.report.domain.BookReport;
 import com.reading.report.dto.BookReportRequestDTO;
 import com.reading.report.dto.BookReportResponseDTO;
@@ -21,13 +25,19 @@ public class BookReportService {
 
     private final BookReportRepository bookReportRepository;
     private final BookScopeRepository bookScopeRepository;
+    private final BookShelfRepository bookShelfRepository;
 
     private final ModelMapper modelMapper;
 
-    public void insertReport(BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) {
+    public void insertReport(BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO, Long id) {
         BookReport bookReport = bookReportRepository.save(bookReportRequestDTO.toEntity());
         BookScope bookScope = bookScopeRequestDTO.toEntity();
+
+        BookShelf bookShelf = bookShelfRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+
         bookReport.addBookScope(bookScope);
+        bookReport.addBookShelf(bookShelf);
+
         bookScope.addBookReport(bookReport);
         bookScopeRepository.save(bookScope);
     }
@@ -55,5 +65,11 @@ public class BookReportService {
         BookReport bookReport = bookReportRepository.findById(id).orElseThrow(IllegalArgumentException::new);
         bookScopeRepository.deleteByReportId(bookReport.getId());
         bookReportRepository.deleteById(id);
+    }
+
+    public BookDetailResponseDTO bookInfo(Long id) {
+        BookShelf bookShelf = bookShelfRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        Book bookInfo = bookShelf.getBook();
+        return modelMapper.map(bookInfo, BookDetailResponseDTO.class);
     }
 }

@@ -6,6 +6,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class BookDetailResponseDTO {
+    private Long id;
     private String isbn;
     private String title;
     private String author;

@@ -11,14 +11,12 @@ import lombok.ToString;
 @ToString
 @Builder
 public class BookReportRequestDTO {
-    private int mybookId;
     private String review;
     private String impression;
     private String lifeContent;
 
     public BookReport toEntity() {
         return BookReport.builder()
-                .mybookId(mybookId)
                 .review(review)
                 .impression(impression)
                 .lifeContent(lifeContent)

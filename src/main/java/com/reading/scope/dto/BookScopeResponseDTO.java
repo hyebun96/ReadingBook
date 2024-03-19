@@ -12,8 +12,10 @@ import lombok.ToString;
 @NoArgsConstructor
 public class BookScopeResponseDTO {
     private double scope;
+    private String isbn;
 
     public BookScopeResponseDTO(BookScope bookScope) {
         this.scope = bookScope.getScope();
+        this.isbn = bookScope.getIsbn();
     }
 }

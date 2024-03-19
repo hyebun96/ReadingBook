@@ -18,7 +18,7 @@ public class BookScope extends BaseEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String memberId;
+    private Long memberId;
 
     // 별점
     @Column
@@ -33,7 +33,7 @@ public class BookScope extends BaseEntity {
     private BookReport bookReport;
 
     @Builder
-    public BookScope(String memberId, double scope, String isbn, BookReport bookReport) {
+    public BookScope(Long memberId, double scope, String isbn, BookReport bookReport) {
         this.memberId = memberId;
         this.scope = scope;
         this.isbn = isbn;

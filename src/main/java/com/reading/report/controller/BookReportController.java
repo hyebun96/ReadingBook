@@ -17,7 +17,8 @@ public class BookReportController {
     private final BookReportService bookReportService;
 
     @GetMapping("/register")
-    public String getRegister(Model model) {
+    public String getRegister(Model model, @RequestParam Long id) {
+        model.addAttribute("bookInfo", bookReportService.bookInfo(id));
         model.addAttribute("regRequestDTO", new BookReportResponseDTO());
         return "report/reportRegister";
     }
@@ -26,9 +27,9 @@ public class BookReportController {
     // .html에서 th:object를 적용하기 위해 해당 오브젝트 정보를 넘겨 주어야 한다.
     // 객체를 전달하지 않을 경우 예외가 발생한다.
     // @ModelAttribute -> Model에 지정한 객체를 자동으로 넣어준다
-    public String postRegister(@ModelAttribute("regRequestDTO") BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO) {
-        bookReportService.insertReport(bookReportRequestDTO, bookScopeRequestDTO);
-        return "report/reportRegister";
+    public String postRegister(@ModelAttribute("regRequestDTO") BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO, Long id) {
+        bookReportService.insertReport(bookReportRequestDTO, bookScopeRequestDTO, id);
+        return "redirect:/";
     }
 
     @GetMapping("/view/{id}")
