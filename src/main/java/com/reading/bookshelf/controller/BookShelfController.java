@@ -1,15 +1,18 @@
 package com.reading.bookshelf.controller;
 
+import com.reading.bookshelf.domain.BookShelfListResponseDTO;
 import com.reading.bookshelf.service.BookShelfService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/bookshelf")
@@ -41,5 +44,16 @@ public class BookShelfController {
         redirectAttributes.addFlashAttribute("existMessage", true);
 
         return "redirect:/book/detail/" + isbn;
+    }
+
+    @GetMapping("/list")
+    public String list(Model model) throws IOException {
+
+        List<BookShelfListResponseDTO> bookShelfList = bookShelfService.findByMember_id(1L);
+        model.addAttribute("bookShelfList", bookShelfList);
+
+        model.addAttribute("member_id", "Hyehwa");
+
+        return "/bookshelf/list";
     }
 }
