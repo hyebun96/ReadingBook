@@ -138,11 +138,10 @@
                         <div class="card-body box">
                             <div class="slider" th:if="${bookShelves != null}">
                                 <img class="slide book-img-size mouse_pointer"
-                                     th:if="${bookShelves}"
                                      th:each="bookShelf: ${bookShelves}"
                                      th:src="${bookShelf.getImage()}"
-                                     th:value="${bookShelfList.getIsbn()}"
-                                     th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
+                                     th:value="${bookShelf.getIsbn()}"
+                                     th:onclick="bookReport([[${bookShelf.getId()}]], [[${bookShelf.getReportId()}]])">
                             </div>
                             <div th:if="${message != null}" th:text="${message}">
                             </div>
