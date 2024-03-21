@@ -114,7 +114,7 @@
                                      th:each="bookShelfList: ${bookShelfList}"
                                      th:src="${bookShelfList.getImage()}"
                                      th:value="${bookShelfList.getIsbn()}"
-                                     th:onclick="bookReport([[${bookShelfList.getIsbn()}]])">
+                                     th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
                             </div>
                         </div>
                     </div>
@@ -130,8 +130,12 @@
 </div>
 <!-- / Layout wrapper -->
 <script>
-    function bookReport(isbn) {
-        location.href='/report/view/' + 1;
+    function bookReport(shelfId, reportId) {
+        if(reportId == null) {
+            location.href='/report/register?id=' + shelfId;
+        }else {
+            location.href='/report/view/' + reportId;
+        }
     }
 </script>
 </html>

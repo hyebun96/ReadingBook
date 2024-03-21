@@ -5,13 +5,13 @@ import com.reading.book.repository.BookRepository;
 import com.reading.bookshelf.domain.BookShelf;
 import com.reading.bookshelf.domain.BookShelfListResponseDTO;
 import com.reading.bookshelf.repository.BookShelfRepository;
+import com.reading.report.domain.BookReport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -52,29 +52,19 @@ public class BookShelfService {
         List<BookShelfListResponseDTO> list = null;
 
         if(Integer.parseInt(count) > 0) {
-            List<BookShelf> bookShelves = bookshelfRepository.findByMember_id(member_id);
-            list = bookshelfTrans(bookShelves);
+            list = bookshelfRepository.findByMember_id(member_id);
         }
 
         return list;
     }
 
-    public List<BookShelfListResponseDTO> bookshelfTrans(List<BookShelf> bookShelves) {
+    public BookShelf saveBookReport(BookReport bookReport, Long bookShelfId) throws IOException {
 
-        List<BookShelfListResponseDTO> list = new ArrayList<>();
+        BookShelf bookShelf = bookshelfRepository.findById(bookShelfId).orElseThrow();
 
-        bookShelves.stream().forEach(
-                bookShelf -> list.add(
-                        BookShelfListResponseDTO.builder()
-                        .id(bookShelf.getId())
-                        .member_id(bookShelf.getMember_id())
-                        .image(bookShelf.getBook().getImage())
-                        .title(bookShelf.getBook().getTitle())
-                        .isbn(bookShelf.getBook().getIsbn())
-                        .build())
-        );
+        bookShelf.addBookReport(bookReport);
 
-        return list;
+       return bookshelfRepository.save(bookShelf);
     }
 
 }

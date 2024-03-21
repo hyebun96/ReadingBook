@@ -3,10 +3,10 @@ package com.reading.bookshelf.repository;
 import com.reading.book.domain.Book;
 import com.reading.book.repository.BookRepository;
 import com.reading.bookshelf.domain.BookShelf;
+import com.reading.bookshelf.domain.BookShelfListResponseDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -23,9 +23,6 @@ class BookShelfRepositoryTest {
 
     @Autowired
     private BookRepository bookRepository;
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     @Test
     public void findAllTest() throws  Exception{
@@ -48,6 +45,7 @@ class BookShelfRepositoryTest {
 
         // isbn으로 도서의 정보를 가져옴
         Book book = bookRepository.findByIsbn(isbn).orElseThrow();
+        Book book1 = Book.builder().isbn(isbn).build();
 
         // 내 서재에 등록할 데이터 build
         BookShelf bookShelf = BookShelf.builder()
@@ -64,6 +62,8 @@ class BookShelfRepositoryTest {
         log.info(b.toString());
         log.info(b.getBook().getIsbn(), isbn);
         log.info(b.getBook().getTitle(), "홍학의 자리 (정해연 장편소설)");
+        assertEquals(book, book1);
+        log.info(book1.toString());
     }
 
     @Test
@@ -107,12 +107,11 @@ class BookShelfRepositoryTest {
         Long member_id = 1L;
 
         // When & Then
-       List<BookShelf> list = bookShelfRepository.findByMember_id(member_id);
+       List<BookShelfListResponseDTO> list = bookShelfRepository.findByMember_id(member_id);
 
        list.stream().forEach(
-               bookShelf -> log.info(bookShelf.toString())
+               bookShelfListResponseDTO -> log.info(bookShelfListResponseDTO.toString())
        );
     }
-
 
 }

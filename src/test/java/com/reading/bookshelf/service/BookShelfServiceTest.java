@@ -1,7 +1,11 @@
 package com.reading.bookshelf.service;
 
+import com.reading.bookshelf.domain.BookShelf;
 import com.reading.bookshelf.domain.BookShelfListResponseDTO;
+import com.reading.report.domain.BookReport;
+import com.reading.report.repository.BookReportRepository;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +21,9 @@ class BookShelfServiceTest {
 
     @Autowired
     private BookShelfService bookShelfService;
+
+    @Autowired
+    private BookReportRepository bookReportRepository;
 
     @Test
     public void saveTest() throws IOException {
@@ -47,6 +54,21 @@ class BookShelfServiceTest {
         bookShelves.stream().forEach(
                 a -> log.info(a.toString())
         );
+    }
+
+    @Test
+    @DisplayName("내 책장에 독후감 저장하기!")
+    public void saveBookReportTest() throws IOException {
+        // Given
+        Long bookReportId = 1L;
+        Long bookShelfId = 3L;
+
+        // When
+        BookReport bookReport = bookReportRepository.findById(bookReportId).orElseThrow();
+        BookShelf bookShelf = bookShelfService.saveBookReport(bookReport, bookShelfId);
+
+        // Then
+        log.info(bookShelf.toString());
     }
 
 }

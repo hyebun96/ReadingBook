@@ -1,6 +1,7 @@
 package com.reading.bookshelf.domain;
 
 import com.reading.book.domain.Book;
+import com.reading.report.domain.BookReport;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+@ToString(exclude = {"bookReport", "book"})
 public class BookShelf {
 
     @Id
@@ -25,4 +26,11 @@ public class BookShelf {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="bookReportId", referencedColumnName = "id")
+    private BookReport bookReport;
+
+    public void addBookReport(BookReport bookReport) {
+        this.bookReport = bookReport;
+    }
 }

@@ -141,7 +141,8 @@
                                      th:if="${bookShelves}"
                                      th:each="bookShelf: ${bookShelves}"
                                      th:src="${bookShelf.getImage()}"
-                                     th:onclick="bookReport([[${bookShelf.id}]])">
+                                     th:value="${bookShelfList.getIsbn()}"
+                                     th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
                             </div>
                             <div th:if="${message != null}" th:text="${message}">
                             </div>
@@ -194,10 +195,13 @@
     </div>
     <!-- / Layout wrapper -->
 <script th:inline="javascript">
-    function bookReport(id) {
-        location.href = '/report/register?id=' + id;
+    function bookReport(shelfId, reportId) {
+        if(reportId == null) {
+            location.href='/report/register?id=' + shelfId;
+        }else {
+            location.href='/report/view/' + reportId;
+        }
     }
-
     function bookShelfList() {
         location.href = '/bookshelf/list';
     }
