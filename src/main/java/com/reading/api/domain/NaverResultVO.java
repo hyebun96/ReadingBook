@@ -12,8 +12,8 @@ import java.util.List;
 public class NaverResultVO {
 
     private String lastBuildDate;
-    private String total;
-    private String start;
+    private int total;
+    private int start;
     private int display;
     private List<Book> items;
 }

@@ -1,35 +1,33 @@
 package com.reading.book.controller;
 
-import com.reading.book.domain.BookDetailResponseDTO;
-import com.reading.book.domain.BookListResponseDTO;
+import com.reading.api.service.APIService;
+import com.reading.book.dto.BookDetailResponseDTO;
+import com.reading.book.dto.PageRequestDTO;
 import com.reading.book.service.BookService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/book")
 @RequiredArgsConstructor
-@Log4j2
 public class BookController {
 
+    private final APIService apiService;
     private final BookService bookService;
-    private final ModelMapper modelMapper;
-
 
     @GetMapping("/search")
     public String search(@RequestParam("title") String title, Model model) throws IOException {
 
-        List<BookListResponseDTO> searchBookList  = bookService.allSearchByIsbnInNaver(title);
+        Map<String, Object> map = apiService.allSearchByTitleInNaver(title, new PageRequestDTO());
 
-        model.addAttribute("searchBookList", searchBookList);
         model.addAttribute("title", title);
+        model.addAttribute("searchBookList", map.get("searchBookList"));
+        model.addAttribute("pageResponseDTO", map.get("pageResponseDTO"));
 
         return "/book/search";
     }
