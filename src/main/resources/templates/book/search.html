@@ -14,6 +14,8 @@
 <head>
     <title>도서 검색</title>
     <link rel="stylesheet" href="/common/css/bookSearch.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/common/js/search.js"></script>
 </head>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -115,13 +117,29 @@
                                 <div class="h6 fw-bold">&nbsp🔎&nbsp
                                     <span th:text="${title}"/>
                                     에 대한 검색결과입니다.</div>
-                                <div class="card book-img">
+                                <div class="card book-img" id="book-img">
                                     <img class="book-img-size"
                                          th:each="searchBookList: ${searchBookList}"
                                          th:src="${searchBookList.getImage()}"
                                          th:value="${searchBookList.getIsbn()}"
                                     th:onclick="bookDetail([[${searchBookList.getIsbn()}]])">
                                 </div>
+                                <th:block th:if="${pageResponseDTO.getNext()}">
+                                    <div id="next" style="display: block">
+                                        <button class="book-button" th:onclick="list()">
+                                            &nbsp💡&nbsp'
+                                                <span th:text="${title}"/>
+                                            (
+                                            <span id="page" th:text="${pageResponseDTO.getPage()}"></span>/
+                                                <span th:text="${pageResponseDTO.getTotalPage()}"/>
+                                            )'에 관한 도서 더보기
+                                        </button>
+                                        <input type="hidden" name="title" id="title" th:value="${title}">
+                                        <input type="hidden" name="total" id="total" th:value="${pageResponseDTO.getTotal()}">
+                                        <input type="hidden" name="start" id="start" th:value="${pageResponseDTO.getNextStart()}">
+                                        <input type="hidden" name="display" id="dispaly" th:value="${pageResponseDTO.getDisplay()}">
+                                    </div>
+                                </th:block>
                             </div>
                         </div>
                     </div>
@@ -136,9 +154,4 @@
     </div>
     <!-- / Layout wrapper -->
 
-<script>
-    function bookDetail(isbn) {
-        location.href='/book/detail/' + isbn;
-    }
-</script>
 </html>
