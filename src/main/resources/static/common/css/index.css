@@ -1,3 +1,7 @@
+.container-p-y-u {
+    padding-top: 1.625rem !important;
+}
+
 .book-img-size {
     margin: 0 4% 0 0;
     width: 30%;
@@ -23,4 +27,13 @@
 .slide {
     width:100%;
     height:160px;
+}
+
+.list_plus {
+    float: right;
+    padding-right: 10px;
+}
+
+.mouse_pointer {
+    cursor: pointer;
 }
