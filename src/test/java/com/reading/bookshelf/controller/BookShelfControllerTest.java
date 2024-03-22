@@ -15,9 +15,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 class BookShelfControllerTest {
 
     @Autowired
-    private BookShelfController bookShelfController;
-
-    @Autowired
     private MockMvc mockMvc;
 
     @Test

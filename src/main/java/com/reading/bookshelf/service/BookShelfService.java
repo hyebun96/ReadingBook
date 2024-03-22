@@ -8,7 +8,6 @@ import com.reading.bookshelf.repository.BookShelfRepository;
 import com.reading.report.domain.BookReport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -21,8 +20,6 @@ public class BookShelfService {
 
     private final BookShelfRepository bookshelfRepository;
     private final BookRepository bookRepository;
-
-    private final ModelMapper modelMapper;
 
     public Boolean save(String isbn) throws IOException {
 

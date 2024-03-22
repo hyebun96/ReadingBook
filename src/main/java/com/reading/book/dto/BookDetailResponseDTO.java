@@ -1,10 +1,8 @@
-package com.reading.book.domain;
+package com.reading.book.dto;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class BookDetailResponseDTO {
     private Long id;
     private String isbn;

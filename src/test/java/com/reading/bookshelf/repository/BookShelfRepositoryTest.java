@@ -110,7 +110,7 @@ class BookShelfRepositoryTest {
        List<BookShelfListResponseDTO> list = bookShelfRepository.findByMember_id(member_id);
 
        list.stream().forEach(
-               bookShelfListResponseDTO -> log.info(bookShelfListResponseDTO.toString())
+               bookShelfListResponseDTO -> log.info(bookShelfListResponseDTO.getId())
        );
     }
 

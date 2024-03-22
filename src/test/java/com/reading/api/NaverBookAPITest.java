@@ -1,12 +1,13 @@
 package com.reading.api;
 
+import com.reading.api.contorller.NaverBookAPI;
 import com.reading.api.domain.NaverResultVO;
 import com.reading.book.domain.Book;
+import com.reading.book.dto.PageRequestDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -20,20 +21,20 @@ class NaverBookAPITest {
     @Autowired
     private NaverBookAPI naverBookAPI;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
     @Test
     @DisplayName("'쇼펜하우어'에 대한 naverAPI에서 10권 도서 검색.")
     public void searchBookAll() throws IOException {
         // Given
         String title = "쇼펜하우어";
+        PageRequestDTO pageRequestDTO = new PageRequestDTO();
 
         // When & Then
-        NaverResultVO naverResultVO = naverBookAPI.searchBookAll(title);
+        NaverResultVO naverResultVO = naverBookAPI.searchBookAll(title, pageRequestDTO);
         List<Book> list = naverResultVO.getItems();
 
         // Then
+        log.info(naverResultVO.toString());
+
         list.stream().forEach(
                 a -> log.info(a.toString())
         );

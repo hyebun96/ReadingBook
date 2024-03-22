@@ -1,6 +1,6 @@
 package com.reading.book.service;
 
-import com.reading.book.domain.BookDetailResponseDTO;
+import com.reading.book.dto.BookDetailResponseDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +17,7 @@ class BookServiceTest {
 
     @Autowired
     private BookService bookService;
+
 
     @Test
     public void saveTest() throws IOException {

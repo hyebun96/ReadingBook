@@ -18,9 +18,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 class BookControllerTest {
 
     @Autowired
-    private BookController bookController;
-
-    @Autowired
     private MockMvc mockMvc;
 
     @Test

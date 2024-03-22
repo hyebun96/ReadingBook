@@ -1,6 +1,6 @@
 package com.reading.book.repository;
 
-import com.reading.api.NaverBookAPI;
+import com.reading.api.contorller.NaverBookAPI;
 import com.reading.api.domain.NaverResultVO;
 import com.reading.book.domain.Book;
 import jdk.jfr.Description;

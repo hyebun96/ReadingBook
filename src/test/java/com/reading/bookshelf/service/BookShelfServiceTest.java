@@ -34,7 +34,8 @@ class BookShelfServiceTest {
         Boolean existBookshlef = bookShelfService.save(isbn);
 
         // Then
-        assertEquals(existBookshlef, true);
+        assertEquals(existBookshlef, true);     // 등록완료
+        assertEquals(existBookshlef, false);    // 이미 등록된 번호일 경우
     }
 
     @Test
@@ -61,7 +62,7 @@ class BookShelfServiceTest {
     public void saveBookReportTest() throws IOException {
         // Given
         Long bookReportId = 1L;
-        Long bookShelfId = 3L;
+        Long bookShelfId = 1L;
 
         // When
         BookReport bookReport = bookReportRepository.findById(bookReportId).orElseThrow();

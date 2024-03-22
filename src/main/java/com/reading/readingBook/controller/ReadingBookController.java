@@ -3,7 +3,6 @@ package com.reading.readingBook.controller;
 import com.reading.bookshelf.domain.BookShelfListResponseDTO;
 import com.reading.bookshelf.service.BookShelfService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@Log4j2
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class ReadingBookController {
