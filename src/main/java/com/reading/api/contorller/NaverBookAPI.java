@@ -15,9 +15,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.Map;
 
 @Component
-public class NaverBookAPI {
+public class NaverBookAPI implements APIInterface<NaverResultVO> {
 
     @Value("${spring.security.oauth2.client.registration.naver.client-id}")
     private String CLIENT_ID;
@@ -30,7 +31,12 @@ public class NaverBookAPI {
 
         String path = "/v1/search/book.json";
 
-        NaverResultVO resultVO = connect(path, "query", title, pageRequestDTO.getDisplay(), pageRequestDTO.getStart());
+        Map<String, String> map = Map.of("key", "query",
+                                        "value", title,
+                                        "display", String.valueOf(pageRequestDTO.getDisplay()),
+                                        "start", String.valueOf(pageRequestDTO.getStart()));
+
+        NaverResultVO resultVO = connect(path, map);
 
         return resultVO;
     }
@@ -39,7 +45,12 @@ public class NaverBookAPI {
 
         String path = "/v1/search/book.json";
 
-        NaverResultVO resultVO = connect(path, "query", title, 1, 1);
+        Map<String, String> map = Map.of("key", "query",
+                                        "vlaue", title,
+                                        "display", "1",
+                                        "start", "1");
+
+        NaverResultVO resultVO = connect(path, map);
 
         return resultVO;
     }
@@ -48,20 +59,26 @@ public class NaverBookAPI {
 
         String path = "/v1/search/book_adv.json";
 
-        NaverResultVO resultVO = connect(path, "d_isbn", isbn, 1, 1);
+        Map<String, String> map = Map.of("key", "d_isbn",
+                                        "value","isbn",
+                                        "display", "1",
+                                        "start", "1");
+
+        NaverResultVO resultVO = connect(path, map);
 
         return resultVO;
     }
 
-    public NaverResultVO connect(String path, String key, String value, int display, int start) throws IOException{
+    @Override
+    public NaverResultVO connect(String path, Map<String, String> map) throws IOException{
 
         // Spring URI를 생성할때 편리하게 구현할 수 있도록 도와주는 클래스. 자동 encode
         URI uri = UriComponentsBuilder
                 .fromUriString("https://openapi.naver.com")
                 .path(path)
-                .queryParam(key, value)
-                .queryParam("display", display)
-                .queryParam("start", start)
+                .queryParam(map.get("key"), map.get("value"))
+                .queryParam("display", map.get("display"))
+                .queryParam("start", map.get("start"))
                 .encode()
                 .build()
                 .toUri();
