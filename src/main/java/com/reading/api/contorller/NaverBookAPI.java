@@ -15,7 +15,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.Map;
 
 @Component
 public class NaverBookAPI implements APIInterface<NaverResultVO> {
@@ -29,59 +28,60 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
             @RequestParam("title") final String title,
             PageRequestDTO pageRequestDTO) throws IOException {
 
-        String path = "/v1/search/book.json";
+        // Spring URI를 생성할때 편리하게 구현할 수 있도록 도와주는 클래스. 자동 encode
+        URI uri = UriComponentsBuilder
+                .fromUriString("https://openapi.naver.com")
+                .path("/v1/search/book.json")
+                .queryParam("query", title)
+                .queryParam("display", String.valueOf(pageRequestDTO.getDisplay()))
+                .queryParam("start", String.valueOf(pageRequestDTO.getStart()))
+                .encode()
+                .build()
+                .toUri();
 
-        Map<String, String> map = Map.of("key", "query",
-                                        "value", title,
-                                        "display", String.valueOf(pageRequestDTO.getDisplay()),
-                                        "start", String.valueOf(pageRequestDTO.getStart()));
-
-        NaverResultVO resultVO = connect(path, map);
+        NaverResultVO resultVO = connect(uri, "GET");
 
         return resultVO;
     }
 
     public NaverResultVO searchBookOne(@RequestParam("title") final String title) throws IOException {
 
-        String path = "/v1/search/book.json";
+        URI uri = UriComponentsBuilder
+                .fromUriString("https://openapi.naver.com")
+                .path("/v1/search/book.json")
+                .queryParam("query", title)
+                .queryParam("display", "1")
+                .queryParam("start", "1")
+                .encode()
+                .build()
+                .toUri();
 
-        Map<String, String> map = Map.of("key", "query",
-                                        "vlaue", title,
-                                        "display", "1",
-                                        "start", "1");
+        String path = "";
 
-        NaverResultVO resultVO = connect(path, map);
+        NaverResultVO resultVO = connect(uri, "GET");
 
         return resultVO;
     }
 
     public NaverResultVO searchBookDetail(@RequestParam("isbn") final String isbn) throws IOException {
 
-        String path = "/v1/search/book_adv.json";
+        URI uri = UriComponentsBuilder
+                .fromUriString("https://openapi.naver.com")
+                .path("/v1/search/book_adv.json")
+                .queryParam("d_isbn", isbn)
+                .queryParam("display", "1")
+                .queryParam("start", "1")
+                .encode()
+                .build()
+                .toUri();
 
-        Map<String, String> map = Map.of("key", "d_isbn",
-                                        "value","isbn",
-                                        "display", "1",
-                                        "start", "1");
-
-        NaverResultVO resultVO = connect(path, map);
+        NaverResultVO resultVO = connect(uri, "GET");
 
         return resultVO;
     }
 
     @Override
-    public NaverResultVO connect(String path, Map<String, String> map) throws IOException{
-
-        // Spring URI를 생성할때 편리하게 구현할 수 있도록 도와주는 클래스. 자동 encode
-        URI uri = UriComponentsBuilder
-                .fromUriString("https://openapi.naver.com")
-                .path(path)
-                .queryParam(map.get("key"), map.get("value"))
-                .queryParam("display", map.get("display"))
-                .queryParam("start", map.get("start"))
-                .encode()
-                .build()
-                .toUri();
+    public NaverResultVO connect(URI uri, String method) throws IOException{
 
         // Spring 요청 제공 클래스. Header 생성자 파라미터
         RequestEntity<Void> req = RequestEntity
