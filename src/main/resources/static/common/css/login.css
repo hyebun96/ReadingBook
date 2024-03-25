@@ -1,0 +1,13 @@
+.layout-logo {
+    height: 80%;
+}
+
+.kakao_login_img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.kakao_login_img img {
+
+}
