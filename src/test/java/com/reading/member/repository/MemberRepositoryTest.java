@@ -24,10 +24,11 @@ class MemberRepositoryTest {
         Member member = Member.builder()
                 .id(1L)
                 .access_token("access_token")
-                .client_id("client_id")
+                .id_token("id_token")
                 .refresh_token("refresh_token")
                 .token_type("token_type")
                 .nickname("hyebun")
+                .profile_image_url("profile_image_url")
                 .build();
 
 
@@ -50,10 +51,11 @@ class MemberRepositoryTest {
         // Then
         assertEquals(member.getId(), 1L);
         assertEquals(member.getAccess_token(), "access_token");
+        assertEquals(member.getId_token(), "id_token");
         assertEquals(member.getRefresh_token(), "refresh_token");
-        assertEquals(member.getClient_id(), "client_id");
         assertEquals(member.getToken_type(), "token_type");
         assertEquals(member.getNickname(), "hyebun");
+        assertEquals(member.getProfile_image_url(), "profile_image_url");
     }
 
     @Test
@@ -64,7 +66,6 @@ class MemberRepositoryTest {
         Member member = findMember.orElseThrow();
 
         // When
-        member.changeRefreshToken(refresh_token);
         Member result = memberRepository.save(member);
 
         // Then
