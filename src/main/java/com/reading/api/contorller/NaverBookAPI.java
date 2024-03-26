@@ -39,7 +39,7 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
                 .build()
                 .toUri();
 
-        NaverResultVO resultVO = connect(uri, "GET");
+        NaverResultVO resultVO = connect(getMethodRequestEntity(uri));
 
         return resultVO;
     }
@@ -58,7 +58,7 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
 
         String path = "";
 
-        NaverResultVO resultVO = connect(uri, "GET");
+        NaverResultVO resultVO = connect(getMethodRequestEntity(uri));
 
         return resultVO;
     }
@@ -75,13 +75,13 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
                 .build()
                 .toUri();
 
-        NaverResultVO resultVO = connect(uri, "GET");
+        NaverResultVO resultVO = connect(getMethodRequestEntity(uri));
 
         return resultVO;
     }
 
     @Override
-    public NaverResultVO connect(URI uri, String method) throws IOException{
+    public RequestEntity<Void> getMethodRequestEntity(URI uri) throws IOException {
 
         // Spring 요청 제공 클래스. Header 생성자 파라미터
         RequestEntity<Void> req = RequestEntity
@@ -90,6 +90,25 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
                 .header("X-Naver-Client-Secret", CLIENT_SECRET)
                 .build();
 
+        return req;
+    }
+
+    @Override
+    public RequestEntity<Void> postMethodRequestEntity(URI uri) throws IOException {
+
+        // Spring 요청 제공 클래스. Header 생성자 파라미터
+        RequestEntity<Void> req = RequestEntity
+                .post(uri)
+                .header("X-Naver-Client-Id", CLIENT_ID)
+                .header("X-Naver-Client-Secret", CLIENT_SECRET)
+                .build();
+
+
+        return req;
+    }
+
+    @Override
+    public NaverResultVO connect(RequestEntity<Void> req) throws IOException {
 
         // Spring 제공 restTemplate. Rest 방식 API를 호출할 수 있는 Spring 내장 클래스
         RestTemplate restTemplate = new RestTemplate();
@@ -109,7 +128,6 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
 
         return resultVO;
     }
-
 }
 
 
