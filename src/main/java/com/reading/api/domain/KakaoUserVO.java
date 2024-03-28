@@ -10,7 +10,7 @@ import java.util.Map;
 @ToString
 public class KakaoUserVO {
 
-    private Long id;
+    private Long id;                    // 회원 고유 아이디 member에서는 uuid로 처리할것
     private Date connected_at;
     private Map<String, Object> properties;
     private Map<String, Object> kakao_account;

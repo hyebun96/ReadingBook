@@ -1,10 +1,12 @@
 package com.reading.api.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
 @Getter
+@ToString
 public class KakaoTokenVO implements Serializable {
 
     private String access_token;

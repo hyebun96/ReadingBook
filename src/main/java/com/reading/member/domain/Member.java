@@ -1,9 +1,9 @@
 package com.reading.member.domain;
 
+import com.reading.api.domain.KakaoTokenVO;
+import com.reading.api.domain.KakaoUserVO;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Map;
 
 @Getter
 @Table(name = "member")
@@ -38,8 +38,24 @@ public class Member {
     @Column(nullable = false)
     private String profile_image_url;
 
-    public void addProfile(Map<String, Object> profile) {
-        this.nickname = String.valueOf(profile.get("nickname"));
-        this.profile_image_url = String.valueOf(profile.get("profile_image_url"));
+    @Column(nullable = false)
+    private String uuid;
+
+    public void addProfile(KakaoUserVO kakaoUserVO) {
+        this.nickname = String.valueOf(kakaoUserVO.getProfile().get("nickname"));
+        this.profile_image_url = String.valueOf(kakaoUserVO.getProfile().get("profile_image_url"));
+        this.uuid = String.valueOf(kakaoUserVO.getId());
+    }
+
+    public void setToken(KakaoTokenVO kakaoTokenVO) {
+        this.access_token = kakaoTokenVO.getAccess_token();
+        this.id_token = kakaoTokenVO.getId_token();
+        this.refresh_token = kakaoTokenVO.getRefresh_token();
+    }
+
+    public void resetToken() {
+        this.access_token = "";
+        this.id_token = "";
+        this.refresh_token = "";
     }
 }
