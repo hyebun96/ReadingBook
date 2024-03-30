@@ -15,120 +15,119 @@
     <title>도서</title>
     <link rel="stylesheet" href="/common/css/index.css"/>
 </head>
-
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container bg-body">
-        <!-- Layout container -->
-        <div class="layout-page">
-          <!-- Navbar -->
-          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-                id="layout-navbar">
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container bg-body">
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Navbar -->
+      <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
 <!--            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">-->
 <!--              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">-->
 <!--                <i class="bx bx-menu bx-sm"></i>-->
 <!--              </a>-->
 <!--            </div>-->
 
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                <!-- Search -->
-                <div class="navbar-nav align-items-center search-100">
-                    <div class="nav-item d-flex align-items-center search-100">
-                        <i class="bx bx-search fs-4 lh-0"></i>
-                        <form class="search-100" action="/book/search" method="get">
-                        <input type="text" class="form-control border-0 shadow-none search-100"
-                               placeholder="도서를 검색해주세요." aria-label="Search..."
-                                name="title" />
-                        </form>
-                    </div>
+        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <!-- Search -->
+            <div class="navbar-nav align-items-center search-100">
+                <div class="nav-item d-flex align-items-center search-100">
+                    <i class="bx bx-search fs-4 lh-0"></i>
+                    <form class="search-100" action="/book/search" method="get">
+                    <input type="text" class="form-control border-0 shadow-none search-100"
+                           placeholder="도서를 검색해주세요." aria-label="Search..."
+                            name="title" />
+                    </form>
                 </div>
-                <!-- /Search -->
-
-                <ul class="navbar-nav flex-row align-items-center ms-auto">
-                    <!-- User -->
-                    <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                           data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
-              </ul>
             </div>
-          </nav>
-          <!-- / Navbar -->
+            <!-- /Search -->
 
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
-            <div class="container-xxl container-p-y-u">
-              <div class="row">
-                <div class="mb-4">
-                    <div class="h6 fw-bold">&nbsp;☁️&nbsp;오늘의 명언</div>
-                  <div class="card">
-                    <div class="d-flex align-items-end row">
-                      <div class="col-sm-12">
-                        <div class="card-body">
-                          <h6 class="card-title">하루라도 책을 읽지 않으면 입안에 가시가 돋는다.  -안중근-</h6>
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                       data-bs-toggle="dropdown">
+                <div class="avatar avatar-online">
+                  <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                </div>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <div class="d-flex">
+                      <div class="flex-shrink-0 me-3">
+                        <div class="avatar avatar-online">
+                          <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                         </div>
                       </div>
+                      <div class="flex-grow-1">
+                        <span class="fw-semibold d-block">John Doe</span>
+                        <small class="text-muted">Admin</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="bx bx-user me-2"></i>
+                    <span class="align-middle">My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="bx bx-cog me-2"></i>
+                    <span class="align-middle">Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <span class="d-flex align-items-center align-middle">
+                      <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                      <span class="flex-grow-1 align-middle">Billing</span>
+                      <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="auth-login-basic.html">
+                    <i class="bx bx-power-off me-2"></i>
+                    <span class="align-middle">Log Out</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!--/ User -->
+          </ul>
+        </div>
+      </nav>
+      <!-- / Navbar -->
+
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
+        <div class="container-xxl container-p-y-u">
+          <div class="row">
+            <div class="mb-4">
+                <div class="h6 fw-bold">&nbsp;☁️&nbsp;오늘의 명언</div>
+              <div class="card">
+                <div class="d-flex align-items-end row">
+                  <div class="col-sm-12">
+                    <div class="card-body">
+                      <h6 class="card-title">하루라도 책을 읽지 않으면 입안에 가시가 돋는다.  -안중근-</h6>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-4 order-1">
-                  <div class="row">
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-4 order-1">
+              <div class="row">
                     <div class="mb-4">
                         <div class="h6 fw-bold">
                             &nbsp;📓&nbsp;'감자'님의 책장 리스트
@@ -148,33 +147,32 @@
                         </div>
                       </div>
                     </div>
+              </div>
+            </div>
+            <!-- Total Revenue -->
+            <div class="col-lg-6 order-3 order-lg-6 mb-4">
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-12">
+                      <h6 class="card-header m-0 me-2 pb-3 fw-bold">&nbsp;📓&nbsp;올해의 독서량</h6>
+                      <div id="totalRevenueChart" class="px-2"></div>
                   </div>
-                </div>
-                <!-- Total Revenue -->
-                <div class="col-lg-6 order-3 order-lg-6 mb-4">
-                  <div class="card">
-                    <div class="row">
-                      <div class="col-md-12">
-                          <h6 class="card-header m-0 me-2 pb-3 fw-bold">&nbsp;📓&nbsp;올해의 독서량</h6>
-                        <div id="totalRevenueChart" class="px-2"></div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <div class="dropdown">
-                              <button
-                                class="btn btn-sm btn-outline-primary dropdown-toggle"
-                                type="button"
-                                id="growthReportId"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >2024</button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                <a class="dropdown-item" href="javascript:void(0);">2024</a>
-                                <a class="dropdown-item" href="javascript:void(0);">2023</a>
-                              </div>
-                            </div>
+                  <div class="col-md-4">
+                    <div class="card-body">
+                      <div class="text-center">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-sm btn-outline-primary dropdown-toggle"
+                            type="button"
+                            id="growthReportId"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >2024</button>
+                          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
+                            <a class="dropdown-item" th:value="3">3개월</a>
+                            <a class="dropdown-item" th:value="6">6개월</a>
+                            <a class="dropdown-item" th:value="12">12개월</a>
                           </div>
                         </div>
                       </div>
@@ -183,20 +181,22 @@
                 </div>
               </div>
             </div>
-            <!-- / Content -->
           </div>
-          <!-- Content wrapper -->
         </div>
-        <!-- / Layout page -->
+        <!-- / Content -->
       </div>
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+      <!-- Content wrapper -->
     </div>
-    <!-- / Layout wrapper -->
+    <!-- / Layout page -->
+  </div>
+  <!-- Overlay -->
+  <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
 <script th:inline="javascript">
     function bookReport(shelfId, reportId) {
         if(reportId == null) {
-            location.href='/report/register?id=' + shelfId;
+            location.href='/report/form?id=' + shelfId;
         }else {
             location.href='/report/view/' + reportId;
         }
@@ -204,5 +204,8 @@
     function bookShelfList() {
         location.href = '/bookshelf/list';
     }
+
+    // chart(올해 독서량)
+    const bookChartData = [[${bookChartData}]];
 </script>
 </html>
