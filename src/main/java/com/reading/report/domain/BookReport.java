@@ -33,10 +33,8 @@ public class BookReport extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "bookReport", cascade = CascadeType.ALL)
     private BookScope bookScope;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="bookshelfId", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "bookReport", cascade = CascadeType.ALL)
     private BookShelf bookShelf;
-
 
     @Builder
     // 불필요한 생성자 제거
@@ -49,10 +47,6 @@ public class BookReport extends BaseEntity {
 
     public void addBookScope(BookScope bookScope) {
         this.bookScope = bookScope;
-    }
-
-    public void addBookShelf(BookShelf bookShelf) {
-        this.bookShelf = bookShelf;
     }
 
     public void updateBookReport(BookReportRequestDTO requestDTO) {

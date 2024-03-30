@@ -5,7 +5,6 @@ import com.reading.report.domain.BookReport;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @Getter
 @Entity
 @NoArgsConstructor
