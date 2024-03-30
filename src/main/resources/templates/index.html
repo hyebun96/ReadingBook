@@ -40,33 +40,58 @@
                             name="title" />
                     </form>
                 </div>
-            </div>
-            <!-- /Search -->
-
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                       data-bs-toggle="dropdown">
-                <div class="avatar avatar-online">
-                  <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                </div>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <div class="d-flex">
-                      <div class="flex-shrink-0 me-3">
-                        <div class="avatar avatar-online">
-                          <img src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                <!-- /Search -->
+                <button th:if="!${member}" class="login-button" th:onclick="login()">Login</button>
+                <ul class="navbar-nav flex-row align-items-center ms-auto" th:if="${member}">
+                    <!-- User -->
+                    <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                            <div class="avatar">
+                              <img th:if="${member}" th:src="${member.profile_image_url}" class="kakao_login_img" />
+                            </div>
+                          </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                                <img th:if="!${member}" src="/bootstrap/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                <img th:if="${member}" th:src="${member.profile_image_url}" class="kakao_login_img" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1" th:if="${member}">
+                            <span class="fw-semibold d-block" th:text="${member.nickname}"></span>
+                            <small class="text-muted" th:text="${member.id}"></small>
+                          </div>
                         </div>
-                      </div>
-                      <div class="flex-grow-1">
-                        <span class="fw-semibold d-block">John Doe</span>
-                        <small class="text-muted">Admin</small>
-                      </div>
-                    </div>
-                  </a>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-basic.html">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   <div class="dropdown-divider"></div>
@@ -195,17 +220,22 @@
 <!-- / Layout wrapper -->
 <script th:inline="javascript">
     function bookReport(shelfId, reportId) {
+        console.log(shelfId)
+        console.log(reportId)
+
         if(reportId == null) {
             location.href='/report/form?id=' + shelfId;
         }else {
             location.href='/report/view/' + reportId;
         }
     }
+
     function bookShelfList() {
         location.href = '/bookshelf/list';
     }
 
-    // chart(올해 독서량)
-    const bookChartData = [[${bookChartData}]];
+    function login() {
+        location.href = '/member/login';
+    }
 </script>
 </html>

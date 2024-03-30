@@ -37,3 +37,21 @@
 .mouse_pointer {
     cursor: pointer;
 }
+
+.kakao_login_img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 100px;
+}
+
+.login-button {
+    float: right;
+    background: #353552;
+    color: white;
+    margin: 2% 0%;
+    width: 20%;
+    height: 35px;
+    border-radius: 10px;
+    font-size: smaller;
+    font-weight: bold;
+}
