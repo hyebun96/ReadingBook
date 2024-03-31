@@ -28,6 +28,12 @@ public class MemberController {
     private final KakaoLoginAPI kakaoLoginAPI;
     private final MemberService memberService;
 
+    private final HttpSession session;
+
+    public Member getSessionMember(){
+        return (Member) session.getAttribute("member");
+    }
+
     @GetMapping("/login")
     public String login(Model model){
 
