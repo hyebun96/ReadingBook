@@ -19,7 +19,7 @@
     <script src="/common/js/detail.js"></script>
 </head>
 
-<div class="layout-container bg-body">
+<div class="container-content layout-container bg-body">
     <div class="layout-page">
         <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
@@ -51,7 +51,9 @@
                         <div>
                             <form th:action="@{/book/save/{isbn}(isbn = ${book.getIsbn()})}" method="post">
                                 <button class="book-button">
-                                    내 서재에 등록하기
+                                     '
+                                    <span th:text="${session.member.getNickname()}"/>
+                                    '님의 서재에 등록하기
                                 </button>
                             </form>
                         </div>

@@ -5,9 +5,13 @@
 <head>
     <title>Layout html</title>
     <!-- header : meta, css, js -->
-    <div layout:replace="/fragments/header :: fragment-header"></div>
+    <link rel="stylesheet" href="/common/css/font.css">
 </head>
-<body>
+<body class="font">
+
+    <!-- header -->
+    <div layout:replace="/fragments/header :: fragment-header"></div>
+
     <!-- contents -->
     <th:block layout:fragment="contents"></th:block>
 

@@ -1,12 +1,5 @@
 .font {
-    font-family: omyu_pretty !important;
-}
-
-@font-face {
-    font-family: '영덕';
-    src: url('../font/Yeongdeok_Sea.ttf') format("truetype");
-    font-weight: normal;
-    font-style: normal;
+    font-family: nanumsquares !important;
 }
 
 @font-face {

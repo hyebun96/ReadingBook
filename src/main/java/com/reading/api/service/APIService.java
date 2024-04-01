@@ -27,13 +27,19 @@ public class APIService {
 
         NaverResultVO naverResultVO = naverBookAPI.searchBookAll(title, pageRequestDTO);
         PageResponseDTO pageResponseDTO = modelMapper.map(naverResultVO, PageResponseDTO.class);
-        pageResponseDTO.setPageAndNext();
-
-        List<BookListResponseDTO> searchBookList = naverResultVO.getItems().stream()
-                .map(book -> modelMapper.map(book, BookListResponseDTO.class))
-                .toList();
-
+        List<BookListResponseDTO> searchBookList = null;
         Map<String, Object> result = new HashMap<>();
+
+        if(pageResponseDTO.getTotal() > 0) {
+            pageResponseDTO.setPageAndNext();
+
+            searchBookList = naverResultVO.getItems().stream()
+                    .map(book -> modelMapper.map(book, BookListResponseDTO.class))
+                    .toList();
+        }else {
+            result.put("message", true);
+        }
+
         result.put("title", title);
         result.put("searchBookList", searchBookList);
         result.put("pageResponseDTO", pageResponseDTO);

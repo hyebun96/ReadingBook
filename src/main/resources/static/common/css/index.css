@@ -1,3 +1,15 @@
+.container-header {
+    display: flex;
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: stretch;
+}
+
+.container-content {
+    min-height: 87vh !important;
+}
+
 .container-p-y-u {
     padding-top: 1.625rem !important;
 }

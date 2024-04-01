@@ -1,3 +1,7 @@
+.container-content {
+    min-height: 87vh !important;
+}
+
 .book-img {
     display: block !important;
     cursor: pointer;
@@ -19,4 +23,10 @@
     border-radius: 10px;
     font-size: smaller;
     font-weight: bold;
+}
+
+.kakao_login_img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 100px;
 }
