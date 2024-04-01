@@ -25,6 +25,7 @@ public class BookController {
 
         Map<String, Object> map = apiService.allSearchByTitleInNaver(title, new PageRequestDTO());
 
+        model.addAttribute("message", map.get("message"));
         model.addAttribute("title", title);
         model.addAttribute("searchBookList", map.get("searchBookList"));
         model.addAttribute("pageResponseDTO", map.get("pageResponseDTO"));

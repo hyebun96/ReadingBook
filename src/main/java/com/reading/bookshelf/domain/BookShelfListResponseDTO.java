@@ -1,5 +1,6 @@
 package com.reading.bookshelf.domain;
 
+import com.reading.member.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,7 +9,7 @@ import lombok.Getter;
 public class BookShelfListResponseDTO {
 
     private Long id;
-    private Long member_id;
+    private Member member;
     private String isbn;
     private String title;
     private String image;

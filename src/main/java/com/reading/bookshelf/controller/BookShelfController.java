@@ -2,6 +2,8 @@ package com.reading.bookshelf.controller;
 
 import com.reading.bookshelf.domain.BookShelfListResponseDTO;
 import com.reading.bookshelf.service.BookShelfService;
+import com.reading.member.controller.MemberController;
+import com.reading.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,18 +22,26 @@ public class BookShelfController {
 
     private final BookShelfService bookShelfService;
 
+    private final MemberController memberController;
+
     @GetMapping("/save/{isbn}")
     public String getSave(@PathVariable("isbn") String isbn, RedirectAttributes redirectAttributes) throws IOException {
 
-       String url = postSave(isbn, redirectAttributes);
+        Member member = memberController.getSessionMember();
+
+        if(member == null){
+            return "/book/" + isbn;
+        }
+
+       String url = postSave(member, isbn, redirectAttributes);
 
        return url;
     }
 
 
-    public String postSave(@PathVariable("isbn") String isbn, RedirectAttributes redirectAttributes) throws IOException {
+    public String postSave(Member member, @PathVariable("isbn") String isbn, RedirectAttributes redirectAttributes) throws IOException {
 
-        Boolean existBookShlf = bookShelfService.save(isbn);
+        Boolean existBookShlf = bookShelfService.save(isbn, member);
 
         if(existBookShlf){
             // modal 창에 값 보내기
@@ -47,10 +57,11 @@ public class BookShelfController {
     @GetMapping("/list")
     public String list(Model model) throws IOException {
 
-        List<BookShelfListResponseDTO> bookShelfList = bookShelfService.findByMember_id(1L);
-        model.addAttribute("bookShelfList", bookShelfList);
+        Member member = memberController.getSessionMember();
 
-        model.addAttribute("member_id", "Hyehwa");
+        List<BookShelfListResponseDTO> bookShelfList = bookShelfService.findByMember(member);
+        model.addAttribute("bookShelfList", bookShelfList);
+        model.addAttribute("member", member);
 
         return "/bookshelf/list";
     }

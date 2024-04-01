@@ -1,6 +1,7 @@
 package com.reading.bookshelf.domain;
 
 import com.reading.book.domain.Book;
+import com.reading.member.domain.Member;
 import com.reading.report.domain.BookReport;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,8 +19,9 @@ public class BookShelf {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long member_id;
+    @ManyToOne()
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     @ManyToOne()
     @JoinColumn(name = "book_id", nullable = false)
