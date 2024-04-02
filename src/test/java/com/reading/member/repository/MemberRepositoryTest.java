@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,17 +19,17 @@ class MemberRepositoryTest {
     private MemberRepository memberRepository;
 
     @Test
-    public void testInsert() {
+    public void insertTest() {
 
         // Given
         Member member = Member.builder()
-                .id(1L)
                 .access_token("access_token")
                 .id_token("id_token")
-                .refresh_token("refresh_token")
-                .token_type("token_type")
                 .nickname("hyebun")
                 .profile_image_url("profile_image_url")
+                .refresh_token("refresh_token")
+                .token_type("token_type")
+                .uuid("1")
                 .build();
 
 
@@ -40,45 +41,57 @@ class MemberRepositoryTest {
     }
 
     @Test
-    public void testSelect() {
+    public void updateTest() {
         // Given
-        Long id = 1L;
-
-        // When
-        Optional<Member> result = memberRepository.findById(id);
-        Member member = result.orElseThrow();
-
-        // Then
-        assertEquals(member.getId(), 1L);
-        assertEquals(member.getAccess_token(), "access_token");
-        assertEquals(member.getId_token(), "id_token");
-        assertEquals(member.getRefresh_token(), "refresh_token");
-        assertEquals(member.getToken_type(), "token_type");
-        assertEquals(member.getNickname(), "hyebun");
-        assertEquals(member.getProfile_image_url(), "profile_image_url");
-    }
-
-    @Test
-    public void testUpdate() {
-        // Given
-        String refresh_token = "update refresh_token";
-        Optional<Member> findMember = memberRepository.findById(1L);
+        //KakaoUserVO kakaoUserVO =
+        Map<String, Object> profile = Map.of("nickname", "update nickname");
+        Optional<Member> findMember = memberRepository.findByUuid(1L);
         Member member = findMember.orElseThrow();
 
         // When
         Member result = memberRepository.save(member);
 
         // Then
-        assertEquals(result.getRefresh_token(), refresh_token);
+        assertEquals(result.getNickname(), "update nickname");
     }
 
     @Test
-    public void testDeleteId() {
+    public void deleteTest() {
         // Given
-        Long id = 1L;
+        Member member = memberRepository.findByUuid(1L).orElseThrow();
 
         // When & Then
-        memberRepository.deleteById(id);
+        memberRepository.deleteById(member.getId());
+    }
+
+    @Test
+    public void findByUuidTest() {
+        // Given
+        Long uuid = 1L;
+
+        // When
+        Member member1 = memberRepository.findByUuid(uuid).orElseThrow();;
+
+        // Then
+        assertEquals(member1.getAccess_token(), "access_token");
+        assertEquals(member1.getId_token(), "id_token");
+        assertEquals(member1.getRefresh_token(), "refresh_token");
+        assertEquals(member1.getToken_type(), "token_type");
+        assertEquals(member1.getNickname(), "hyebun");
+        assertEquals(member1.getProfile_image_url(), "profile_image_url");
+    }
+
+    @Test
+    public void existsByUuidTest() {
+        // Given
+        Long uuid = 1L;
+
+        // When
+        Boolean exist = memberRepository.existsByUuid(uuid);
+
+        // Then
+        assertEquals(exist, true);
+        assertEquals(exist, false);
     }
 
 }

@@ -2,6 +2,8 @@ package com.reading.bookshelf.service;
 
 import com.reading.bookshelf.domain.BookShelf;
 import com.reading.bookshelf.domain.BookShelfListResponseDTO;
+import com.reading.member.domain.Member;
+import com.reading.member.repository.MemberRepository;
 import com.reading.report.domain.BookReport;
 import com.reading.report.repository.BookReportRepository;
 import lombok.extern.log4j.Log4j2;
@@ -25,28 +27,37 @@ class BookShelfServiceTest {
     @Autowired
     private BookReportRepository bookReportRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
+    public Member findMember() {
+        // 데이터에 있는 uuid 테스트 번호로 넣기
+        Long uuid = 3403991514L;
+        return memberRepository.findByUuid(uuid).orElseThrow();
+    }
+
     @Test
     public void saveTest() throws IOException {
         // Given
         String isbn = "9791192625553";
 
         // When
-        Boolean existBookshlef = bookShelfService.save(isbn);
+        Boolean existBookshlef = bookShelfService.save(isbn, findMember());
 
         // Then
         assertEquals(existBookshlef, true);     // 등록완료
-        assertEquals(existBookshlef, false);    // 이미 등록된 번호일 경우
+        assertEquals(existBookshlef, false);    // 이미 등록된 도서일 경우
     }
 
     @Test
     public void findBymemberIdTest() throws IOException {
         // Given
-        Long member_id = 1L;
-        Long member_id2 = 10L;
+        Member member1 = findMember();
+        Member member2 = memberRepository.findByUuid(3415867084L).orElseThrow();
 
         // When
-        List<BookShelfListResponseDTO> bookShelves = bookShelfService.findByMember_id(member_id);
-        List<BookShelfListResponseDTO> bookShelves2 = bookShelfService.findByMember_id(member_id2);
+        List<BookShelfListResponseDTO> bookShelves = bookShelfService.findByMember(member1);
+        List<BookShelfListResponseDTO> bookShelves2 = bookShelfService.findByMember(member2);
 
         // Then
         assertNotNull(bookShelves);

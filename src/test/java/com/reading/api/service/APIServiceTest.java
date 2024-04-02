@@ -33,10 +33,10 @@ class APIServiceTest {
         // Given
         String title = "쇼펜하우어";
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                .total(642)
-                .start(11)
-                .display(10)
-                .build();
+                                    .total(642)
+                                    .start(11)
+                                    .display(10)
+                                    .build();
 
 
         // When

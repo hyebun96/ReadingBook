@@ -49,7 +49,7 @@ public class MemberController {
                         RedirectAttributes redirectAttributes) throws IOException {
 
         KakaoTokenVO requestToken = kakaoLoginAPI.getToken(code);
-        KakaoUserVO kakaoUserVO = kakaoLoginAPI.getUserInfo(requestToken);
+        KakaoUserVO kakaoUserVO = kakaoLoginAPI.getUserInfo(requestToken.getAccess_token());
 
         return register(requestToken, kakaoUserVO, httpServletRequest, redirectAttributes);
     }

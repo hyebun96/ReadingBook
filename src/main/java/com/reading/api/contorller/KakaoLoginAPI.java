@@ -50,7 +50,7 @@ public class KakaoLoginAPI implements APIInterface<KakaoTokenVO>{
         return responseToken;
     }
 
-    public KakaoUserVO getUserInfo(KakaoTokenVO requestUser) throws IOException {
+    public KakaoUserVO getUserInfo(String access_token) throws IOException {
 
         URI uri = UriComponentsBuilder
                 .fromUriString("https://kapi.kakao.com")
@@ -60,7 +60,7 @@ public class KakaoLoginAPI implements APIInterface<KakaoTokenVO>{
                 .toUri();
 
         RequestEntity<Void> req = RequestEntity.<Void>get(uri)
-                .header("Authorization", "Bearer " + requestUser.getAccess_token())
+                .header("Authorization", "Bearer " + access_token)
                 .header("Content-type", "application/x-www-form-urlencoded;charset=utf-8")
                 .build();
 

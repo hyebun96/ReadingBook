@@ -22,7 +22,6 @@ class BookReportRepositoryTest {
     public void saveReport() {
         // Given
         BookReport bookReport = BookReport.builder()
-                .mybookId(1)
                 .review("줄거리")
                 .impression("느낀점")
                 .lifeContent("삶의적용")

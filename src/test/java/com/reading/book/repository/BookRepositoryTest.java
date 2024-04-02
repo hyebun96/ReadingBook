@@ -50,4 +50,28 @@ class BookRepositoryTest {
         assertEquals(book.getTitle(), "홍학의 자리 (정해연 장편소설)");
     }
 
+    @Test
+    public void existsByIsbnTest() throws Exception {
+        // Given
+        String isbn = "9788954681155";
+
+        // When
+        Boolean result = bookRepository.existsByIsbn(isbn);
+
+        // Then
+        assertEquals(result, true);
+    }
+
+    @Test
+    public void findByIsbnTest() throws Exception {
+        // Given
+        String isbn = "9788954681155";
+
+        // When
+        Book book = bookRepository.findByIsbn(isbn).orElseThrow();
+
+        // Then
+        assertEquals(book.getTitle(), "홍학의 자리 (정해연 장편소설)");
+    }
+
 }
