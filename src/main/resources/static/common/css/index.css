@@ -67,3 +67,10 @@
     font-size: smaller;
     font-weight: bold;
 }
+
+.today-img {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

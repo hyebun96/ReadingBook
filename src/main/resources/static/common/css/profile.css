@@ -1,0 +1,26 @@
+.home-edit {
+    display: flex;
+}
+
+.btn-home {
+    display: flex;
+    width: 20%;
+}
+
+.btn-edit {
+    width: 80%;
+    float: right;
+}
+
+.btn-edit .edit{
+    float: right;
+    width: 200px;
+    margin-right: 2%;
+    color: white;
+    font-weight: bold;
+}
+.btn {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}

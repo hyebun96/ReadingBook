@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="/"
+      data-template="vertical-menu-template-free"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"
+      layout:fragment="contents"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>내 프로필</title>
+
+    <link rel="stylesheet" href="/common/css/profile.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="layout-container bg-body">
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="row mb-2">
+                    <div class="">
+                        <div class="card">
+                            <div class="home-edit">
+                                <span class="col-mb-6 ml-2 mt-2 btn-home">
+                                    <a class="btn btn-icon d-flex" th:href="@{'/'}">
+                                        <i class="fas fa-home" style="color: #ffffff;"></i>
+                                    </a>
+                                </span>
+                                <span class="col-mb-6 ml-2 mt-2 btn-edit">
+                                    <a class="btn btn-icon edit" onclick="uploadMemberImg()">
+                                        <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;회원 이미지 편집
+                                    </a>
+                                </span>
+                                <input hidden id="uploadMemberImg" type="file" name="files" multiple="multiple"/>
+                            </div>
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <img class="card-img card-img-left mb-3" th:src="@{${member.profile_image_url}}" alt="회원프로필이미지"
+                                     style="height: 50% !important; width: 50% !important;"/>
+                                <p class="card-title" th:text="${member.uuid}" style="font-size: 17px;"></p>
+                                <p class="card-text" th:text="${member.nickname}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function uploadMemberImg() {
+        let uploadMemberImg = document.getElementById("uploadMemberImg");
+        uploadMemberImg.click();
+
+        location.href = '/member/uploadMemberImg';
+    }
+</script>
+</body>
+</html>

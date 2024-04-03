@@ -12,6 +12,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -93,6 +94,26 @@ public class MemberController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/profile")
+    public String profile(HttpSession session, Model model) throws IOException {
+
+        Long uuid = Long.valueOf(((Member) session.getAttribute("member")).getUuid());
+        Member member = memberService.findByMember(uuid);
+
+        model.addAttribute("member", member);
+
+        return "/member/profile";
+    }
+
+    @PostMapping("uploadMemberImg")
+    public String uploadMemberImg() {
+
+
+
+
+        return "redirect:/member/profile";
     }
 
 
