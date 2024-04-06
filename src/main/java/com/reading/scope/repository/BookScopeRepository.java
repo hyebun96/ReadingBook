@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 public interface BookScopeRepository extends JpaRepository<BookScope, Long> {
 
     @Modifying(clearAutomatically = true)
-    @Query(value = "DELETE FROM BookScope b WHERE b.bookReport.id = :id")
-    void deleteByReportId(@Param("id") Long reportId);
+    @Query(value = "DELETE FROM BookScope b WHERE b.bookReport.id = :reportId")
+    void deleteByReportId(Long reportId);
 }

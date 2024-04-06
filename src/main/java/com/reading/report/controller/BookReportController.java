@@ -19,7 +19,7 @@ public class BookReportController {
     private final BookReportService bookReportService;
 
     @GetMapping("/form")
-    public String getForm(Model model, @RequestParam Long id) {
+    public String getForm(Model model, @RequestParam("id") Long id) {
         model.addAttribute("bookShelfId", id);
         model.addAttribute("bookInfo", bookReportService.bookInfo(id));
         return "report/reportForm";

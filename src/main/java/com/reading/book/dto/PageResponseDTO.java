@@ -22,4 +22,14 @@ public class PageResponseDTO {
         this.nextStart = (page * display) + 1;
         this.next = this.total > this.nextStart;
     }
+
+    public PageResponseDTO() {
+        this.total = 0;
+        this.start = 1;
+        this.display = 0;
+        totalPage = 0;
+        page = 0;
+        nextStart = 0;
+        next = null;
+    }
 }

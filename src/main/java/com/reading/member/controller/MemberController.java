@@ -45,9 +45,11 @@ public class MemberController {
     }
 
     @GetMapping("/kakao/callback")
-    public String token(@RequestParam String code,
+    public String token(@RequestParam("code") String code,
                         HttpServletRequest httpServletRequest,
                         RedirectAttributes redirectAttributes) throws IOException {
+
+        log.info("inini");
 
         KakaoTokenVO requestToken = kakaoLoginAPI.getToken(code);
         KakaoUserVO kakaoUserVO = kakaoLoginAPI.getUserInfo(requestToken.getAccess_token());
@@ -55,8 +57,8 @@ public class MemberController {
         return register(requestToken, kakaoUserVO, httpServletRequest, redirectAttributes);
     }
 
-    public String register(@RequestParam KakaoTokenVO requestToken,
-                           @RequestParam KakaoUserVO kakaoUserVO,
+    public String register(@RequestParam("requestToken") KakaoTokenVO requestToken,
+                           @RequestParam("kakaoUserVO") KakaoUserVO kakaoUserVO,
                            HttpServletRequest httpServletRequest,
                            RedirectAttributes redirectAttributes) throws IOException {
 
@@ -114,6 +116,11 @@ public class MemberController {
 
 
         return "redirect:/member/profile";
+    }
+
+    @GetMapping("/in")
+    public void in() {
+        log.info("gggg");
     }
 
 

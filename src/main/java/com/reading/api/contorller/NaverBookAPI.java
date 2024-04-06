@@ -26,7 +26,7 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
 
     public NaverResultVO searchBookAll(
             @RequestParam("title") final String title,
-            PageRequestDTO pageRequestDTO) throws IOException {
+            @RequestParam("pageRequestDTO") PageRequestDTO pageRequestDTO) throws IOException {
 
         // Spring URI를 생성할때 편리하게 구현할 수 있도록 도와주는 클래스. 자동 encode
         URI uri = UriComponentsBuilder

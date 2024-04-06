@@ -14,6 +14,10 @@
     padding-top: 1.625rem !important;
 }
 
+.nav-size {
+    flex-basis: 87% !important;
+}
+
 .book-img-size {
     margin: 0 4% 0 0;
     width: 30%;

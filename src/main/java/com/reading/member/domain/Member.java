@@ -38,7 +38,7 @@ public class Member {
     @Column(nullable = false)
     private String profile_image_url;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String uuid;
 
     public void addProfile(KakaoUserVO kakaoUserVO) {
