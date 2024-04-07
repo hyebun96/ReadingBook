@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
@@ -39,7 +40,9 @@ public class BookShelfController {
     }
 
 
-    public String postSave(Member member, @PathVariable("isbn") String isbn, RedirectAttributes redirectAttributes) throws IOException {
+    public String postSave(@RequestParam("member") Member member,
+                           @RequestParam("isbn") String isbn,
+                           RedirectAttributes redirectAttributes) throws IOException {
 
         Boolean existBookShlf = bookShelfService.save(isbn, member);
 

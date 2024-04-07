@@ -21,7 +21,7 @@ function list() {
             printList(result.data.searchBookList)
         }
     ).catch( e => {
-        console.log()
+        console.log(e)
     })
 }
 

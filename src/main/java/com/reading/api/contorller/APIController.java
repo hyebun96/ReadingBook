@@ -1,11 +1,19 @@
 package com.reading.api.contorller;
 
 import com.reading.api.service.APIService;
+import com.reading.book.dto.BookDetailResponseDTO;
 import com.reading.book.dto.PageRequestDTO;
+import com.reading.book.dto.PageResponseDTO;
+import com.reading.book.service.BookService;
+import com.reading.bookshelf.service.BookShelfService;
+import com.reading.member.controller.MemberController;
+import com.reading.member.domain.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -14,6 +22,9 @@ import java.util.Map;
 public class APIController {
 
     private final APIService apiService;
+    private final BookService bookService;
+    private final MemberController memberController;
+    private final BookShelfService bookShelfService;
 
     @GetMapping("/search")
     public Map<String, Object> moreSearch(@RequestParam("title") String title, @ModelAttribute PageRequestDTO pageRequestDTO) throws IOException {
@@ -22,4 +33,26 @@ public class APIController {
 
         return map;
     }
+
+    @GetMapping("/save/{isbn}")
+    public Map<String, Object> save(@PathVariable("isbn") String isbn) throws IOException {
+
+        Map<String, Object> map = new HashMap<>();
+        Member member = memberController.getSessionMember();
+
+        bookService.save(isbn);
+        Boolean existBookShlf = bookShelfService.save(isbn, member);
+
+        if(existBookShlf){
+            // modal 창에 값 보내기
+            map.put("message", "이미 내 서재에 등록된 도서 입니다.");
+        } else {
+            map.put("message", "내 서재에 도서가 등록이 되었습니다.");
+        }
+
+        map.put("existMessage", true);
+
+        return map;
+    }
+
 }

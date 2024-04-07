@@ -14,6 +14,10 @@
     padding-top: 1.625rem !important;
 }
 
+.menu .app-brand.demo{
+    height: 11% !important;
+}
+
 .nav-size {
     flex-basis: 87% !important;
 }
@@ -21,4 +25,10 @@
 .logo-img {
     width: 40%;
     margin: -3px;
+}
+
+.kakao_login_img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 100px;
 }

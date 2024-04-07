@@ -54,12 +54,6 @@
     cursor: pointer;
 }
 
-.kakao_login_img {
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 100px;
-}
-
 .login-button {
     float: right;
     background: #353552;

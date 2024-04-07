@@ -13,7 +13,7 @@ import java.util.List;
 public interface BookShelfRepository extends JpaRepository<BookShelf, Long> {
 
 
-    boolean existsByBookAndMember(@Param("book_id") Book book, Member member);
+    boolean existsByBookAndMember(Book book, Member member);
 
     @Query("SELECT count(bs.id) FROM BookShelf bs WHERE bs.member = :member")
     String existsByMember(@Param("member") Member member);
@@ -26,6 +26,6 @@ public interface BookShelfRepository extends JpaRepository<BookShelf, Long> {
             "bs.book.image, " +
             "bs.bookReport.id) " +
             "FROM BookShelf bs WHERE bs.member = :member")
-    List<BookShelfListResponseDTO> findByMember(Member member);
+    List<BookShelfListResponseDTO> findByMember(@Param("member") Member member);
 
 }

@@ -14,6 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <title>도서 검색 디테일</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="/common/css/bookDetail.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/common/js/detail.js"></script>
@@ -49,13 +50,14 @@
                             <span class="fs-tiny" th:text="${book.getDescription()}"></span>
                         </div>
                         <div>
-                            <form th:action="@{/book/save/{isbn}(isbn = ${book.getIsbn()})}" method="post">
-                                <button class="book-button">
+                            <div>
+                                <input type="hidden" name="isbn" id="isbn" th:value="${book.getIsbn()}">
+                                <button class="book-button" th:onclick="save()">
                                      '
                                     <span th:text="${session.member.getNickname()}"/>
                                     '님의 서재에 등록하기
                                 </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
