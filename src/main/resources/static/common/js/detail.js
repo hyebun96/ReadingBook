@@ -1,25 +1,19 @@
-$(function() {
-    const existMessage =  $("#existMessage").val();
+function existMessageModal(existMessage, message, bookshelfId) {
 
-    existMessageModal(existMessage)
-});
-
-function existMessageModal(existMessage) {
-    if(existMessage == ""){
-        modal_off();
-    } else {
-        modal_on()
+    if(existMessage){
+        swal.fire({
+            title:  message + "독후감으로 바로 이동하시겠습니까?",
+            icon: "success",
+            confirmButtonText: "네",
+            cancelButtonText: "아니오",
+            showCancelButton: true,
+            showCloseButton: true
+        }).then((result) => {
+            if(result.isConfirmed){
+                location.href = "/report/form?id=" + bookshelfId
+            }
+        });
     }
-}
-
-function modal_off() {
-    $(".modal-dialog").hide();
-    $(".modal-dialog").css("display", "none");
-}
-
-function modal_on() {
-    $(".modal-dialog").show();
-    $(".modal-dialog").css("display", "block");
 }
 
 function save() {
@@ -28,19 +22,18 @@ function save() {
 
     saveBook(isbn).then(
         result => {
-            document.getElementById("existMessage").value = result.data.existMessage;
-            document.getElementById("message").innerText = result.data.message;
+            const existMessage = result.data.existMessage;
+            const message = result.data.message;
+            const bookshelfId = result.data.bookshelfId;
 
-            existMessageModal(result.data.existMessage)
+            existMessageModal(existMessage, message, bookshelfId)
         }
     ).catch(e => {
         console.log(e)
     })
-
 }
 
 async function saveBook(isbn) {
     const result = await axios.get(`/api/save/`+ isbn)
-
     return result;
 }

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/bookshelf")
@@ -44,15 +45,10 @@ public class BookShelfController {
                            @RequestParam("isbn") String isbn,
                            RedirectAttributes redirectAttributes) throws IOException {
 
-        Boolean existBookShlf = bookShelfService.save(isbn, member);
+        Map<String, Object> map = bookShelfService.save(isbn, member);
 
-        if(existBookShlf){
-            // modal 창에 값 보내기
-            redirectAttributes.addFlashAttribute("message", "이미 내 서재에 등록된 도서 입니다.");
-        } else {
-            redirectAttributes.addFlashAttribute("message", "내 서재에 도서가 등록이 되었습니다.");
-        }
-        redirectAttributes.addFlashAttribute("existMessage", true);
+        redirectAttributes.addFlashAttribute("message", map.get("message"));
+        redirectAttributes.addFlashAttribute("existMessage", map.get("existMessage"));
 
         return "redirect:/book/detail/" + isbn;
     }

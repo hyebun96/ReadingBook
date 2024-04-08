@@ -9,11 +9,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BookShelfRepository extends JpaRepository<BookShelf, Long> {
 
 
     boolean existsByBookAndMember(Book book, Member member);
+
+    Optional<BookShelf>  findBookShelfByBookAndMember(Book book, Member member);
 
     @Query("SELECT count(bs.id) FROM BookShelf bs WHERE bs.member = :member")
     String existsByMember(@Param("member") Member member);

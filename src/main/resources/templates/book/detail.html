@@ -31,21 +31,6 @@
                             <div class="book-title" th:text="${book.getTitle()}"></div>
                             <p class="book-author" th:text="${book.getAuthor()}"></p>
                             <hr>
-                            <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modal" >
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content rounded-4 shadow">
-                                        <div class="modal-header border-bottom-0">
-                                        </div>
-                                        <div class="modal-body py-0">
-                                            <p id="message" name="message" th:text="${message}" th:value="${message}"></p>
-                                            <input type="hidden" id="existMessage" name="existMessage" th:value="${existMessage}">
-                                        </div>
-                                        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                                            <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal" onclick="modal_off()">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <p>&nbsp;📓&nbsp;줄거리</p>
                             <span class="fs-tiny" th:text="${book.getDescription()}"></span>
                         </div>

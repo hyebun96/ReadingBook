@@ -5,6 +5,16 @@ async function moreList(title, total, start) {
 }
 
 function bookDetail(isbn) {
+
+    if(isbn == '') {
+        Swal.fire({
+            icon: "error",
+            title: "죄송합니다.<br> 정보가 유실된 도서입니다.",
+            // footer: '<a href="#">Why do I have this issue?</a>'
+        });
+        return
+    }
+
     location.href='/book/detail/' + isbn;
 }
 

@@ -5,6 +5,7 @@ import com.reading.book.dto.BookDetailResponseDTO;
 import com.reading.book.dto.PageRequestDTO;
 import com.reading.book.dto.PageResponseDTO;
 import com.reading.book.service.BookService;
+import com.reading.bookshelf.domain.BookShelf;
 import com.reading.bookshelf.service.BookShelfService;
 import com.reading.member.controller.MemberController;
 import com.reading.member.domain.Member;
@@ -41,18 +42,8 @@ public class APIController {
         Member member = memberController.getSessionMember();
 
         bookService.save(isbn);
-        Boolean existBookShlf = bookShelfService.save(isbn, member);
 
-        if(existBookShlf){
-            // modal 창에 값 보내기
-            map.put("message", "이미 내 서재에 등록된 도서 입니다.");
-        } else {
-            map.put("message", "내 서재에 도서가 등록이 되었습니다.");
-        }
-
-        map.put("existMessage", true);
-
-        return map;
+        return bookShelfService.save(isbn, member);
     }
 
 }
