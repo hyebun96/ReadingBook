@@ -26,7 +26,7 @@ public class BookReportController {
     }
 
     @GetMapping("/register/{id}")
-    public String getRegister(Model model, @PathVariable Long id) {
+    public String getRegister(Model model, @PathVariable("id") Long id) {
         model.addAttribute("bookShelfId", id);
         model.addAttribute("bookInfo", bookReportService.bookInfo(id));
         model.addAttribute("regRequestDTO", new BookReportResponseDTO());
@@ -64,7 +64,7 @@ public class BookReportController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteReport(@PathVariable Long id) {
+    public String deleteReport(@PathVariable("id") Long id) {
         bookReportService.deleteReport(id);
         return "redirect:/";
     }
