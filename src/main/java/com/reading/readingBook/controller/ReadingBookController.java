@@ -3,6 +3,7 @@ package com.reading.readingBook.controller;
 import com.reading.bookshelf.domain.BookShelfListResponseDTO;
 import com.reading.bookshelf.service.BookShelfService;
 import com.reading.member.domain.Member;
+import com.reading.readingBook.repository.ReadingBookRepositorySupport;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -11,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,9 +21,10 @@ import java.util.List;
 public class ReadingBookController {
 
     private final BookShelfService bookShelfService;
+    private final ReadingBookRepositorySupport readingBookRepositorySupport;
 
     @GetMapping
-    public String index(HttpSession session, Model model) throws IOException {
+    public String index(HttpSession session, Model model) throws Exception {
 
         Member member = (Member) session.getAttribute("member");
         List<BookShelfListResponseDTO> bookShelves = bookShelfService.findByMember(member);
@@ -34,6 +35,8 @@ public class ReadingBookController {
         } else {
             model.addAttribute("bookShelves", bookShelves);
         }
+
+        model.addAttribute("bookChartData", readingBookRepositorySupport.findAllByMonthChartData(member.getId()));
 
         return "index";
     }

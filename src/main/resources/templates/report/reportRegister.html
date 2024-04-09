@@ -33,7 +33,8 @@
                                     <p class="card-text" th:text="${bookInfo.author}"></p>
                                     <p class="card-text" id="averageBox">
                                         <small class="text-muted">
-                                            별점&nbsp;&nbsp;<span id="averageScope"></span>
+                                            <span th:text="${session.member.getNickname()}"></span>님이 주는 별점&nbsp;
+                                            <span id="averageScope"></span>
                                         </small>
                                     </p>
                                     <fieldset class="scope">

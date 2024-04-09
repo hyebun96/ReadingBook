@@ -83,9 +83,9 @@
                                                             aria-expanded="false"
                                                     >2024</button>
                                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                                        <a class="dropdown-item" th:value="3">3개월</a>
-                                                        <a class="dropdown-item" th:value="6">6개월</a>
-                                                        <a class="dropdown-item" th:value="12">12개월</a>
+                                                        <a class="dropdown-item" th:value="3" th:onclick="changeChartData(3)">3개월</a>
+                                                        <a class="dropdown-item" th:value="6" th:onclick="changeChartData(6)">6개월</a>
+                                                        <a class="dropdown-item" th:value="12" th:onclick="changeChartData(12)">12개월</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -108,12 +108,9 @@
 <!-- / Layout wrapper -->
 <script th:inline="javascript">
     function bookReport(shelfId, reportId) {
-        console.log(shelfId)
-        console.log(reportId)
-
         if(reportId == null) {
             location.href='/report/form?id=' + shelfId;
-        }else {
+        } else {
             location.href='/report/view/' + reportId;
         }
     }
@@ -125,5 +122,8 @@
     function login() {
         location.href = '/member/login';
     }
+
+    // chart(올해 독서량)
+    const bookChartData = [[${bookChartData}]];
 </script>
 </html>
