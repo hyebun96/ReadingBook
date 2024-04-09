@@ -8,7 +8,7 @@ group = 'com.reading'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = '21'
 }
 
 configurations {
@@ -54,8 +54,4 @@ dependencies {
     // lombok 테스트 환경 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
 }
