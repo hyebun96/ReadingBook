@@ -109,19 +109,4 @@ public class MemberController {
         return "/member/profile";
     }
 
-    @PostMapping("uploadMemberImg")
-    public String uploadMemberImg() {
-
-
-
-
-        return "redirect:/member/profile";
-    }
-
-    @GetMapping("/in")
-    public void in() {
-        log.info("gggg");
-    }
-
-
 }
