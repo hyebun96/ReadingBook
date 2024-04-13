@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="/common/css/profile.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"/>
+    <script src="/common/js/profile.js"></script>
 </head>
 <body>
 <div class="layout-container bg-body">
@@ -35,8 +37,12 @@
                                     <a class="btn btn-icon edit" onclick="uploadMemberImg()">
                                         <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;회원 이미지 편집
                                     </a>
+                                    <input class="btn" id="uploadProfileDTO" type="file" name="files"/>
                                 </span>
-                                <input hidden id="uploadMemberImg" type="file" name="files" multiple="multiple"/>
+                            </div>
+                            <div style="float:right;">
+                                <p class="p-description">회원이미지를 변경하고 싶다면 위 파일을 선택후
+                                    '회원이미지 편집' 버튼을 클릭하세요.</p>
                             </div>
                             <div class="card-body d-flex flex-column align-items-center">
                                 <img class="card-img card-img-left mb-3" th:src="@{${member.profile_image_url}}" alt="회원프로필이미지"
@@ -51,13 +57,6 @@
         </div>
     </div>
 </div>
-<script>
-    function uploadMemberImg() {
-        let uploadMemberImg = document.getElementById("uploadMemberImg");
-        uploadMemberImg.click();
-
-        location.href = '/member/uploadMemberImg';
-    }
-</script>
+<script src="/common/js/profile.js"></script>
 </body>
 </html>
