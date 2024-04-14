@@ -4,6 +4,9 @@ import com.reading.api.contorller.KakaoLoginAPI;
 import com.reading.api.domain.KakaoTokenVO;
 import com.reading.api.domain.KakaoUserVO;
 import com.reading.member.domain.Member;
+import com.reading.member.domain.MemberImg;
+import com.reading.member.dto.MemberProfileDTO;
+import com.reading.member.repository.MemberImgRepository;
 import com.reading.member.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -31,6 +34,8 @@ public class MemberController {
 
     private final HttpSession session;
 
+    private final MemberImgRepository memberImgRepository;
+
     public Member getSessionMember(){
         return (Member) session.getAttribute("member");
     }
@@ -49,7 +54,6 @@ public class MemberController {
                         HttpServletRequest httpServletRequest,
                         RedirectAttributes redirectAttributes) throws IOException {
 
-        log.info("inini");
 
         KakaoTokenVO requestToken = kakaoLoginAPI.getToken(code);
         KakaoUserVO kakaoUserVO = kakaoLoginAPI.getUserInfo(requestToken.getAccess_token());
@@ -103,8 +107,26 @@ public class MemberController {
 
         Long uuid = Long.valueOf(((Member) session.getAttribute("member")).getUuid());
         Member member = memberService.findByMember(uuid);
+        Boolean existMemberImg = memberImgRepository.existsByMember(member);
+        MemberProfileDTO memberProfileDTO = null;
 
-        model.addAttribute("member", member);
+        if(existMemberImg) {
+            memberProfileDTO = MemberProfileDTO.builder()
+                    .profile_img_url("/common/profile/" + memberImgRepository.getMemberImgByImg(member))
+                    .nickname(member.getNickname())
+                    .uuid(member.getUuid())
+                    .build();
+        } else {
+            memberProfileDTO = MemberProfileDTO.builder()
+                    .profile_img_url(member.getProfile_image_url())
+                    .nickname(member.getNickname())
+                    .uuid(member.getUuid())
+                    .build();
+        }
+
+        log.info(memberProfileDTO.toString());
+
+        model.addAttribute("memberProfileDTO", memberProfileDTO);
 
         return "/member/profile";
     }
