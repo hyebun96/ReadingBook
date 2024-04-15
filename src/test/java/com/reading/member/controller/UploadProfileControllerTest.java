@@ -9,7 +9,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.FileInputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,7 +37,7 @@ class UploadProfileControllerTest {
 
         //When & Then
         mockMvc.perform(
-                multipart("/uploadMemberImg")
+                multipart("/profile/uploadMemberImg")
                         .file(image1)
         ).andExpect(status().isOk());
     }

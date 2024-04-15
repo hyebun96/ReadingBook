@@ -47,6 +47,10 @@ public class Member {
         this.uuid = String.valueOf(kakaoUserVO.getId());
     }
 
+    public void updateImg(String profile_image_url){
+        this.profile_image_url = profile_image_url;
+    }
+
     public void setToken(KakaoTokenVO kakaoTokenVO) {
         this.access_token = kakaoTokenVO.getAccess_token();
         this.id_token = kakaoTokenVO.getId_token();

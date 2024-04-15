@@ -4,10 +4,10 @@ import com.reading.api.contorller.KakaoLoginAPI;
 import com.reading.api.domain.KakaoTokenVO;
 import com.reading.api.domain.KakaoUserVO;
 import com.reading.member.domain.Member;
-import com.reading.member.domain.MemberImg;
 import com.reading.member.dto.MemberProfileDTO;
 import com.reading.member.repository.MemberImgRepository;
 import com.reading.member.service.MemberService;
+import com.reading.member.service.UploadProfileService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,6 +34,9 @@ public class MemberController {
     private final HttpSession session;
 
     private final MemberImgRepository memberImgRepository;
+
+    private final UploadProfileService uploadProfileService;
+
 
     public Member getSessionMember(){
         return (Member) session.getAttribute("member");
@@ -77,6 +79,11 @@ public class MemberController {
         }
 
         HttpSession session = httpServletRequest.getSession();
+
+        if(uploadProfileService.existsByMember(member)){
+            member.updateImg("/common/profile/" + uploadProfileService.findMemberImg(member));
+        }
+
         session.setAttribute("member", member);
         session.setMaxInactiveInterval(60 * 30);
 
