@@ -19,12 +19,12 @@
 
 </head>
 <body>
-<div class="layout-container bg-body">
+<div class="container-content layout-container bg-body">
     <div class="layout-page">
         <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-                <div class="row mb-2">
-                    <div class="col-md-6">
+                <div class="row">
+                    <div class="mb-4">
                         <div class="card">
                             <div class="col-mb-6 ml-2 mt-2">
                                 <a class="btn btn-icon btn-dark d-flex align-items-center justify-content-center" th:href="@{'/'}">
@@ -40,8 +40,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-md-6">
+                <div class="row">
+                    <div class="mb-4">
                         <div class="accordion" id="accordionExample">
                             <div class="card accordion-item active">
                                 <h2 class="accordion-header" id="headingOne">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6" style="padding: 0;">
+                    <div class="mb-4" style="padding: 0;">
                         <div class="d-grid gap-2 col-lg-12 mx-auto">
                             <a class="btn btn-dark btn-lg" th:href="@{'/report/register/' + ${bookShelfId}}">
                                 <i class="fa-solid fa-pen-nib" style="color: #ffffff;"></i>&nbsp;&nbsp;독서노트등록
