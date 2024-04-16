@@ -16,6 +16,14 @@
 
     <link th:href="@{/common/css/starScope.css}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        textarea[readonly] {
+            outline: none;
+            cursor: default;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
 <div class="layout-container bg-body">
@@ -29,7 +37,7 @@
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <img class="card-img card-img-left mb-3" th:src="@{${bookInfo.image}}" alt="도서 표지"
                                          style="height: 50% !important; width: 50% !important;"/>
-                                    <p class="card-title" th:text="${bookInfo.title}" style="font-size: 17px;"></p>
+                                    <p class="card-title" th:text="${bookInfo.title}" style="font-size: 17px; font-weight: bold;"></p>
                                     <p class="card-text" th:text="${bookInfo.author}"></p>
                                     <p class="card-text" id="averageBox">
                                         <small class="text-muted">
@@ -93,16 +101,16 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="mt-4">
-                                        <label class="form-label">줄거리 노트</label>
-                                        <p class="card-text" th:text="${report.review}"></p>
+                                        <label class="form-label">줄거리</label>
+                                        <textarea class="form-control" rows="5" th:text="${report.review}" readonly></textarea>
                                     </div>
                                     <div class="mt-4">
-                                        <label class="form-label">느낀점 노트</label>
-                                        <p class="card-text" th:text="${report.impression}"></p>
+                                        <label class="form-label">느낀점</label>
+                                        <textarea class="form-control" rows="5" th:text="${report.impression}" readonly></textarea>
                                     </div>
                                     <div class="mt-4">
-                                        <label class="form-label">삶의 적용 노트</label>
-                                        <p class="card-text" th:text="${report.lifeContent}"></p>
+                                        <label class="form-label">삶의 적용</label>
+                                        <textarea class="form-control" rows="5" th:text="${report.lifeContent}" readonly></textarea>
                                     </div>
                                 </div>
                             </div>
