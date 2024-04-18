@@ -32,3 +32,11 @@
     height: 100% !important;
     border-radius: 100px;
 }
+
+.search-size {
+    width: auto !important;
+}
+
+.search-size2 {
+    width: 100% !important;
+}
