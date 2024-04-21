@@ -29,6 +29,8 @@
                         <div class="card book">
                             <img class="book-img" th:src="${book.getImage()}" alt="도서 표지"/>
                             <div class="book-title" th:text="${book.getTitle()}"></div>
+                            <span th:if="${aveRating}" class="book-aveRating">읽은 사람들의 평균 별점</span>
+                            <span th:if="${aveRating}" class="book-aveRating" th:text="${aveRating}"></span>
                             <p class="book-author" th:text="${book.getAuthor()}"></p>
                             <hr>
                             <p>&nbsp;📓&nbsp;줄거리</p>

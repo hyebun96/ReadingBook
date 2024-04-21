@@ -45,3 +45,7 @@
 .modal-dialog {
     display: none;
 }
+
+.book-aveRating{
+    font-size: small;
+}

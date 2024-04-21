@@ -2,10 +2,10 @@ package com.reading.book.controller;
 
 import com.reading.api.service.APIService;
 import com.reading.book.dto.BookDetailResponseDTO;
-import com.reading.book.dto.BookListResponseDTO;
 import com.reading.book.dto.PageRequestDTO;
 import com.reading.book.dto.PageResponseDTO;
 import com.reading.book.service.BookService;
+import com.reading.scope.service.BookScopeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -24,6 +23,8 @@ public class BookController {
 
     private final APIService apiService;
     private final BookService bookService;
+
+    private final BookScopeService bookScopeService;
 
     @GetMapping("/search")
     public String search(@RequestParam(name = "title", required=true, defaultValue = "") String title, Model model) throws IOException {
@@ -44,9 +45,15 @@ public class BookController {
     }
 
     @GetMapping("/detail/{isbn}")
-    public String searchDetail(@PathVariable("isbn") String isbn, Model model) throws IOException {
+    public String searchDetail(@PathVariable("isbn") String isbn, Model model) throws Exception {
 
         BookDetailResponseDTO bookDetailResponseDTO = bookService.searchDetail(isbn);
+        if(bookScopeService.existsBookScope(isbn)){
+            double aveRating = bookScopeService.MemberAverageRatingSearch(isbn);
+            model.addAttribute("aveRating", aveRating);
+            log.info("---->" + aveRating);
+        }
+
 
         model.addAttribute("book", bookDetailResponseDTO);
 
