@@ -17,7 +17,7 @@
 </head>
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
-    <div class="container-content layout-container bg-body">
+    <div class="container-content layout-container bg-body background-height">
         <!-- Layout container -->
         <div class="layout-page">
 
@@ -27,15 +27,14 @@
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="row">
                         <div class="layout-logo">
-
+                            <img class="logo-img" src="/common/img/logo/logo_login.png">
                         </div>
-                        <div class="kakao_login_img">
-                            <img th:onclick="login([[${CLIENT_ID}]], [[${REDIRECT_URI}]])"  src="/common/img/kakao_login_medium_wide.png">
-                        </div>
+                    </div>
+                    <div class="kakao_login_img">
+                        <img th:onclick="login([[${CLIENT_ID}]], [[${REDIRECT_URI}]])"  src="/common/img/kakao_login_medium_wide.png">
                     </div>
                 </div>
                 <!-- / Content -->
-                <div class="content-backdrop fade"></div>
             </div>
             <!-- Content wrapper -->
         </div>

@@ -1,17 +1,31 @@
 .container-content {
-    min-height: 87vh !important;
+    min-height: 100vh !important
+}
+
+.row {
+    height: 70%;
+}
+
+.background-height {
+    height: 80% !important
 }
 
 .layout-logo {
-    height: 80%;
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
 .kakao_login_img {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    display: block;
+}
+
+.logo-img {
+    width: 70% !important;
 }
 
 .kakao_login_img img {
-
+    height: 6%;
+    display: block;
+    margin: auto;
 }

@@ -1,3 +1,13 @@
+.main-logo {
+    width: 100%;
+    padding: 4%;
+    text-align-last: center;
+}
+
+.main-logo .logo{
+    width: 60%;
+}
+
 .container-header {
     display: flex;
     width: 100%;
@@ -6,8 +16,26 @@
     align-items: stretch;
 }
 
-.container-content {
-    min-height: 87vh !important;
+.container-content, .content-height{
+    min-height: 75vh !important;
+    background: #a4b999 !important;
+}
+
+.content-wrapper {
+    background-image: url("../img/background_content.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.card {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.card .h6 {
+    color: black !important;
+    font-weight: 700;
 }
 
 .container-p-y-u {
@@ -15,22 +43,20 @@
 }
 
 .menu .app-brand.demo{
-    height: 11% !important;
+    height: 20% !important;
 }
 
 .nav-size {
-    flex-basis: 87% !important;
+    flex-basis: 80% !important;
 }
 
 .logo-img {
     width: 40%;
-    margin: -3px;
 }
 
-.kakao_login_img {
+.profile_img {
     width: 100% !important;
-    height: 100% !important;
-    border-radius: 100px;
+    border-radius: 50%;
 }
 
 .search-size {
@@ -39,4 +65,32 @@
 
 .search-size2 {
     width: 100% !important;
+}
+
+.background-color {
+    background: #a4b999 !important;
+}
+
+<!-- footer -->
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 6vh !important;
+    background: #703b11 !important;
+
+}
+
+.footer .background{
+    font-size: larger;
+    background: #f1e5cf;
+    min-height: 6vh !important;
+}
+
+.footer span {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    padding-top: 4%;
+    color: #703b11;
 }
