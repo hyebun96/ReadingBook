@@ -47,6 +47,18 @@
     color: #f73c32 !important;
 }
 
+.accordion-body {
+    ont-size: 100% !important;
+    padding-top: 3% !important;
+    background: white !important;
+}
+
+.card-header h5{
+    color: black !important;
+    font-weight: bold;
+    font-size: medium;
+}
+
 .detail-page label {
     pointer-events: none;
 }
@@ -58,4 +70,31 @@
 
 .detail-page label:hover, .detail-page label:hover ~ label {
     color: #ddd !important;
+}
+
+.background-beige {
+    background: #f0e6cf !important;
+}
+
+.btn-brown {
+    background: #703b11 !important;
+    font-weight: bold;
+    color: white !important;
+    font-size: medium;
+}
+
+.btn-size-80 {
+    width: 80px;
+}
+
+.form-control {
+    border-radius: 10px !important;
+    background: white;
+    padding: 4%;
+}
+
+.form-label {
+    font-size: medium;
+    font-weight: 700;
+    padding-left: 3%;
 }

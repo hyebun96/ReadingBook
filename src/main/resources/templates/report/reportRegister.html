@@ -113,17 +113,17 @@
                     <div class="row">
                         <div class="mb-4">
                             <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
+                                <div class="card-header d-flex justify-content-between align-items-center background-beige">
                                     <h5><i class='bx bx-book-reader'></i>&nbsp;&nbsp;나의 독서 기록</h5>
-                                    <button type="submit" class="btn btn-dark">
-                                        <i class="fa-solid fa-check"></i>&nbsp;&nbsp;완료
+                                    <button type="submit" class="btn btn-brown btn-size-80">
+                                        <i class="fa-solid fa-check "></i>&nbsp;&nbsp;완료
                                     </button>
 
                                     <input type="hidden" name="memberId" th:value="1">
                                     <input type="hidden" name="id" th:value="${bookShelfId}">
                                     <input type="hidden" name="isbn" th:value="${bookInfo.isbn}">
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body background-beige">
                                     <div class="mt-4">
                                         <textarea class="form-control" rows="5" th:field="*{review}"
                                                   placeholder="책의 줄거리를 작성해보세요."

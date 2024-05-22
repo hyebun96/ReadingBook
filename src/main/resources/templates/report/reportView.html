@@ -93,13 +93,13 @@
                     <div class="row">
                         <div class="mb-4">
                             <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
+                                <div class="card-header d-flex justify-content-between align-items-center background-beige">
                                     <h5><i class='bx bx-book-reader'></i>&nbsp;&nbsp;나의 독서 기록</h5>
-                                    <a th:href="@{/report/modify/{id}(id = ${report.id})}" class="btn btn-dark">
-                                        <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;편집
+                                    <a th:href="@{/report/modify/{id}(id = ${report.id})}" class="btn btn-brown btn-size-80">
+                                        <i class="fa-regular fa-pen-to-square "></i>&nbsp;&nbsp;편집
                                     </a>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body background-beige">
                                     <div class="mt-4">
                                         <label class="form-label">줄거리</label>
                                         <textarea class="form-control" rows="5" th:text="${report.review}" readonly></textarea>

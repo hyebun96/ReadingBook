@@ -13,7 +13,6 @@
 <head>
     <meta charset="UTF-8">
     <title>나의 독서 기록</title>
-
     <link th:href="@{/common/css/starScope.css}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -27,7 +26,7 @@
                     <div class="mb-4">
                         <div class="card">
                             <div class="col-mb-6 ml-2 mt-2">
-                                <a class="btn btn-icon btn-dark d-flex align-items-center justify-content-center" th:href="@{'/'}">
+                                <a class="btn btn-icon btn-brown d-flex align-items-center justify-content-center" th:href="@{'/'}">
                                     <i class="fas fa-home" style="color: #ffffff;"></i>
                                 </a>
                             </div>
@@ -71,7 +70,7 @@
                 <div class="row">
                     <div class="mb-4" style="padding: 0;">
                         <div class="d-grid gap-2 col-lg-12 mx-auto">
-                            <a class="btn btn-dark btn-lg" th:href="@{'/report/register/' + ${bookShelfId}}">
+                            <a class="btn btn-brown btn-lg" th:href="@{'/report/register/' + ${bookShelfId}}">
                                 <i class="fa-solid fa-pen-nib" style="color: #ffffff;"></i>&nbsp;&nbsp;독서노트등록
                             </a>
                         </div>
