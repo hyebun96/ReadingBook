@@ -8,11 +8,11 @@
 }
 
 .book-img {
-    width: 117px;
+    width: 37%;
     height: 176px;
     display: inline;
     float: left;
-    margin-right: 20px;
+    margin-right: 6%;
     clear: both;
 }
 
@@ -22,6 +22,14 @@
 
 .book-author {
     height: 50px;
+}
+
+.description {
+    font-weight: bold;
+}
+
+.fs-tiny {
+    font-size: 100% !important;
 }
 
 .book-button {
@@ -41,6 +49,10 @@
     position: absolute !important;
     height: 300px;
     top: 23%;
+}
+
+.swal2-title {
+    font-size: medium;
 }
 
 .modal-dialog {

@@ -2,7 +2,7 @@ function existMessageModal(existMessage, message, bookshelfId) {
 
     if(existMessage){
         swal.fire({
-            title:  message + "독후감으로 바로 이동하시겠습니까?",
+            title:  message + "<br>독후감으로 바로 이동하시겠습니까?",
             icon: "success",
             confirmButtonText: "네",
             cancelButtonText: "아니오",

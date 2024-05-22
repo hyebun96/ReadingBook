@@ -2,6 +2,10 @@
     min-height: 87vh !important;
 }
 
+.container-content .h6 {
+    color: black !important;
+}
+
 .book-img {
     display: block !important;
     cursor: pointer;
@@ -9,13 +13,13 @@
 
 .book-img-size {
     margin: 2% 1% 4% 1%;
-    width: 117px;
+    width: 30%;
     height: 176px;
 }
 
 .book-button {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 2%;
     float: right;
     background: #703b11 !important;
     color: white;
