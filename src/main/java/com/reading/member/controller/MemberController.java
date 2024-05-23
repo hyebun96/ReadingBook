@@ -123,12 +123,14 @@ public class MemberController {
                     .nickname(member.getNickname())
                     .uuid(member.getUuid())
                     .build();
+            model.addAttribute("setting_kakao_img", false);
         } else {
             memberProfileDTO = MemberProfileDTO.builder()
                     .profile_img_url(member.getProfile_image_url())
                     .nickname(member.getNickname())
                     .uuid(member.getUuid())
                     .build();
+            model.addAttribute("setting_kakao_img", true);
         }
 
         log.info(memberProfileDTO.toString());

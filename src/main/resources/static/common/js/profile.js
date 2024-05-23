@@ -64,7 +64,7 @@ async function returnMemberImg() {
 
     Swal.fire({
         icon: "question",
-        title: "프로필 이미지를 기존 이미지(카카오 프로필) 되돌리시겠습니까?",
+        title: "현재 프로필 이미지를 기존 이미지(카카오 프로필)<br> 되돌리시겠습니까?",
         confirmButtonText: "네",
         cancelButtonText: "아니오",
         showCancelButton: true,
@@ -83,9 +83,7 @@ async function returnMemberImg() {
                             confirmButtonText: "확인"
                         }).then((result) => {
                             if(result.isConfirmed){
-                                sleep(5000);
-
-                                location.href = "/"
+                                location.href = "/member/profile"
                             }
                         });
                     }

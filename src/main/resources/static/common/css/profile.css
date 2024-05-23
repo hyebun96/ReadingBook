@@ -2,40 +2,64 @@
     display: flex;
 }
 
+.return {
+    width: 80%;
+    float: right;
+}
+
+.card-body {
+    background: #f0e6cf !important;
+    border-radius: 8px;
+    margin-top: 3%;
+}
+
+.card-img {
+    width: 70% !important;
+}
+
+.btn {
+    color: #fff !important;
+    background-color: #703b11 !important;
+    border-color: #703b11 !important;
+}
+
 .btn-home {
     display: flex;
     width: 20%;
 }
 
+.profile-return{
+    display: contents;
+}
+
+.btn-return {
+    margin: 1%;
+    width: 98%;
+    border-radius: 10px;
+    font-size: smaller;
+}
+
+.profile-change{
+    margin: auto;
+    display: flex;
+}
+
+.btn-file {
+    margin: 1%;
+    width: 65%;
+    border-radius: 10px;
+    font-size: smaller;
+}
+
 .btn-edit {
-    width: 80%;
-    float: right;
-}
-
-.btn-edit .edit{
-    float: right;
-    width: 53%;
-    margin-right: 2%;
-    color: white;
-    font-weight: bold;
-}
-
-#uploadProfileDTO {
-    float: right;
-    margin-right: 2%;
-    margin-top: -1px;
-    width: 33%;
+    margin: 1%;
+    width: 30%;
+    border-radius: 10px;
+    font-size: smaller;
 }
 
 .p-description {
-    float: right;
-    text-align: right;
-    margin: 1% 3% 0 0;
-    width: 52%;
-}
-
-.btn {
-    color: #fff !important;
-    background-color: #343a40 !important;
-    border-color: #343a40 !important;
+    text-align: left;
+    margin: 3%;
+    font-size: small;
 }
