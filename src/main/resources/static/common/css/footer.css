@@ -1,0 +1,21 @@
+.footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    min-height: 6vh !important;
+    background: #703b11 !important;
+}
+
+.footer .background{
+    font-size: larger;
+    background: #f1e5cf;
+    min-height: 6vh;
+}
+
+.footer span {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    padding-top: 4%;
+    color: #703b11;
+}

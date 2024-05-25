@@ -2,13 +2,16 @@
 <html lang="ko"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:fragment="fragment-footer">
-
-      <footer class="bg-body footer"  th:if="${session.member}">
-            <div class="background">
-                <a href="#"><span><i class="fa-solid fa-user"></i></span></a>
-                <a href="/"><span><i class="fa-solid fa-house"></i></span></a>
-                <a href="#"><span><i class="fa-solid fa-arrow-left"></i></span></a>
-            </div>
-      </footer>
-
+<head>
+    <link rel="stylesheet" href="/common/css/footer.css">
+</head>
+<body>
+    <footer class="footer"  th:if="${session.member}">
+        <div class="background">
+            <a href="#"><span><i class="fa-solid fa-user"></i></span></a>
+            <a href="/"><span><i class="fa-solid fa-house"></i></span></a>
+            <a href="#"><span><i class="fa-solid fa-arrow-left"></i></span></a>
+        </div>
+    </footer>
+</body>
 </html>
