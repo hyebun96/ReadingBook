@@ -6,26 +6,23 @@
     height: 70%;
 }
 
-.background-height {
-    height: 80% !important
-}
-
-.layout-logo {
+.logo_section {
     display: block;
     margin: auto;
     text-align: center;
 }
 
-.kakao_login_img {
-    display: block;
-}
-
-.logo-img {
+.logo {
+    margin-top: 7%;
     width: 70% !important;
 }
 
-.kakao_login_img img {
+.btn-kakao-login {
+    display: block;
+}
+
+.btn-kakao-login img {
     height: 6%;
     display: block;
-    margin: auto;
+    margin: 3% auto;
 }

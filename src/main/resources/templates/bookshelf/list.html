@@ -14,6 +14,7 @@
 <head>
     <title>내 서재</title>
     <link rel="stylesheet" href="/common/css/bookSearch.css">
+    <link rel="stylesheet" href="/common/css/common.css">
 </head>
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
@@ -29,12 +30,12 @@
                             <div class="h6 fw-bold">&nbsp📓&nbsp'
                                 <span th:text="${session.member.getNickname()}"/>
                                 '님 책장에 저장된 리스트</div>
-                            <div class="card book-img">
+                            <div class="card book-list">
                                 <img class="book-img-size"
-                                     th:each="bookShelfList: ${bookShelfList}"
-                                     th:src="${bookShelfList.getImage()}"
-                                     th:value="${bookShelfList.getIsbn()}"
-                                     th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
+                                 th:each="bookShelfList: ${bookShelfList}"
+                                 th:src="${bookShelfList.getImage()}"
+                                 th:value="${bookShelfList.getIsbn()}"
+                                 th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
                             </div>
                         </div>
                     </div>

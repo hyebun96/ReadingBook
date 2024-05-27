@@ -14,11 +14,12 @@
 <head>
     <meta charset="UTF-8">
     <title>도서 검색 디테일</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/common/css/swal2.css" />
     <link rel="stylesheet" href="/common/css/bookDetail.css">
+    <link rel="stylesheet" href="/common/css/common.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/common/js/detail.js"></script>
-    <link rel="stylesheet" href="/common/css/swal2.css" />
 </head>
 
 <div class="container-content layout-container bg-body">
@@ -27,20 +28,23 @@
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div class="row">
                     <div class="mb-4">
-                        <div class="card book">
+                        <div class="card book-info">
                             <img class="book-img" th:src="${book.getImage()}" alt="도서 표지"/>
                             <div class="book-title" th:text="${book.getTitle()}"></div>
+                            <!--별점추가 -->
                             <span th:if="${aveRating}" class="book-aveRating">읽은 사람들의 평균 별점</span>
                             <span th:if="${aveRating}" class="book-aveRating" th:text="${aveRating}"></span>
                             <p class="book-author" th:text="${book.getAuthor()}"></p>
                             <hr>
-                            <p class="description">&nbsp;📓&nbsp;줄거리</p>
-                            <span class="fs-tiny" th:text="${book.getDescription()}"></span>
+                            <div class="fs-tiny">
+                                <p class="book-description">&nbsp;📓&nbsp;줄거리</p>
+                                <div th:text="${book.getDescription()}"></div>
+                            </div>
                         </div>
                         <div>
                             <div>
                                 <input type="hidden" name="isbn" id="isbn" th:value="${book.getIsbn()}">
-                                <button class="book-button" th:onclick="save()">
+                                <button class="btn-register" th:onclick="save()">
                                      '
                                     <span th:text="${session.member.getNickname()}"/>
                                     '님의 서재에 등록하기

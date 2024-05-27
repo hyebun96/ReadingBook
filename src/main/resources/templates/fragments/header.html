@@ -62,7 +62,7 @@
             <div class="app-brand demo">
                 <a href="/" class="app-brand-link">
                   <span class="app-brand-logo demo">
-                      <img class="logo-img" src="/common/img/logo/logo.png">
+                      <img class="nav-logo" src="/common/img/logo/logo.png">
                   </span>
                 </a>
                 <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -200,9 +200,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bx bx-cog me-2"></i>
-                                        <span class="align-middle">Settings</span>
+                                    <a class="dropdown-item" onclick="info()">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                        <span class="align-middle">&nbsp;책속으로</span>
                                     </a>
                                 </li>
                                 <li>
@@ -225,6 +225,10 @@
     <script>
         function profile() {
             location.href='/member/profile';
+        }
+
+        function info() {
+            location.href='/intobooks/info';
         }
     </script>
 </div>

@@ -13,121 +13,128 @@
 <head>
     <title>도서</title>
     <link rel="stylesheet" href="/common/css/index.css"/>
-</head>
-<!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar content-height" layout:fragment="contents">
-    <div class="container-content layout-container bg-body content-height">
-        <!-- Layout container -->
-        <div class="layout-page content-height">
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
-                <!-- Content -->
-                <div class="container-xxl flex-grow-1 container-p-y-u">
-                    <div class="row">
-                        <div class="mb-4">
-                            <div class="card">
-                                <div class="h6">&nbsp;☁️&nbsp;책 속엔 답이 있지, Swipe up to level up</div>
-                                <div class="d-flex align-items-end row">
-                                    <div class="col-sm-12">
-                                        <div class="card-body">
-                                            <img class="today-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdmODlxam05bmJ4YTZjOTRtODhreWI1aDFvYXR2dnVlcGNzdjd3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NFA61GS9qKZ68/giphy.gif">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-4 order-1">
-                            <div class="row">
-                                <div class="mb-4">
-                                    <div class="card">
-                                        <div class="h6">
-                                            ☁️&nbsp;&nbsp;'
-                                            <span th:text="${session.member.getNickname()}"></span>
-                                            '님의 책장
-                                            <button class="list_plus mouse_pointer" th:onclick="bookShelfList()"><i class="fa-solid fa-plus"></i></button>
-                                        </div>
-                                        <div class="card-body box">
-                                            <div class="slider" th:if="${bookShelves != null}">
-                                                <img class="slide book-img-size mouse_pointer"
-                                                     th:each="bookShelf: ${bookShelves}"
-                                                     th:src="${bookShelf.getImage()}"
-                                                     th:value="${bookShelf.getIsbn()}"
-                                                     th:onclick="bookReport([[${bookShelf.getId()}]], [[${bookShelf.getReportId()}]])">
-                                            </div>
-                                            <div th:if="${message != null}" th:text="${message}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Total Revenue -->
-<!--                        의<div class="col-lg-6 order-3 order-lg-6 mb-4">-->
-<!--                            <div class="card">-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <h6 class="card-header m-0 me-2 pb-3">&nbsp;📓&nbsp;올해의 독서량</h6>-->
-<!--                                        <div id="totalRevenueChart" class="px-2"></div>-->
-<!--                                        <div style="color: #6A6B6D; font-size: 13px; padding: 10px 30px 0 20px; float: right;">* 독서노트를 등록한 도서만 보여집니다</div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-4">-->
-<!--                                        <div class="card-body">-->
-<!--                                            <div class="text-center">-->
-<!--                                                <div class="dropdown">-->
-<!--                                                    <button-->
-<!--                                                            class="btn btn-sm btn-outline-primary dropdown-toggle"-->
-<!--                                                            type="button"-->
-<!--                                                            id="growthReportId"-->
-<!--                                                            data-bs-toggle="dropdown"-->
-<!--                                                            aria-haspopup="true"-->
-<!--                                                            aria-expanded="false"-->
-<!--                                                    >2024</button>-->
-<!--                                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">-->
-<!--                                                        <a class="dropdown-item" th:onclick="changeChartData(3)">3개월</a>-->
-<!--                                                        <a class="dropdown-item" th:onclick="changeChartData(6)">6개월</a>-->
-<!--                                                        <a class="dropdown-item" th:onclick="changeChartData(12)">12개월</a>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                    </div>
-                </div>
-                <!-- / Content -->
-            </div>
-            <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-    </div>
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-
-</div>
-<!-- / Layout wrapper -->
-<th:block layout:fragment="custom-javascript">
-    <script th:inline="javascript">
-        function bookReport(shelfId, reportId) {
-            if(reportId == null) {
-                location.href='/report/form?id=' + shelfId;
-            } else {
-                location.href='/report/view/' + reportId;
-            }
-        }
-
-        function bookShelfList() {
-            location.href = '/bookshelf/list';
-        }
-
-        function login() {
-            location.href = '/member/login';
-        }
-
-        // chart(올해 독서량)
-        const bookChartData = [[${bookChartData}]];
-    </script>
+    <link rel="stylesheet" href="/common/css/common.css"/>
     <script src="/bootstrap/assets/js/dashboards-analytics.js"></script>
-</th:block>
+</head>
+<body class="body">
+    `<!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar content-height" layout:fragment="contents">
+        <div class="container-content layout-container bg-body content-height">
+            <!-- Layout container -->
+            <div class="layout-page content-height">
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+                    <div class="container-xxl flex-grow-1 container-p-y-u">
+                        <div class="row">
+                            <div class="mb-4">
+                                <div class="card">
+                                    <div class="h6">&nbsp;☁️&nbsp;책 속엔 답이 있지, Swipe up to level up</div>
+                                    <div class="d-flex align-items-end row">
+                                        <div class="col-sm-12">
+                                            <div class="card-body">
+                                                <img class="today-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdmODlxam05bmJ4YTZjOTRtODhreWI1aDFvYXR2dnVlcGNzdjd3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NFA61GS9qKZ68/giphy.gif">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-4 order-1">
+                                <div class="row">
+                                    <div class="mb-4">
+                                        <div class="card">
+                                            <div class="h6">
+                                                ☁️&nbsp;&nbsp;'
+                                                <span th:text="${session.member.getNickname()}"/>
+                                                '님의 책장
+                                                <button class="btn-plus mouse_pointer" th:onclick="bookShelfList()">
+                                                    <i class="fa-solid fa-plus"></i>
+                                                    책장 펼쳐보기
+                                                </button>
+                                            </div>
+                                            <div class="card-body box">
+                                                <div class="slider" th:if="${bookShelves != null}">
+                                                    <img class="slide mouse_pointer"
+                                                         th:each="bookShelf: ${bookShelves}"
+                                                         th:src="${bookShelf.getImage()}"
+                                                         th:value="${bookShelf.getIsbn()}"
+                                                         th:onclick="bookReport([[${bookShelf.getId()}]], [[${bookShelf.getReportId()}]])">
+                                                </div>
+                                                <div class="message" th:if="${message != null}" th:text="${message}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Total Revenue -->
+    <!--                        의<div class="col-lg-6 order-3 order-lg-6 mb-4">-->
+    <!--                            <div class="card">-->
+    <!--                                <div class="row">-->
+    <!--                                    <div class="col-md-12">-->
+    <!--                                        <h6 class="card-header m-0 me-2 pb-3">&nbsp;📓&nbsp;올해의 독서량</h6>-->
+    <!--                                        <div id="totalRevenueChart" class="px-2"></div>-->
+    <!--                                        <div style="color: #6A6B6D; font-size: 13px; padding: 10px 30px 0 20px; float: right;">* 독서노트를 등록한 도서만 보여집니다</div>-->
+    <!--                                    </div>-->
+    <!--                                    <div class="col-md-4">-->
+    <!--                                        <div class="card-body">-->
+    <!--                                            <div class="text-center">-->
+    <!--                                                <div class="dropdown">-->
+    <!--                                                    <button-->
+    <!--                                                            class="btn btn-sm btn-outline-primary dropdown-toggle"-->
+    <!--                                                            type="button"-->
+    <!--                                                            id="growthReportId"-->
+    <!--                                                            data-bs-toggle="dropdown"-->
+    <!--                                                            aria-haspopup="true"-->
+    <!--                                                            aria-expanded="false"-->
+    <!--                                                    >2024</button>-->
+    <!--                                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">-->
+    <!--                                                        <a class="dropdown-item" th:onclick="changeChartData(3)">3개월</a>-->
+    <!--                                                        <a class="dropdown-item" th:onclick="changeChartData(6)">6개월</a>-->
+    <!--                                                        <a class="dropdown-item" th:onclick="changeChartData(12)">12개월</a>-->
+    <!--                                                    </div>-->
+    <!--                                                </div>-->
+    <!--                                            </div>-->
+    <!--                                        </div>-->
+    <!--                                    </div>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+                        </div>
+                    </div>
+                    <!-- / Content -->
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- / Layout page -->
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+
+    </div>
+    <!-- / Layout wrapper -->
+    <th:block layout:fragment="custom-javascript">
+        <script th:inline="javascript">
+            function bookReport(shelfId, reportId) {
+                if(reportId == null) {
+                    location.href='/report/form?id=' + shelfId;
+                } else {
+                    location.href='/report/view/' + reportId;
+                }
+            }
+
+            function bookShelfList() {
+                location.href = '/bookshelf/list';
+            }
+
+            function login() {
+                location.href = '/member/login';
+            }
+
+            // chart(올해 독서량)
+            const bookChartData = [[${bookChartData}]];
+        </script>
+        <script src="/bootstrap/assets/js/dashboards-analytics.js"></script>
+    </th:block>
+</body>
 </html>

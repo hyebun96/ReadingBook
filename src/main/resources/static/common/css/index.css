@@ -1,35 +1,5 @@
-.container-header {
-    display: flex;
-    width: 100%;
-    display: flex;
-    flex: 1 1 auto;
-    align-items: stretch;
-}
-
-.container-content {
-    min-height: 87vh !important;
-}
-
-.container-p-y-u {
-    padding-top: 1.625rem !important;
-}
-
-.nav-size {
-    flex-basis: 87% !important;
-}
-
-.book-img-size {
-    margin: 0 4% 0 0;
-    width: 30%;
-}
-
-.search-100 {
-    width: 100%;
-}
-
 .box {
     position:relative;
-    overflow:hidden;
     /* 가로 스크롤 */
     overflow: auto;
     white-space: nowrap;
@@ -42,36 +12,19 @@
 }
 
 .slide {
-    width: 30% !important
+    width: 30% !important;
+    margin: 0 4% 0 0
 }
 
-.list_plus {
+.btn-plus {
     float: right;
+    width: 34%;
     margin-right: 2%;
-    padding-right: 1%;
+    padding: 1%;
+    color: white;
+    font-size: small;
+    border-radius: 7px;
     background: #703b11;
-    border-radius: 41%;
-    color: white;
-}
-
-.message {
-
-}
-
-.mouse_pointer {
-    cursor: pointer;
-}
-
-.login-button {
-    float: right;
-    background: #703b11 !important;
-    color: white;
-    margin: 2% 0%;
-    width: 20%;
-    height: 35px;
-    border-radius: 10px;
-    font-size: smaller;
-    font-weight: bold;
 }
 
 .today-img {

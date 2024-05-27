@@ -13,6 +13,7 @@
 >
 <head>
     <title>로그인</title>
+    <link rel="stylesheet" href="/common/css/common.css">
     <link rel="stylesheet" href="/common/css/login.css"/>
 </head>
 <!-- Layout wrapper -->
@@ -26,11 +27,11 @@
                 <!-- Content -->
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="row">
-                        <div class="layout-logo">
-                            <img class="logo-img" src="/common/img/logo/logo_login.png">
+                        <div class="logo_section">
+                            <img class="logo" src="/common/img/logo/logo_login.png">
                         </div>
                     </div>
-                    <div class="kakao_login_img">
+                    <div class="btn-kakao-login">
                         <img th:onclick="login([[${CLIENT_ID}]], [[${REDIRECT_URI}]])"  src="/common/img/kakao_login_medium_wide.png">
                     </div>
                 </div>

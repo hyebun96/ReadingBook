@@ -13,14 +13,14 @@
 <head>
     <meta charset="UTF-8">
     <title>내 프로필</title>
-
     <link rel="stylesheet" href="/common/css/profile.css" />
     <link rel="stylesheet" href="/common/css/swal2.css" />
+    <link rel="stylesheet" href="/common/css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"/>
     <script src="/common/js/profile.js"></script>
 </head>
-<body>
+<body class='body'>
 <div class="layout-container bg-body content-height container-content">
     <div class="layout-page">
         <div class="content-wrapper">
@@ -35,7 +35,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <div class="card-body d-flex flex-column align-items-center">
+                            <div class="card-body d-flex flex-column align-items-center background-beige">
                                 <img id="memberImg"
                                         class="card-img card-img-left mb-3" th:src="@{${memberProfileDTO.profile_img_url}}" alt="회원프로필이미지"/>
                                 <p class="card-title" th:text="${memberProfileDTO.uuid}" style="font-size: 17px;"></p>
@@ -59,7 +59,7 @@
                                     변경하고 싶은 파일을 선택하고 '편집하기' 버튼을 클릭하세요.
                                 </p>
                                 <p class="p-description" th:if="${setting_kakao_img} == false">
-                                    회원프로필을 기존 카카오 프로필로 변경하고 싶다면 <br>
+                                    회원프로필을 기존 카카오 프로필로 되돌리고 싶다면 <br>
                                     '카카오프로필로 되돌리기' 버튼을 클릭하세요.
                                 </p>
                             </div>

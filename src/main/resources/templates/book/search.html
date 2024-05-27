@@ -14,6 +14,7 @@
 <head>
     <title>도서 검색</title>
     <link rel="stylesheet" href="/common/css/bookSearch.css">
+    <link rel="stylesheet" href="/common/css/common.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/common/js/search.js"></script>
 </head>
@@ -38,7 +39,7 @@
                                         <span th:text="${title}"/>' 에 대한 검색결과입니다.
                                     </span>
                                 </div>
-                                <div class="card book-img" id="book-img">
+                                <div class="card book-list" id="book-img">
                                     <img class="book-img-size"
                                          th:each="searchBookList: ${searchBookList}"
                                          th:src="${searchBookList.getImage()}"
@@ -47,7 +48,7 @@
                                 </div>
                                 <th:block th:if="${pageResponseDTO.getNext()}">
                                     <div id="next" style="display: block">
-                                        <button class="book-button" th:onclick="list()">
+                                        <button class="btn-more" th:onclick="list()">
                                             &nbsp☁️&nbsp'
                                             <span th:text="${title}"/>
                                             ' 에 관한 도서 더보기

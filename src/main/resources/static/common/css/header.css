@@ -1,3 +1,16 @@
+.container-header {
+    display: flex;
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: stretch;
+}
+
+.layout-navbar {
+    width: 90% !important;
+    border-radius: 10px !important;
+}
+
 .main-logo {
     width: 100%;
     padding: 4%;
@@ -8,50 +21,16 @@
     width: 60%;
 }
 
-.container-header {
-    display: flex;
-    width: 100%;
-    display: flex;
-    flex: 1 1 auto;
-    align-items: stretch;
-}
-
-.container-content, .content-height{
-    min-height: 75vh !important;
-    background: #a4b999 !important;
-}
-
-.content-wrapper {
-    background-image: url("../img/background_content.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.card {
-    border: none !important;
-    background: none !important;
-    box-shadow: none !important;
-}
-
-.card .h6 {
-    color: black !important;
-    font-weight: 700;
-}
-
-.container-p-y-u {
-    padding-top: 1.625rem !important;
-}
-
 .menu .app-brand.demo{
     height: 20% !important;
 }
 
-.nav-size {
-    flex-basis: 80% !important;
+.nav-logo {
+    width: 40%;
 }
 
-.logo-img {
-    width: 40%;
+.nav-size {
+    flex-basis: 80% !important;
 }
 
 .profile_img {
@@ -63,34 +42,18 @@
     width: auto !important;
 }
 
-.search-size2 {
+.search-100 {
     width: 100% !important;
 }
 
-.background-color {
-    background: #a4b999 !important;
-}
-
-<!-- footer -->
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    min-height: 6vh !important;
+.login-button {
+    float: right;
     background: #703b11 !important;
-
-}
-
-.footer .background{
-    font-size: larger;
-    background: #f1e5cf;
-    min-height: 6vh !important;
-}
-
-.footer span {
-    display: inline-block;
-    width: 32%;
-    text-align: center;
-    padding-top: 4%;
-    color: #703b11;
+    color: white;
+    margin: 2% 0%;
+    width: 20%;
+    height: 35px;
+    border-radius: 10px;
+    font-size: smaller;
+    font-weight: bold;
 }

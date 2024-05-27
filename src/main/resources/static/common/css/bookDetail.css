@@ -1,8 +1,4 @@
-.container-content {
-    min-height: 87vh !important;
-}
-
-.book {
+.book-info {
     display: block !important;
     padding: 4%;
 }
@@ -17,46 +13,35 @@
 }
 
 .book-title {
-    height: 130px;
+    min-height: 18vh !important
 }
 
 .book-author {
     height: 50px;
 }
 
-.description {
+.book-description {
     font-weight: bold;
 }
 
 .fs-tiny {
-    font-size: 100% !important;
+    background: #f1e5cf;
+    padding: 5%;
+    border-radius: 10px;
+    font-size: smaller !important;
 }
 
-.book-button {
+.btn-register {
     float: right;
     background: #703b11 !important;
     color: white;
-    margin: 2% 0%;
-    width: 50%;
+    margin: 2% 5%;
+    width: 90%;
     height: 35px;
     border-radius: 10px;
     font-size: smaller;
     font-weight: bold;
     border: 2px solid #795548;
-}
-
-#modal {
-    position: absolute !important;
-    height: 300px;
-    top: 23%;
-}
-
-.swal2-title {
-    font-size: medium;
-}
-
-.modal-dialog {
-    display: none;
 }
 
 .book-aveRating{

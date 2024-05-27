@@ -1,0 +1,57 @@
+.body {
+    min-height: 100%;
+    position: relative;
+}
+
+.container-content, .content-height{
+    min-height: 75vh !important;
+    background: #a4b999 !important;
+}
+
+.content-wrapper {
+    background-image: url("../img/background_content.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.container-p-y-u {
+    padding-top: 1.625rem !important;
+}
+
+
+.row{
+    margin-bottom: 10%;
+}
+
+.card {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.card .h6 {
+    color: black !important;
+}
+
+.background-beige {
+    background: #f0e6cf !important;
+}
+
+.logo-img {
+    width: 40%;
+}
+
+.btn-brown {
+    background: #703b11 !important;
+    font-weight: bold;
+    color: white !important;
+    font-size: medium;
+}
+
+.btn-size-80 {
+    width: 80px;
+}
+
+.mouse_pointer {
+    cursor: pointer;
+}
