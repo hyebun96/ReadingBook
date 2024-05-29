@@ -25,14 +25,6 @@
     height: 20% !important;
 }
 
-.nav-logo {
-    width: 40%;
-}
-
-.nav-size {
-    flex-basis: 80% !important;
-}
-
 .profile_img {
     width: 100% !important;
     border-radius: 50%;
@@ -55,5 +47,39 @@
     height: 35px;
     border-radius: 10px;
     font-size: smaller;
+    font-weight: bold;
+}
+
+/* nav */
+.nav-logo {
+    width: 40%;
+}
+
+.nav-size {
+    flex-basis: 80% !important;
+}
+
+.fa-user {
+    margin-left: 7px;
+    margin-right: 17px;
+}
+
+.menu-link {
+    color: #697a8d !important;
+}
+
+.menu-link:hover, .menu-link:active {
+    color: #703b11 !important;
+    background-color: rgba(67, 89, 113, 0.04) !important;
+}
+
+.nav_active {
+    color: #703b11 !important;
+    font-weight: bold !important;
+}
+
+html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item.open > .menu-link, .layout-menu-hover.layout-menu-collapsed .bg-menu-theme .menu-inner .menu-item.open > .menu-link, html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-link:not(.active):hover, .layout-menu-hover.layout-menu-collapsed .bg-menu-theme .menu-inner .menu-item .menu-link:not(.active):hover, .layout-menu-hover.layout-menu-collapsed .bg-menu-theme .menu-inner .menu-item .menu-link:not(.active):focus,
+html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item.open > .menu-link, .layout-menu-hover.layout-menu-collapsed .bg-menu-theme .menu-inner .menu-item.open > .menu-link, html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-link:not(.active):hover, .layout-menu-hover.layout-menu-collapsed .bg-menu-theme .menu-inner .menu-item .menu-link:not(.active):hover, .layout-menu-hover.layout-menu-collapsed .bg-menu-theme .menu-inner .menu-item .menu-link:not(.active):focus{
+    color: #703b11;
     font-weight: bold;
 }

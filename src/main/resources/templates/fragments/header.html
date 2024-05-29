@@ -47,11 +47,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <script src="/bootstrap/assets/vendor/js/helpers.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/common/js/header.js"></script>
 </head>
-<!--<div>-->
-<!--    <img src="/common/img/logo/logo.png" style="width:100%;">-->
-<!--</div>-->
-
+<body>
 <div class="layout-wrapper layout-content-navbar" th:if="${session.member}">
 
     <div class="container-header bg-body">
@@ -75,14 +74,14 @@
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
                 <li class="menu-item active">
-                    <a href="/" class="menu-link">
+                    <a href="/" id="dashboard" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Dashboard</div>
                     </a>
                 </li>
 
                 <!-- Layouts -->
-                <li class="menu-item">
+                <li class="menu-item" id="book-toggle">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-layout"></i>
                         <div >Book</div>
@@ -90,14 +89,14 @@
 
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="/book/search?title=" class="menu-link">
+                            <a href="/book/search?title=" id="bookSearch" class="menu-link">
                                 <div data-i18n="Without menu">도서 검색</div>
                             </a>
                         </li>
                     </ul>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="/bookshelf/list" class="menu-link">
+                            <a href="/bookshelf/list" id="bookShelf" class="menu-link">
                                 <div data-i18n="Without menu">내 책장</div>
                             </a>
                         </li>
@@ -107,14 +106,14 @@
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">User</span>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item" id="member-toggle" >
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                        <i class="fa-solid fa-user"></i>
                         <div data-i18n="Account Settings" th:text="${session.member.getNickname()}"></div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="/member/profile" class="menu-link">
+                            <a href="/member/profile" id="memberProfile" class="menu-link">
                                 <div data-i18n="Account">MyPage</div>
                             </a>
                         </li>
@@ -185,7 +184,7 @@
                                             </div>
                                             <div class="flex-grow-1" th:if="${session.member}">
                                                 <span class="fw-semibold d-block" th:text="${session.member.nickname}"></span>
-                                                <small class="text-muted" th:text="${session.member.id}"></small>
+                                                #&nbsp;<small class="text-muted" th:text="${session.member.id}"></small>
                                             </div>
                                         </div>
                                     </a>
@@ -194,9 +193,9 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" onclick="profile()">
+                                    <a class="dropdown-item" onclick="myPage()">
                                         <i class="bx bx-user me-2"></i>
-                                        <span class="align-middle">My Profile</span>
+                                        <span class="align-middle">My Page</span>
                                     </a>
                                 </li>
                                 <li>
@@ -222,14 +221,6 @@
             <!-- / Navbar -->
         </div>
     </div>
-    <script>
-        function profile() {
-            location.href='/member/profile';
-        }
-
-        function info() {
-            location.href='/intobooks/info';
-        }
-    </script>
 </div>
+</body>
 </html>
