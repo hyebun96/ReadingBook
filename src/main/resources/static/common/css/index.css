@@ -25,6 +25,7 @@
     font-size: small;
     border-radius: 7px;
     background: #703b11;
+    border: 2px solid #795548;
 }
 
 .today-img {

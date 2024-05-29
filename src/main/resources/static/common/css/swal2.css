@@ -1,8 +1,12 @@
 .swal2-popup {
-    width: 87%;
+    width: 89%;
     height: 57%;
 }
 
 .swal2-title {
     font-size: medium;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: #703b11 !important;
 }
