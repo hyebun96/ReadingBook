@@ -1,5 +1,6 @@
 .footer {
     position: fixed !important;
+    display: block;
     bottom: 0 !important;
     width: 100% !important;
     min-height: 6vh !important;
@@ -16,6 +17,6 @@
     display: inline-block;
     width: 32%;
     text-align: center;
-    padding-top: 4%;
+    padding: 2% 0;
     color: #703b11;
 }
