@@ -12,14 +12,10 @@ import lombok.ToString;
 @Builder
 public class BookReportRequestDTO {
     private String review;
-    private String impression;
-    private String lifeContent;
 
     public BookReport toEntity() {
         return BookReport.builder()
                 .review(review)
-                .impression(impression)
-                .lifeContent(lifeContent)
                 .build();
     }
 }

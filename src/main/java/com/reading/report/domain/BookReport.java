@@ -22,14 +22,6 @@ public class BookReport extends BaseEntity {
     @Column
     private String review;
 
-    // 느낀점
-    @Column
-    private String impression;
-
-    // 삶의 적용
-    @Column
-    private String lifeContent;
-
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "bookReport", cascade = CascadeType.ALL)
     private BookScope bookScope;
 
@@ -39,10 +31,8 @@ public class BookReport extends BaseEntity {
     @Builder
     // 불필요한 생성자 제거
     // null 체크 가능
-    public BookReport(String review, String impression, String lifeContent) {
+    public BookReport(String review) {
         this.review = review;
-        this.impression = impression;
-        this.lifeContent = lifeContent;
     }
 
     public void addBookScope(BookScope bookScope) {
@@ -51,7 +41,5 @@ public class BookReport extends BaseEntity {
 
     public void updateBookReport(BookReportRequestDTO requestDTO) {
         this.review = requestDTO.getReview();
-        this.impression = requestDTO.getImpression();
-        this.lifeContent = requestDTO.getLifeContent();
     }
 }

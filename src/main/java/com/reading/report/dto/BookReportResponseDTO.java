@@ -11,14 +11,10 @@ public class BookReportResponseDTO {
     private Long id;
     private double scope;
     private String review;
-    private String impression;
-    private String lifeContent;
 
     public BookReportResponseDTO(BookReport bookReport) {
         this.id = bookReport.getId();
         this.scope = bookReport.getBookScope().getScope();
         this.review = bookReport.getReview();
-        this.impression = bookReport.getImpression();
-        this.lifeContent = bookReport.getLifeContent();
     }
 }

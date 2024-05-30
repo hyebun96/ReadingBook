@@ -5,6 +5,7 @@ import com.reading.report.dto.BookReportResponseDTO;
 import com.reading.report.service.BookReportService;
 import com.reading.scope.dto.BookScopeRequestDTO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.io.IOException;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/report")
+@Log4j2
 public class BookReportController {
 
     private final BookReportService bookReportService;
@@ -38,8 +40,8 @@ public class BookReportController {
     // 객체를 전달하지 않을 경우 예외가 발생한다.
     // @ModelAttribute -> Model에 지정한 객체를 자동으로 넣어준다
     public String postRegister(@ModelAttribute("regRequestDTO") BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO, Long id) throws IOException {
-        bookReportService.insertReport(bookReportRequestDTO, bookScopeRequestDTO, id);
-        return "redirect:/";
+        Long reportId = bookReportService.insertReport(bookReportRequestDTO, bookScopeRequestDTO, id);
+        return "redirect:/report/view/" + reportId;
     }
 
     @GetMapping("/view/{id}")
@@ -66,6 +68,6 @@ public class BookReportController {
     @PostMapping("/delete/{id}")
     public String deleteReport(@PathVariable("id") Long id) {
         bookReportService.deleteReport(id);
-        return "redirect:/";
+        return "redirect:/bookshelf/list";
     }
 }

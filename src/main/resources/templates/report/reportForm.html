@@ -13,9 +13,11 @@
 <head>
     <meta charset="UTF-8">
     <title>나의 독서 기록</title>
-    <link th:href="@{/common/css/starScope.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/common/css/swal2.css">
     <link rel="stylesheet" href="/common/css/common.css">
+    <link th:href="@{/common/css/starScope.css}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/common/js/report.js"></script>
 </head>
 <body class='body'>
 <div class="container-content layout-container bg-body">
@@ -26,9 +28,13 @@
                     <div class="mb-4">
                         <div class="card">
                             <div class="col-mb-6 ml-2 mt-2">
-                                <a class="btn btn-icon btn-brown d-flex align-items-center justify-content-center" th:href="@{'/'}">
-                                    <i class="fas fa-home" style="color: #ffffff;"></i>
-                                </a>
+                                <div class="delete">
+                                    <button type="button"
+                                            class="btn btn-icon btn-brown d-flex justify-content-center align-items-center btn-size-80"
+                                            th:onclick="deleteBook([[${bookShelfId}]], [[${bookInfo.title}]], [[${bookInfo.author}]])">
+                                            <i class="fa-solid fa-trash-can"></i>&nbsp;&nbsp;삭제
+                                    </button>
+                                </div>
                             </div>
                             <div class="card-body d-flex flex-column align-items-center">
                                 <img class="card-img card-img-left mb-3" th:src="@{${bookInfo.image}}" alt="도서 표지"
@@ -52,7 +58,7 @@
                                             aria-expanded="true"
                                             aria-controls="accordionOne"
                                     >
-                                        줄거리
+                                        📓&nbsp;줄거리
                                     </button>
                                 </h2>
 

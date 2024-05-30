@@ -23,8 +23,6 @@ class BookReportRepositoryTest {
         // Given
         BookReport bookReport = BookReport.builder()
                 .review("줄거리")
-                .impression("느낀점")
-                .lifeContent("삶의적용")
                 .build();
 
         // When
@@ -43,13 +41,9 @@ class BookReportRepositoryTest {
 
         BookReportRequestDTO bookReportRequestDTO = BookReportRequestDTO.builder()
                 .review("re...update...줄거리")
-                .impression("re...update...느낀점")
-                .lifeContent("re...update...삶의적용")
                 .build();
 
         updateId.setReview(bookReportRequestDTO.getReview());
-        updateId.setImpression(bookReportRequestDTO.getImpression());
-        updateId.setLifeContent(bookReportRequestDTO.getLifeContent());
 
         // When
         BookReport result = bookReportRepository.save(updateId);
@@ -76,8 +70,6 @@ class BookReportRepositoryTest {
 
         // Then
         assertEquals(BookReport.getReview(), "update...줄거리");
-        assertEquals(BookReport.getImpression(), "update...느낀점");
-        assertEquals(BookReport.getLifeContent(), "update...삶의적용");
     }
 
 }

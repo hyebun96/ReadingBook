@@ -13,9 +13,11 @@
 <head>
     <meta charset="UTF-8">
     <title>나의 독서 기록</title>
-    <link th:href="@{/common/css/starScope.css}" rel="stylesheet">
+    <link rel="stylesheet" href="/common/css/swal2.css">
     <link rel="stylesheet" href="/common/css/common.css">
+    <link th:href="@{/common/css/starScope.css}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/common/js/report.js"></script>
 </head>
 <body class='body'>
 <div class="container-content layout-container bg-body">
@@ -33,7 +35,7 @@
                                     <p class="card-text" th:text="${bookInfo.author}"></p>
                                     <p class="card-text" id="averageBox">
                                         <small class="text-muted">
-                                            <span th:text="${session.member.getNickname()}"></span>님이 주는 별점&nbsp;
+                                            '<span th:text="${session.member.getNickname()}"></span>'님 별점을 클릭해보세요.&nbsp;
                                             <span id="averageScope"></span>
                                         </small>
                                     </p>
@@ -95,7 +97,7 @@
                                                 aria-expanded="true"
                                                 aria-controls="accordionOne"
                                         >
-                                            줄거리
+                                            📓&nbsp;줄거리
                                         </button>
                                     </h2>
 
@@ -125,20 +127,8 @@
                                 </div>
                                 <div class="card-body background-beige">
                                     <div class="mt-4">
-                                        <textarea class="form-control" rows="5" th:field="*{review}"
+                                        <textarea class="form-control" rows="10" th:field="*{review}"
                                                   placeholder="책의 줄거리를 작성해보세요."
-                                        ></textarea>
-                                    </div>
-                                    <div class="mt-4">
-                                        <textarea class="form-control" rows="5"
-                                                  th:field="*{impression}"
-                                                  placeholder="책을 통해 느낀 감정을 작성해보세요."
-                                        ></textarea>
-                                    </div>
-                                    <div class="mt-4">
-                                        <textarea class="form-control" rows="5"
-                                                  th:field="*{lifeContent}"
-                                                  placeholder="삶의 적용에 대해 작성해보세요."
                                         ></textarea>
                                     </div>
                                 </div>
@@ -150,24 +140,5 @@
         </div>
     </div>
 </div>
-<script>
-    const scopeInputs = document.querySelectorAll('input[name="scope"]');
-    const averageScopeDisplay = document.getElementById('averageScope');
-
-    scopeInputs.forEach(input => {
-        input.addEventListener('change', () => {
-            averageScopeDisplay.textContent = `${input.value}점`;
-        });
-    });
-
-    validateForm = () => {
-        const selectedScope = document.querySelector('input[name="scope"]:checked');
-        if (!selectedScope) {
-            alert('별점은 필수입니다');
-            return false;
-        }
-        return true;
-    }
-</script>
 </body>
 </html>

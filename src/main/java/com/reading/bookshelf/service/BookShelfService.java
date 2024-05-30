@@ -80,4 +80,8 @@ public class BookShelfService {
        return bookshelfRepository.save(bookShelf);
     }
 
+    public void removeBook(Long id) {
+        bookshelfRepository.deleteById(id);
+    }
+
 }

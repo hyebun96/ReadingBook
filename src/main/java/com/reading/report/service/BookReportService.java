@@ -33,7 +33,7 @@ public class BookReportService {
 
     private final ModelMapper modelMapper;
 
-    public void insertReport(BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO, Long id) throws IOException {
+    public Long insertReport(BookReportRequestDTO bookReportRequestDTO, BookScopeRequestDTO bookScopeRequestDTO, Long id) throws IOException {
         BookReport bookReport = bookReportRepository.save(bookReportRequestDTO.toEntity());
         BookScope bookScope = bookScopeRequestDTO.toEntity();
 
@@ -44,6 +44,8 @@ public class BookReportService {
 
         bookScope.addBookReport(bookReport);
         bookScopeRepository.save(bookScope);
+
+        return bookReport.getId();
     }
 
     public BookReportResponseDTO selectReportById(Long id) {
