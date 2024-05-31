@@ -4,6 +4,8 @@
     overflow: auto;
     white-space: nowrap;
     min-height: 23vh !important;
+    background-color: white;
+    border-radius: 13px;
 }
 
 .slider{

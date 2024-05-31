@@ -4,7 +4,7 @@
 }
 
 .container-content, .content-height{
-    min-height: 76vh !important;
+    min-height: 82vh !important;
     background: #a4b999 !important;
 }
 
@@ -18,11 +18,6 @@
     padding-top: 1.625rem !important;
 }
 
-
-.row{
-    margin-bottom: 10%;
-}
-
 .card {
     border: none !important;
     background: none !important;
@@ -31,6 +26,11 @@
 
 .card .h6 {
     color: black !important;
+}
+
+.h6 {
+    margin-left: 5% !important;
+    margin-top: 2% !important;
 }
 
 .background-beige {
