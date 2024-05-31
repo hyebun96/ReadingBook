@@ -47,7 +47,7 @@
                                                 ☁️&nbsp;&nbsp;'
                                                 <span th:text="${session.member.getNickname()}"/>
                                                 '님의 책장
-                                                <button class="btn-plus mouse_pointer" th:onclick="bookShelfList()">
+                                                <button class="btn-plus mouse_pointer" th:if="${existBook}"  th:onclick="bookShelfList()">
                                                     <i class="fa-solid fa-plus"></i>
                                                     책장 펼쳐보기
                                                 </button>
@@ -60,7 +60,10 @@
                                                          th:value="${bookShelf.getIsbn()}"
                                                          th:onclick="bookReport([[${bookShelf.getId()}]], [[${bookShelf.getReportId()}]])">
                                                 </div>
-                                                <div class="message" th:if="${message != null}" th:text="${message}">
+                                                <div class="message" th:if="!${existBook}" >
+                                                    ' <span th:text="${session.member.getNickname()}"/> '
+                                                    님의 책장에 책이 등록되어 있지 않습니다.<br>
+                                                    책을 등록하고 독서록을 작성해 보세요. 🐿️
                                                 </div>
                                             </div>
                                         </div>

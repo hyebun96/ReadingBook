@@ -1,16 +1,12 @@
 package com.reading.api.contorller;
 
 import com.reading.api.service.APIService;
-import com.reading.book.dto.BookDetailResponseDTO;
 import com.reading.book.dto.PageRequestDTO;
-import com.reading.book.dto.PageResponseDTO;
 import com.reading.book.service.BookService;
-import com.reading.bookshelf.domain.BookShelf;
 import com.reading.bookshelf.service.BookShelfService;
 import com.reading.member.controller.MemberController;
 import com.reading.member.domain.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;

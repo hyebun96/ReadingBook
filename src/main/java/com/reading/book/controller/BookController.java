@@ -29,14 +29,25 @@ public class BookController {
     @GetMapping("/search")
     public String search(@RequestParam(name = "title", required=true, defaultValue = "") String title, Model model) throws IOException {
 
-        if(!title.equals("")) {
-            Map<String, Object> map = apiService.allSearchByTitleInNaver(title, new PageRequestDTO());
-            model.addAttribute("searchBookList", map.get("searchBookList"));
-            model.addAttribute("pageResponseDTO", map.get("pageResponseDTO"));
-        }else {
+        if(title.equals("")){
+            model.addAttribute("result", false);
+            model.addAttribute("default", true);
             model.addAttribute("searchBookList", null);
             model.addAttribute("pageResponseDTO", new PageResponseDTO());
-            model.addAttribute("message", true);
+        } else {
+            Map<String, Object> map = apiService.allSearchByTitleInNaver(title, new PageRequestDTO());
+
+            if((boolean) map.get("exist")){
+                model.addAttribute("result", true);
+                model.addAttribute("default", false);
+                model.addAttribute("searchBookList", map.get("searchBookList"));
+                model.addAttribute("pageResponseDTO", map.get("pageResponseDTO"));
+            } else {
+                model.addAttribute("result", false);
+                model.addAttribute("default", false);
+                model.addAttribute("searchBookList", null);
+                model.addAttribute("pageResponseDTO", new PageResponseDTO());
+            }
         }
 
         model.addAttribute("title", title);
