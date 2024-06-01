@@ -31,11 +31,12 @@
                                 <span th:text="${session.member.getNickname()}"/>
                                 '님 책장에 저장된 리스트</div>
                             <div class="card book-list">
-                                <img class="book-img-size"
-                                 th:each="bookShelfList: ${bookShelfList}"
-                                 th:src="${bookShelfList.getImage()}"
-                                 th:value="${bookShelfList.getIsbn()}"
-                                 th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
+                                <div class="book-img-frame" th:each="bookShelfList: ${bookShelfList}">
+                                    <img class="book-img"
+                                         th:src="${bookShelfList.getImage()}"
+                                         th:value="${bookShelfList.getIsbn()}"
+                                         th:onclick="bookReport([[${bookShelfList.getId()}]], [[${bookShelfList.getReportId()}]])">
+                                </div>
                             </div>
                         </div>
                     </div>

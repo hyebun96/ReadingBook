@@ -50,10 +50,12 @@ function printList(searchBookList) {
 
     for(let i in searchBookList) {
 
-        listStr += `<img class="book-img-size" 
+        listStr += `<div class="book-img-frame">
+             <img class="book-img" 
              src="`+  searchBookList[i].image  +`"
              value="`+  searchBookList[i].isbn  +` "
              onclick="bookDetail(`+  searchBookList[i].isbn  + ` )">
+             </div>
             `
     }
 

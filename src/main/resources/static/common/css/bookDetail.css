@@ -4,8 +4,7 @@
 }
 
 .book-img {
-    width: 37%;
-    height: 176px;
+    width: 140px;
     display: inline;
     float: left;
     margin-right: 6%;
@@ -47,3 +46,4 @@
 .book-aveRating{
     font-size: small;
 }
+
