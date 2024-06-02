@@ -13,7 +13,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>도서 검색 디테일</title>
+    <title>도서 상세</title>
     <link rel="stylesheet" href="/common/css/swal2.css" />
     <link rel="stylesheet" href="/common/css/bookDetail.css">
     <link rel="stylesheet" href="/common/css/common.css">
@@ -32,7 +32,7 @@
                             <img class="book-img" th:src="${book.getImage()}" alt="도서 표지"/>
                             <div class="book-title" th:text="${book.getTitle()}"></div>
                             <!--별점추가 -->
-                            <span th:if="${aveRating}" class="book-aveRating">읽은 사람들의 평균 별점</span>
+                            <span th:if="${aveRating}" class="book-aveRating">'책속으로'사용자들의 평균 별점⭐️</span><br>
                             <span th:if="${aveRating}" class="book-aveRating" th:text="${aveRating}"></span>
                             <p class="book-author" th:text="${book.getAuthor()}"></p>
                             <hr>
@@ -47,7 +47,7 @@
                                 <button class="btn-register" th:onclick="save()">
                                      '
                                     <span th:text="${session.member.getNickname()}"/>
-                                    '님의 서재에 등록하기
+                                    '님의 책장에 등록하기
                                 </button>
                             </div>
                         </div>
