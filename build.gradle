@@ -8,7 +8,7 @@ group = 'com.reading'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '21'
+    sourceCompatibility = '17'
 }
 
 configurations {
@@ -36,8 +36,7 @@ dependencies {
     // dto와 엔티티 간의 변환 처리를 간단히 처리
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.0.0'
 
-    implementation group: 'org.json', name: 'json', version: '20240205'
-
+    implementation group: 'org.json', name: 'json', version: '20240303'
 
     compileOnly 'org.projectlombok:lombok'
     compileOnly 'org.springframework.boot:spring-boot-devtools'
@@ -56,12 +55,7 @@ dependencies {
     // lombok 테스트 환경 사용
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
-}
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.0'
 
-clean {
-    delete file('src/main/generated')
 }
