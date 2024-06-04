@@ -242,3 +242,11 @@ gradle-app.setting
 ### properties ###
 src/main/resources/application-oauth.properties
 src/main/resources/application.properties
+
+src/main/generated
+
+/.DS_Store
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
