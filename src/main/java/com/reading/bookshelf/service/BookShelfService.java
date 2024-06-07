@@ -39,7 +39,7 @@ public class BookShelfService {
             log.info("이미 내 책장에 등록된 도서입니다... " + isbn);
 
             responseBookShelf = bookshelfRepository.findBookShelfByBookAndMember(book, member).orElseThrow();
-            responseMap.put("message", "이미 내 서재에 등록된 도서 입니다.");
+            responseMap.put("message", "이미 내 책장에 등록된 도서 입니다.");
             responseMap.put("existMessage", true);
         } else {
             BookShelf requestBookShelf = BookShelf.builder()
@@ -48,7 +48,7 @@ public class BookShelfService {
                     .build();
 
             responseBookShelf = bookshelfRepository.save(requestBookShelf);
-            responseMap.put("message", "내 서재에 도서가 등록이 되었습니다.");
+            responseMap.put("message", "내 책장에 도서가 등록이 되었습니다.");
             responseMap.put("existMessage", true);
         }
 

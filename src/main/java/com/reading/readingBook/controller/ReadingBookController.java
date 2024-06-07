@@ -30,9 +30,9 @@ public class ReadingBookController {
         List<BookShelfListResponseDTO> bookShelves = bookShelfService.findByMember(member);
 
         if(bookShelves == null) {
-            model.addAttribute("message", "내 책장에 도서가 등록되어 있지 않습니다. " +
-                    "책을 등록해보세요🐻‍❄️");
+            model.addAttribute("existBook", false);
         } else {
+            model.addAttribute("existBook", true);
             model.addAttribute("bookShelves", bookShelves);
         }
 

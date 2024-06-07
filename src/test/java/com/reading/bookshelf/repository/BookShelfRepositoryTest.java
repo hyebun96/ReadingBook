@@ -57,14 +57,14 @@ class BookShelfRepositoryTest {
         // isbn으로 도서의 정보를 가져옴
         Book book = bookRepository.findByIsbn(isbn).orElseThrow();
 
-        // 내 서재에 등록할 데이터 build
+        // 내 책장에 등록할 데이터 build
         BookShelf bookShelf = BookShelf.builder()
                 .member(member)
                 .book(book)
                 .build();
 
         // When
-        // 내 서재에 책 등록
+        // 내 책장에 책 등록
         BookShelf b = bookShelfRepository.save(bookShelf);
 
         // Then
@@ -75,10 +75,10 @@ class BookShelfRepositoryTest {
     }
 
     @Test
-    @DisplayName("내 서재 등록하기 버튼: 수행후, 내 서재에 이미 등록된 책인지 확인하는 테스트")
+    @DisplayName("내 책장 등록하기 버튼: 수행후, 내 책장에 이미 등록된 책인지 확인하는 테스트")
     public void existByBookTest() throws Exception {
         // Given
-        // '/book/detail/9788954681155' 에서 내 서재에 등록하기 했을 경우, 수행
+        // '/book/detail/9788954681155' 에서 내 책장에 등록하기 했을 경우, 수행
         String isbn = "9788954681155";
         // isbn으로 Book 가져옴
         Book book = bookRepository.findByIsbn(isbn).orElseThrow();
