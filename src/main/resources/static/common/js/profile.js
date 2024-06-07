@@ -19,28 +19,39 @@ async function uploadToServer(formObj) {
 
     const axiosConfig = {
         headers:{
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "multipart/form-data"
         }
     }
 
     axios.post('/profile/uploadMemberImg', formObj, axiosConfig).then(
         result => {
-            const imgSrc = result.data.imgsrc
-            console.log("member->" + imgSrc)
-            // document.getElementById("memberImg").src = imgSrc
+            const img = result.data.img
+            console.log("img->" + img)
 
             if(result.data.img === true){
-                Swal.fire({
-                    icon: "success",
-                    title: "이미지가 정상적으로 변경되었습니다.",
-                    confirmButtonText: "확인"
-                }).then((result) => {
-                    if(result.isConfirmed){
-                        sleep(5000);
 
-                        location.href = "/"
-                    }
-                });
+                const mask = document.querySelector('.mask');
+                const html = document.querySelector('html');
+
+                mask.style.display = "block";
+                html.style.overflow = 'hidden'; //로딩 중 스크롤 방지
+
+                setTimeout( function () {
+
+                    mask.style.opacity = '0'; //서서히 사라지는 효과
+                    html.style.overflow = 'auto'; //스크롤 방지 해제
+                    mask.style.display = 'none';
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "이미지가 정상적으로 변경되었습니다.",
+                        confirmButtonText: "확인"
+                    }).then((result) => {
+                        if(result.isConfirmed) {
+                            // location.reload();
+                        }
+                    });
+                }, 15000);
             }
         })
         .catch((error) => {
@@ -58,7 +69,7 @@ async function returnMemberImg() {
 
     const axiosConfig = {
         headers:{
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "multipart/form-datas"
         }
     }
 

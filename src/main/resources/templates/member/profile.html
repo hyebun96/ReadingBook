@@ -36,6 +36,10 @@
                                 </span>
                             </div>
                             <div class="card-body d-flex flex-column align-items-center background-beige">
+                                <!-- 로딩 화면 -->
+                                <div class="mask" style="display: none">
+                                    <img class="loadingImg" src='https://i.ibb.co/20zw80q/1487.gif'>
+                                </div>
                                 <img id="memberImg"
                                         class="card-img card-img-left mb-3" th:src="@{${memberProfileDTO.profile_img_url}}" alt="회원프로필이미지"/>
                                 <p class="card-title" th:text="${memberProfileDTO.uuid}" style="font-size: 17px;"></p>
@@ -44,7 +48,7 @@
                                 <div class="profile-change" th:if="${setting_kakao_img} == true">
                                     <input class="btn btn-file" id="uploadProfileDTO" type="file" name="files"/>
                                     <a class="btn-icon btn-edit btn" onclick="uploadMemberImg()">
-                                        <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;편집하기
+                                        <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;변경
                                     </a>
                                 </div>
                                 <div class="profile-return" th:if="${setting_kakao_img} == false">
@@ -56,7 +60,7 @@
                             <div>
                                 <p class="p-description" th:if="${setting_kakao_img} == true">
                                     회원프로필을 변경하고 싶다면 <br>
-                                    변경하고 싶은 파일을 선택하고 '편집하기' 버튼을 클릭하세요.
+                                    변경하고 싶은 파일을 선택하고 '변경하기' 버튼을 클릭하세요.
                                 </p>
                                 <p class="p-description" th:if="${setting_kakao_img} == false">
                                     회원프로필을 기존 카카오 프로필로 되돌리고 싶다면 <br>
