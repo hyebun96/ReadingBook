@@ -64,10 +64,15 @@
     margin: 0 !important;
 }
 
+.accordion-button {
+    background: #f1e5cf !important;
+    color: black !important;
+}
+
 .accordion-body {
     ont-size: 100% !important;
     padding-top: 3% !important;
-    background: white !important;
+    background: #f1e5cf !important;
     font-size: smaller !important;
 }
 

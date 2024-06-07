@@ -12,11 +12,12 @@
 }
 
 .book-title {
-    min-height: 18vh !important
+    min-height: 14vh !important
 }
 
 .book-author {
     height: 50px;
+    font-weight: bold;
 }
 
 .book-description {
