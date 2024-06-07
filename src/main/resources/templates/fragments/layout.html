@@ -10,15 +10,15 @@
 <body class="font body">
 
     <!-- header -->
-    <div layout:replace="/fragments/header :: fragment-header"></div>
+    <div layout:replace="~{fragments/header :: fragment-header}"></div>
 
     <!-- contents -->
     <th:block layout:fragment="contents"></th:block>
 
     <!-- footer -->
-    <footer layout:replace="/fragments/footer :: fragment-footer"></footer>
+    <footer layout:replace="~{/fragments/footer :: fragment-footer}"></footer>
 
-    <div layout:replace="/fragments/script :: script"></div>
+    <div layout:replace="~{/fragments/script :: script}"></div>
     <th:block layout:fragment="custom-javascript"></th:block>
 
 </body>
