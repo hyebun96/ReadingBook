@@ -240,8 +240,8 @@ gradle-app.setting
 /src/main/resources/static/bootstrap
 
 ### properties ###
-src/main/resources/application-oauth.properties
-src/main/resources/application.properties
+### src/main/resources/application-oauth.properties
+### src/main/resources/application.properties
 
 src/main/generated
 
