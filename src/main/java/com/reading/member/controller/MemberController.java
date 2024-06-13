@@ -25,7 +25,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "https://port-0-intobooks-1lx8gjwrw.sel5.cloudtype.app/")
 @Controller
-@RequestMapping("/member")
+@RequestMapping("member")
 @RequiredArgsConstructor
 @Log4j2
 public class MemberController {
@@ -44,7 +44,7 @@ public class MemberController {
         return (Member) session.getAttribute("member");
     }
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login(Model model){
 
         model.addAttribute("CLIENT_ID", kakaoLoginAPI.getCLIENT_ID());
@@ -53,7 +53,7 @@ public class MemberController {
         return "member/login";
     }
 
-    @GetMapping("/kakao/callback")
+    @GetMapping("kakao/callback")
     public String token(@RequestParam("code") String code,
                         HttpServletRequest httpServletRequest,
                         RedirectAttributes redirectAttributes) throws IOException {
@@ -94,7 +94,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("logout")
     public String logout(HttpSession session) throws IOException {
 
         Member member = (Member)session.getAttribute("member");
@@ -111,7 +111,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/profile")
+    @GetMapping("profile")
     public String profile(HttpSession session, Model model) throws IOException {
 
         Long uuid = Long.valueOf(((Member) session.getAttribute("member")).getUuid());
@@ -139,7 +139,7 @@ public class MemberController {
 
         model.addAttribute("memberProfileDTO", memberProfileDTO);
 
-        return "/member/profile";
+        return "member/profile";
     }
 
 }
