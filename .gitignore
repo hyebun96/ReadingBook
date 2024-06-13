@@ -237,7 +237,7 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/intellij,eclipse,java,gradle
 
 ### Bootstrap ###
-/src/main/resources/static/bootstrap
+#/src/main/resources/static/bootstrap
 
 ### properties ###
 /src/main/resources/application-local.properties
