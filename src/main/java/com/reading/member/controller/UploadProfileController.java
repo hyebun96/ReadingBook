@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/profile")
+@RequestMapping("profile")
 @Log4j2
 @RequiredArgsConstructor
 public class UploadProfileController {

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/book")
+@RequestMapping("book")
 @RequiredArgsConstructor
 @Log4j2
 public class BookController {
@@ -26,7 +26,7 @@ public class BookController {
 
     private final BookScopeService bookScopeService;
 
-    @GetMapping("/search")
+    @GetMapping("search")
     public String search(@RequestParam(name = "title", required=true, defaultValue = "") String title, Model model) throws IOException {
 
         if(title.equals("")){
@@ -52,10 +52,10 @@ public class BookController {
 
         model.addAttribute("title", title);
 
-        return "/book/search";
+        return "book/search";
     }
 
-    @GetMapping("/detail/{isbn}")
+    @GetMapping("detail/{isbn}")
     public String searchDetail(@PathVariable("isbn") String isbn, Model model) throws Exception {
 
         BookDetailResponseDTO bookDetailResponseDTO = bookService.searchDetail(isbn);
@@ -68,7 +68,7 @@ public class BookController {
 
         model.addAttribute("book", bookDetailResponseDTO);
 
-        return "/book/detail";
+        return "book/detail";
     }
 
     @PostMapping("/save/{isbn}")

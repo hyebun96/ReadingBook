@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/scope")
+@RequestMapping("scope")
 public class BookScopeController {
 
     private final BookScopeService bookScopeService;
 
-    @GetMapping("/register")
+    @GetMapping("register")
     public String getRegister(@RequestParam("isbn") String isbn, BookScopeRequestDTO bookScopeRequestDTO) throws Exception {
         bookScopeService.insertRegister(bookScopeRequestDTO);
         return "scope/register";

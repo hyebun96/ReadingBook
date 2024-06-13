@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/bookshelf")
+@RequestMapping("bookshelf")
 @RequiredArgsConstructor
 public class BookShelfController {
 
@@ -23,13 +23,13 @@ public class BookShelfController {
 
     private final MemberController memberController;
 
-    @GetMapping("/save/{isbn}")
+    @GetMapping("save/{isbn}")
     public String getSave(@PathVariable("isbn") String isbn, RedirectAttributes redirectAttributes) throws IOException {
 
         Member member = memberController.getSessionMember();
 
         if(member == null){
-            return "/book/" + isbn;
+            return "book/" + isbn;
         }
 
        String url = postSave(member, isbn, redirectAttributes);
@@ -50,7 +50,7 @@ public class BookShelfController {
         return "redirect:/book/detail/" + isbn;
     }
 
-    @GetMapping("/list")
+    @GetMapping("list")
     public String list(Model model) throws IOException {
 
         Member member = memberController.getSessionMember();
@@ -59,7 +59,7 @@ public class BookShelfController {
         model.addAttribute("bookShelfList", bookShelfList);
         model.addAttribute("member", member);
 
-        return "/bookshelf/list";
+        return "bookshelf/list";
     }
 
     @PostMapping("/delete/{id}")

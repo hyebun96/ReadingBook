@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api")
 @RequiredArgsConstructor
 public class APIController {
 
@@ -23,7 +23,7 @@ public class APIController {
     private final MemberController memberController;
     private final BookShelfService bookShelfService;
 
-    @GetMapping("/search")
+    @GetMapping("search")
     public Map<String, Object> moreSearch(@RequestParam("title") String title, @ModelAttribute PageRequestDTO pageRequestDTO) throws IOException {
 
         Map<String, Object> map = apiService.allSearchByTitleInNaver(title, pageRequestDTO);
@@ -31,7 +31,7 @@ public class APIController {
         return map;
     }
 
-    @GetMapping("/save/{isbn}")
+    @GetMapping("save/{isbn}")
     public Map<String, Object> save(@PathVariable("isbn") String isbn) throws IOException {
 
         Map<String, Object> map = new HashMap<>();

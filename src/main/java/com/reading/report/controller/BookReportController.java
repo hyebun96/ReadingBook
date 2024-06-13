@@ -14,20 +14,20 @@ import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/report")
+@RequestMapping("report")
 @Log4j2
 public class BookReportController {
 
     private final BookReportService bookReportService;
 
-    @GetMapping("/form")
+    @GetMapping("form")
     public String getForm(Model model, @RequestParam("id") Long id) {
         model.addAttribute("bookShelfId", id);
         model.addAttribute("bookInfo", bookReportService.bookInfo(id));
         return "report/reportForm";
     }
 
-    @GetMapping("/register/{id}")
+    @GetMapping("register/{id}")
     public String getRegister(Model model, @PathVariable("id") Long id) {
         model.addAttribute("bookShelfId", id);
         model.addAttribute("bookInfo", bookReportService.bookInfo(id));
@@ -44,7 +44,7 @@ public class BookReportController {
         return "redirect:/report/view/" + reportId;
     }
 
-    @GetMapping("/view/{id}")
+    @GetMapping("view/{id}")
     // @PathVariable -> 경로 변수를 표시하기 위한 메서드에서 매개변수에 사용
     public String selectReportById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("bookInfo", bookReportService.bookView(id));
@@ -52,7 +52,7 @@ public class BookReportController {
         return "report/reportView";
     }
 
-    @GetMapping("/modify/{id}")
+    @GetMapping("modify/{id}")
     public String modifyReportById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("bookInfo", bookReportService.bookView(id));
         model.addAttribute("reportInfo", bookReportService.selectReportById(id));
