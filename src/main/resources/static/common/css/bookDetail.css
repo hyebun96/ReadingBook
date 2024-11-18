@@ -4,7 +4,8 @@
 }
 
 .book-img {
-    width: 140px;
+    width: 120px;
+    height: 200px !important;
     display: inline;
     float: left;
     margin-right: 6%;

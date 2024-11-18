@@ -7,18 +7,18 @@
 }
 
 .row {
-    height: 70%;
+    height: 70% !important;
 }
 
 .logo_section {
-    display: block;
-    margin: auto;
-    text-align: center;
+    display: block !important;
+    margin: auto !important;
+    text-align: center !important;
 }
 
 .logo {
-    margin-top: 7%;
-    width: 70% !important;
+    margin-top: 4% !important;
+    width: 47% !important;
 }
 
 .btn-kakao-login {
