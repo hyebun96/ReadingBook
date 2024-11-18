@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,11 +43,11 @@ class BookShelfServiceTest {
         String isbn = "9791192625553";
 
         // When
-        Boolean existBookshlef = bookShelfService.save(isbn, findMember());
+        Map<String, Object> existBookshlef = bookShelfService.save(isbn, findMember());
 
         // Then
-        assertEquals(existBookshlef, true);     // 등록완료
-        assertEquals(existBookshlef, false);    // 이미 등록된 도서일 경우
+        assertEquals(existBookshlef.get("existMessage"), true);     // 등록완료
+        assertEquals(existBookshlef.get("existMessage"), false);    // 이미 등록된 도서일 경우
     }
 
     @Test

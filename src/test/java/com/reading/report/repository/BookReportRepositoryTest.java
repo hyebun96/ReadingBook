@@ -43,7 +43,7 @@ class BookReportRepositoryTest {
                 .review("re...update...줄거리")
                 .build();
 
-        updateId.setReview(bookReportRequestDTO.getReview());
+        updateId.updateBookReport(bookReportRequestDTO);
 
         // When
         BookReport result = bookReportRepository.save(updateId);
