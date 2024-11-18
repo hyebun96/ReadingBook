@@ -52,7 +52,7 @@ public class BookReportService {
         BookReport bookReport = bookReportRepository.findById(id).orElseThrow(IllegalArgumentException::new);
 
         BookReportResponseDTO bookReportResponseDTO = modelMapper.map(bookReport, BookReportResponseDTO.class);
-        bookReportResponseDTO.setScope(bookReport.getBookScope().getScope());
+        bookReportResponseDTO.updateScope(bookReport.getBookScope().getScope());
 
         return bookReportResponseDTO;
     }

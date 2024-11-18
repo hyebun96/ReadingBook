@@ -4,7 +4,6 @@ import com.reading.report.domain.BookReport;
 import lombok.*;
 
 @Getter
-@Setter
 @ToString
 @NoArgsConstructor
 public class BookReportResponseDTO {
@@ -16,5 +15,9 @@ public class BookReportResponseDTO {
         this.id = bookReport.getId();
         this.scope = bookReport.getBookScope().getScope();
         this.review = bookReport.getReview();
+    }
+
+    public void updateScope(double scope) {
+        this.scope = scope;
     }
 }

@@ -9,8 +9,6 @@ import lombok.*;
 @Getter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @ToString(exclude = {"bookReport", "book"})
 public class BookShelf {
 
@@ -30,6 +28,14 @@ public class BookShelf {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="bookReportId", referencedColumnName = "id")
     private BookReport bookReport;
+
+    @Builder
+    public BookShelf(Long id, Member member, Book book, BookReport bookReport) {
+        this.id = id;
+        this.member = member;
+        this.book = book;
+        this.bookReport = bookReport;
+    }
 
     public void addBookReport(BookReport bookReport) {
         this.bookReport = bookReport;

@@ -29,15 +29,14 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
             @RequestParam("pageRequestDTO") PageRequestDTO pageRequestDTO) throws IOException {
 
         // Spring URI를 생성할때 편리하게 구현할 수 있도록 도와주는 클래스. 자동 encode
-        URI uri = UriComponentsBuilder
-                .fromUriString("https://openapi.naver.com")
-                .path("/v1/search/book.json")
-                .queryParam("query", title)
-                .queryParam("display", String.valueOf(pageRequestDTO.getDisplay()))
-                .queryParam("start", String.valueOf(pageRequestDTO.getStart()))
-                .encode()
-                .build()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromUriString("https://openapi.naver.com")
+                                      .path("/v1/search/book.json")
+                                      .queryParam("query", title)
+                                      .queryParam("display", String.valueOf(pageRequestDTO.getDisplay()))
+                                      .queryParam("start", String.valueOf(pageRequestDTO.getStart()))
+                                      .encode()
+                                      .build()
+                                      .toUri();
 
         NaverResultVO resultVO = connect(getMethodRequestEntity(uri));
 
@@ -46,15 +45,14 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
 
     public NaverResultVO searchBookOne(@RequestParam("title") final String title) throws IOException {
 
-        URI uri = UriComponentsBuilder
-                .fromUriString("https://openapi.naver.com")
-                .path("/v1/search/book.json")
-                .queryParam("query", title)
-                .queryParam("display", "1")
-                .queryParam("start", "1")
-                .encode()
-                .build()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromUriString("https://openapi.naver.com")
+                                      .path("/v1/search/book.json")
+                                      .queryParam("query", title)
+                                      .queryParam("display", "1")
+                                      .queryParam("start", "1")
+                                      .encode()
+                                      .build()
+                                      .toUri();
 
         String path = "";
 
@@ -65,15 +63,14 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
 
     public NaverResultVO searchBookDetail(@RequestParam("isbn") final String isbn) throws IOException {
 
-        URI uri = UriComponentsBuilder
-                .fromUriString("https://openapi.naver.com")
-                .path("/v1/search/book_adv.json")
-                .queryParam("d_isbn", isbn)
-                .queryParam("display", "1")
-                .queryParam("start", "1")
-                .encode()
-                .build()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromUriString("https://openapi.naver.com")
+                                      .path("/v1/search/book_adv.json")
+                                      .queryParam("d_isbn", isbn)
+                                      .queryParam("display", "1")
+                                      .queryParam("start", "1")
+                                      .encode()
+                                      .build()
+                                      .toUri();
 
         NaverResultVO resultVO = connect(getMethodRequestEntity(uri));
 
@@ -84,12 +81,10 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
     public RequestEntity<Void> getMethodRequestEntity(URI uri) throws IOException {
 
         // Spring 요청 제공 클래스. Header 생성자 파라미터
-        RequestEntity<Void> req = RequestEntity
-                .get(uri)
-                .header("X-Naver-Client-Id", CLIENT_ID)
-                .header("X-Naver-Client-Secret", CLIENT_SECRET)
-                .build();
-
+        RequestEntity<Void> req = RequestEntity.get(uri)
+                                               .header("X-Naver-Client-Id", CLIENT_ID)
+                                               .header("X-Naver-Client-Secret", CLIENT_SECRET)
+                                               .build();
         return req;
     }
 
@@ -97,12 +92,10 @@ public class NaverBookAPI implements APIInterface<NaverResultVO> {
     public RequestEntity<Void> postMethodRequestEntity(URI uri) throws IOException {
 
         // Spring 요청 제공 클래스. Header 생성자 파라미터
-        RequestEntity<Void> req = RequestEntity
-                .post(uri)
-                .header("X-Naver-Client-Id", CLIENT_ID)
-                .header("X-Naver-Client-Secret", CLIENT_SECRET)
-                .build();
-
+        RequestEntity<Void> req = RequestEntity.post(uri)
+                                               .header("X-Naver-Client-Id", CLIENT_ID)
+                                               .header("X-Naver-Client-Secret", CLIENT_SECRET)
+                                               .build();
 
         return req;
     }

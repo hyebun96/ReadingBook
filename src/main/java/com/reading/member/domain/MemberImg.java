@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
 @ToString(exclude = "member")
 public class MemberImg {
@@ -21,6 +19,13 @@ public class MemberImg {
 
     @Column(nullable = false)
     private String img;
+
+    @Builder
+    public MemberImg(Long id, Member member, String img) {
+        this.id = id;
+        this.member = member;
+        this.img = img;
+    }
 
     public void updateImg(String img) {
         this.img = img;

@@ -26,9 +26,7 @@ public class APIController {
     @GetMapping("search")
     public Map<String, Object> moreSearch(@RequestParam("title") String title, @ModelAttribute PageRequestDTO pageRequestDTO) throws IOException {
 
-        Map<String, Object> map = apiService.allSearchByTitleInNaver(title, pageRequestDTO);
-
-        return map;
+        return apiService.allSearchByTitleInNaver(title, pageRequestDTO);
     }
 
     @GetMapping("save/{isbn}")

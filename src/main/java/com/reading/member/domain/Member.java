@@ -8,9 +8,7 @@ import lombok.*;
 @Getter
 @Table(name = "member")
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 public class Member {
 
@@ -40,6 +38,17 @@ public class Member {
 
     @Column(nullable = false, unique = true)
     private String uuid;
+
+    @Builder
+    public Member(String access_token, String id_token, String refresh_token, String token_type, String nickname, String profile_image_url, String uuid) {
+        this.access_token = access_token;
+        this.id_token = id_token;
+        this.refresh_token = refresh_token;
+        this.token_type = token_type;
+        this.nickname = nickname;
+        this.profile_image_url = profile_image_url;
+        this.uuid = uuid;
+    }
 
     public void addProfile(KakaoUserVO kakaoUserVO) {
         this.nickname = String.valueOf(kakaoUserVO.getProfile().get("nickname"));

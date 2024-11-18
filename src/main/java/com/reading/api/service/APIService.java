@@ -34,8 +34,8 @@ public class APIService {
             pageResponseDTO.setPageAndNext();
 
             searchBookList = naverResultVO.getItems().stream()
-                    .map(book -> modelMapper.map(book, BookListResponseDTO.class))
-                    .toList();
+                                           .map(book -> modelMapper.map(book, BookListResponseDTO.class))
+                                           .toList();
 
             result.put("exist", true);
         }else {

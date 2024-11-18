@@ -3,9 +3,6 @@ package com.reading.book.dto;
 import lombok.*;
 
 @Getter
-@Setter
-@AllArgsConstructor
-@Builder
 public class PageRequestDTO {
 
     private int total;       // 결과값 페이지 수

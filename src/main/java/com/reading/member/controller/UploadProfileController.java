@@ -28,9 +28,8 @@ public class UploadProfileController {
     private final UploadProfileService uploadProfileService;
 
     @PostMapping(value = "/uploadMemberImg", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Map<String, Object> uploadMemberImg(
-            HttpSession httpSession,
-            @ModelAttribute UploadProfileDTO uploadProfileDTO) throws  Exception{
+    public Map<String, Object> uploadMemberImg(HttpSession httpSession,
+                                               @ModelAttribute UploadProfileDTO uploadProfileDTO) throws  Exception{
 
         Member member = (Member) httpSession.getAttribute("member");
         Map<String, Object> map = new HashMap<>();
@@ -58,8 +57,7 @@ public class UploadProfileController {
     }
 
     @PostMapping(value = "/return")
-    public Map<String, Object> uploadMemberImg(
-            HttpSession httpSession) throws Exception{
+    public Map<String, Object> uploadMemberImg(HttpSession httpSession) throws Exception{
 
         Map<String, Object> map = new HashMap<>();
 
@@ -71,8 +69,6 @@ public class UploadProfileController {
 
         MemberImg memberImg = uploadProfileService.findByMemberImg(member);
         uploadProfileService.deleteMemberImg(memberImg);
-
-
 
         try {
             Long uuid = Long.valueOf(member.getUuid());

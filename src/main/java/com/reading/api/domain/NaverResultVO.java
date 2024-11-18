@@ -7,7 +7,6 @@ import java.util.List;
 
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 public class NaverResultVO {
 

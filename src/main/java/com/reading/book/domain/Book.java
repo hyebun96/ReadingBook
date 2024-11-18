@@ -1,7 +1,6 @@
 package com.reading.book.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +8,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Book {
 
     @Id
@@ -44,4 +41,18 @@ public class Book {
 
     @Column(length = 21845, nullable = true)
     private String description;
+
+    @Builder
+    public Book(Long id, String isbn, String title, String link, String image, String author, String discount, String publisher, String pubdate, String description) {
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.link = link;
+        this.image = image;
+        this.author = author;
+        this.discount = discount;
+        this.publisher = publisher;
+        this.pubdate = pubdate;
+        this.description = description;
+    }
 }

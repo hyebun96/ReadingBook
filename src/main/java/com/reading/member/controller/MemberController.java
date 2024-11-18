@@ -58,7 +58,6 @@ public class MemberController {
                         HttpServletRequest httpServletRequest,
                         RedirectAttributes redirectAttributes) throws IOException {
 
-
         KakaoTokenVO requestToken = kakaoLoginAPI.getToken(code);
         KakaoUserVO kakaoUserVO = kakaoLoginAPI.getUserInfo(requestToken.getAccess_token());
 
@@ -121,17 +120,19 @@ public class MemberController {
 
         if(existMemberImg) {
             memberProfileDTO = MemberProfileDTO.builder()
-                    .profile_img_url("/common/profile/" + memberImgRepository.getMemberImgByImg(member))
-                    .nickname(member.getNickname())
-                    .uuid(member.getUuid())
-                    .build();
+                                             .profile_img_url("/common/profile/" + memberImgRepository.getMemberImgByImg(member))
+                                             .nickname(member.getNickname())
+                                             .uuid(member.getUuid())
+                                             .build();
+
             model.addAttribute("setting_kakao_img", false);
         } else {
             memberProfileDTO = MemberProfileDTO.builder()
-                    .profile_img_url(member.getProfile_image_url())
-                    .nickname(member.getNickname())
-                    .uuid(member.getUuid())
-                    .build();
+                                             .profile_img_url(member.getProfile_image_url())
+                                             .nickname(member.getNickname())
+                                             .uuid(member.getUuid())
+                                             .build();
+
             model.addAttribute("setting_kakao_img", true);
         }
 

@@ -15,7 +15,6 @@ public interface MemberImgRepository extends JpaRepository<MemberImg, Long> {
 
     Boolean existsByMember(@Param("member") Member member);
 
-
     @Query("SELECT m.img FROM MemberImg m WHERE m.member = :member")
     String getMemberImgByImg(@Param("member") Member member);
 

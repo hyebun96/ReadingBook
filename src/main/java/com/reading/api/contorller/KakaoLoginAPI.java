@@ -34,16 +34,15 @@ public class KakaoLoginAPI implements APIInterface<KakaoTokenVO>{
 
     public KakaoTokenVO getToken(String code) throws IOException {
 
-        URI uri = UriComponentsBuilder
-                .fromUriString("https://kauth.kakao.com")
-                .path("/oauth/token")
-                .queryParam("grant_type", "authorization_code")
-                .queryParam("client_id", CLIENT_ID)
-                .queryParam("redirect_uri", REDIRECT_URI)
-                .queryParam("code", code)
-                .encode()
-                .build()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromUriString("https://kauth.kakao.com")
+                                      .path("/oauth/token")
+                                      .queryParam("grant_type", "authorization_code")
+                                      .queryParam("client_id", CLIENT_ID)
+                                      .queryParam("redirect_uri", REDIRECT_URI)
+                                      .queryParam("code", code)
+                                      .encode()
+                                      .build()
+                                      .toUri();
 
         KakaoTokenVO responseToken = connect(postMethodRequestEntity(uri));
 
@@ -52,17 +51,16 @@ public class KakaoLoginAPI implements APIInterface<KakaoTokenVO>{
 
     public KakaoUserVO getUserInfo(String access_token) throws IOException {
 
-        URI uri = UriComponentsBuilder
-                .fromUriString("https://kapi.kakao.com")
-                .path("/v2/user/me")
-                .encode()
-                .build()
-                .toUri();
+        URI uri = UriComponentsBuilder.fromUriString("https://kapi.kakao.com")
+                                      .path("/v2/user/me")
+                                      .encode()
+                                      .build()
+                                      .toUri();
 
         RequestEntity<Void> req = RequestEntity.<Void>get(uri)
-                .header("Authorization", "Bearer " + access_token)
-                .header("Content-type", "application/x-www-form-urlencoded;charset=utf-8")
-                .build();
+                                      .header("Authorization", "Bearer " + access_token)
+                                      .header("Content-type", "application/x-www-form-urlencoded;charset=utf-8")
+                                      .build();
 
 
         RestTemplate restTemplate = new RestTemplate();
