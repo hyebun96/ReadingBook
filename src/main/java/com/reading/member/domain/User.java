@@ -23,8 +23,4 @@ public class User {
     @Column(nullable = false)
     private String profile_image_url;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private RoleType role;
-
 }
