@@ -58,6 +58,7 @@
 
 .delete {
     float: right;
+    margin-right: 3%;
 }
 
 .row {
@@ -108,8 +109,8 @@
 }
 
 .swal2-popup {
-    width: 89% !important;
-    height: 70% !important;
+    width: 500px !important;
+    height: 300px !important;
 }
 
 .swal2-html-container {

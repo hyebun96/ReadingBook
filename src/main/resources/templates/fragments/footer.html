@@ -8,9 +8,9 @@
 <body>
     <footer class="footer layout-page"  th:if="${session.member}">
         <div class="background">
-            <a href="#"><span><i class="fa-solid fa-user"></i></span></a>
+            <a href="/bookshelf/list"><span><i class="fa-solid fa-book"></i></span></a>
             <a href="/"><span><i class="fa-solid fa-house"></i></span></a>
-            <a href="#"><span><i class="fa-solid fa-arrow-left"></i></span></a>
+            <a href="javascript:history.back();"><span><i class="fa-solid fa-arrow-left"></i></span></a>
         </div>
     </footer>
 </body>

@@ -9,7 +9,7 @@
 
 .card-body {
     border-radius: 8px;
-    margin-top: 3%;
+    margin: 3%;
 }
 
 .mask {
@@ -33,7 +33,7 @@
 }
 
 .card-img {
-    width: 70% !important;
+    width: 190px !important;
 }
 
 .btn {
@@ -45,6 +45,7 @@
 .btn-home {
     display: flex;
     width: 20%;
+    margin-left: 3% !important;
 }
 
 .profile-return{

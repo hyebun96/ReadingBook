@@ -33,6 +33,7 @@
 
 .btn-register {
     float: right;
+    margin-bottom: 80px !important;
     background: #703b11 !important;
     color: white;
     margin: 2% 5%;

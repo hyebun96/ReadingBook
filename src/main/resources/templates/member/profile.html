@@ -45,28 +45,28 @@
                                 <p class="card-title" th:text="${memberProfileDTO.uuid}" style="font-size: 17px;"></p>
                                 <p class="card-text" th:text="${memberProfileDTO.nickname}"></p>
 
-                                <div class="profile-change" th:if="${setting_kakao_img} == true">
-                                    <input class="btn btn-file" id="uploadProfileDTO" type="file" name="files"/>
-                                    <a class="btn-icon btn-edit btn" onclick="uploadMemberImg()">
-                                        <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;변경
-                                    </a>
-                                </div>
-                                <div class="profile-return" th:if="${setting_kakao_img} == false">
-                                    <a class="btn btn-icon d-flex btn-return" onclick="returnMemberImg()">
-                                        <i class="fa-solid fa-rotate-left" style="color: #ffffff;"></i>&nbsp;&nbsp;카카오프로필로 되돌리기
-                                    </a>
-                                </div>
+<!--                                <div class="profile-change" th:if="${setting_kakao_img} == true">-->
+<!--                                    <input class="btn btn-file" id="uploadProfileDTO" type="file" name="files"/>-->
+<!--                                    <a class="btn-icon btn-edit btn" onclick="uploadMemberImg()">-->
+<!--                                        <i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;변경-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="profile-return" th:if="${setting_kakao_img} == false">-->
+<!--                                    <a class="btn btn-icon d-flex btn-return" onclick="returnMemberImg()">-->
+<!--                                        <i class="fa-solid fa-rotate-left" style="color: #ffffff;"></i>&nbsp;&nbsp;카카오프로필로 되돌리기-->
+<!--                                    </a>-->
+<!--                                </div>-->
                             </div>
-                            <div>
-                                <p class="p-description" th:if="${setting_kakao_img} == true">
-                                    회원프로필을 변경하고 싶다면 <br>
-                                    변경하고 싶은 파일을 선택하고 '변경하기' 버튼을 클릭하세요.
-                                </p>
-                                <p class="p-description" th:if="${setting_kakao_img} == false">
-                                    회원프로필을 기존 카카오 프로필로 되돌리고 싶다면 <br>
-                                    '카카오프로필로 되돌리기' 버튼을 클릭하세요.
-                                </p>
-                            </div>
+<!--                            <div>-->
+<!--                                <p class="p-description" th:if="${setting_kakao_img} == true">-->
+<!--                                    회원프로필을 변경하고 싶다면 <br>-->
+<!--                                    변경하고 싶은 파일을 선택하고 '변경하기' 버튼을 클릭하세요.-->
+<!--                                </p>-->
+<!--                                <p class="p-description" th:if="${setting_kakao_img} == false">-->
+<!--                                    회원프로필을 기존 카카오 프로필로 되돌리고 싶다면 <br>-->
+<!--                                    '카카오프로필로 되돌리기' 버튼을 클릭하세요.-->
+<!--                                </p>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>

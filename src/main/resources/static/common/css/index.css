@@ -3,9 +3,14 @@
     /* 가로 스크롤 */
     overflow: auto;
     white-space: nowrap;
-    min-height: 23vh !important;
     background-color: white;
+    height: 210px !important;
     border-radius: 13px;
+}
+
+.card-body {
+    width: 93% !important;
+    margin: 1% 4% !important;
 }
 
 .slider{
@@ -14,14 +19,15 @@
 }
 
 .slide {
-    width: 30% !important;
-    margin: 0 4% 0 0
+    width: 140px !important;
+    margin: 0 1% 1% 0%;
+    height: 170px !important;
 }
 
 .btn-plus {
     float: right;
     width: 34%;
-    margin-right: 2%;
+    margin-right: 3%;
     padding: 1%;
     color: white;
     font-size: small;
